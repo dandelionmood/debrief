@@ -21,6 +21,8 @@ class CreateMainDatabase extends Migration
             $table->integer('user_id', false, true);
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
 
@@ -31,6 +33,8 @@ class CreateMainDatabase extends Migration
 
             $table->integer('universe_id', false, true);
             $table->foreign('universe_id')->references('id')->on('universes');
+
+            $table->softDeletes();
 
             $table->timestamps();
         });
