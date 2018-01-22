@@ -16,7 +16,7 @@ class CreateMainDatabase extends Migration
         Schema::create('universes', function (Blueprint $table) {
             $table->increments('id');
             $table->text('label');
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->integer('user_id', false, true);
             $table->foreign('user_id')->references('id')->on('users');
