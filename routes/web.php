@@ -11,9 +11,9 @@
 |
 */
 
-
-    Auth::routes();
-    Route::group(['middleware' => 'auth'], function () {
-        Route::get('/home', 'HomeController@index')->name('home');
-        Route::resource('/universes', 'UniverseController');
-    });
+Auth::routes();
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('universes', 'UniverseController');
+    Route::resource('universes.stories', 'StoryController');
+});

@@ -24,4 +24,9 @@ class Universe extends Model
     {
         return $this->hasMany(Meeting::class);
     }
+
+    public function stories()
+    {
+        return $this->hasMany(Story::class);
+    }
 }

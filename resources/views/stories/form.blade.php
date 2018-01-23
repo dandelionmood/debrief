@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('breadcrumbs', Breadcrumbs::render('universes'))
+@section('breadcrumbs', Breadcrumbs::render('stories', $story->universe))
 
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            @if(empty($universe->id))
-                <h1>Add a new universe</h1>
+            @if(empty($story->id))
+                <h1>Add a new story</h1>
             @else
-                <h1>Edit this universe</h1>
+                <h1>Edit this story</h1>
             @endif
 
             @if ($errors->any())
@@ -21,10 +21,10 @@
                 </div>
             @endif
 
-            @if(empty($universe->id))
-                {!! Form::model($universe, ['route' => 'universes.store']) !!}
+            @if(empty($story->id))
+                {!! Form::model($story, ['route' => ['universes.stories.store', $story->universe->id]]) !!}
             @else
-                {!! Form::model($universe, ['route' => ['universes.update', $universe->id], 'method' => 'PUT']) !!}
+                {!! Form::model($story, ['route' => ['universes.stories.update', $story->universe->id, $story->id], 'method' => 'PUT']) !!}
             @endif
 
             <div class="form-group">
@@ -34,8 +34,9 @@
                 {!! Form::label('description', "Description:") !!}
                 {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
             </div>
+
             <div class="form-group">
-                @if(empty($universe->id))
+                @if(empty($story->id))
                     {!! Form::submit('Save!') !!}
                 @else
                     {!! Form::submit('Update!') !!}

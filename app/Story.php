@@ -14,10 +14,12 @@ class Story extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    function user()
+    protected $guarded = [];
+
+    function universe()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Universe::class);
     }
 }

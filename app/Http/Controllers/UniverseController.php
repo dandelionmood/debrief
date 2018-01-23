@@ -31,22 +31,22 @@ class UniverseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreUniverse  $request
+     * @param  StoreUniverse $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUniverse $request)
     {
-        $attributes = $request->except(['_token']);
+        $attributes            = $request->except(['_token']);
         $attributes['user_id'] = $request->user()->id;
         Universe::create($attributes);
         return redirect()->route('universes.index')
-            ->with('success','Universe successfully created!');
+            ->with('success', 'Universe successfully created!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Universe  $universe
+     * @param  \App\Universe $universe
      * @return \Illuminate\Http\Response
      */
     public function show(Universe $universe)
@@ -57,7 +57,7 @@ class UniverseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Universe  $universe
+     * @param  \App\Universe $universe
      * @return \Illuminate\Http\Response
      */
     public function edit(Universe $universe)
@@ -68,17 +68,17 @@ class UniverseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Universe  $universe
+     * @param  StoreUniverse $request
+     * @param  \App\Universe $universe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Universe $universe)
+    public function update(StoreUniverse $request, Universe $universe)
     {
-        $attributes = $request->except(['_token']);
+        $attributes            = $request->except(['_token']);
         $attributes['user_id'] = $request->user()->id;
         $universe->update($attributes);
         return redirect()->route('universes.show', $universe->id)
-            ->with('success','Universe successfully updated!');
+            ->with('success', 'Universe successfully updated!');
     }
 
     /**
@@ -92,6 +92,6 @@ class UniverseController extends Controller
     {
         $universe->delete();
         return redirect()->route('universes.index')
-            ->with('success','Universe successfully archived!');
+            ->with('success', 'Universe successfully archived!');
     }
 }

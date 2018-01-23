@@ -1402,7 +1402,7 @@ html {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
@@ -7499,7 +7499,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Raleway", sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7633,7 +7633,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Raleway", sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8348,5 +8348,42 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.breadcrumb {
+  background: #f5f8fa;
+  padding-top: 0;
+  margin: 0;
+}
+
+form textarea.form-control {
+  font-family: monospace;
+}
+
+.markdown-content {
+  border: 1px #d3e0e9 solid;
+  padding: 2em;
+}
+
+.markdown-content img {
+  max-width: 100%;
+}
+
+.markdown-content table {
+  width: 100%;
+}
+
+.markdown-content table td,
+.markdown-content table th {
+  padding: .5em;
+}
+
+.markdown-content table td {
+  border: 1px #d3e0e9 solid;
+}
+
+.markdown-content table th {
+  background: #777777;
+  color: #eeeeee;
 }
 
