@@ -174,16 +174,8 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
+        // App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        // Parsedown
-        // http://parsedown.org/
-        Parsedown\Providers\ParsedownServiceProvider::class,
-
-        // HTML Form builder
-        // https://laravelcollective.com/docs/5.4/html
-        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
