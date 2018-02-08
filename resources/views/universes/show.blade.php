@@ -1,12 +1,17 @@
 @extends('layouts.app')
 
-@section('breadcrumbs', Breadcrumbs::render('universes'))
+@section('breadcrumbs', Breadcrumbs::render('universes.show', $universe))
 
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>
-                {{ $universe->label }}
+                @include('shared.edit-in-place', [
+                    'model' => $universe,
+                    'field' => 'label',
+                    'field_type' => 'text',
+                    'route' => ['universes.update', $universe->id],
+                ])
 
                 {!! Form::model($universe, ['route' => ['universes.edit', $universe->id], 'method' => 'GET']) !!}
                 <button class="btn pull-right">
@@ -20,11 +25,17 @@
                 </button>
                 {!! Form::close() !!}
             </h1>
-            {!! parsedown($universe->description) !!}
+
+            @include('shared.edit-in-place', [
+                'model' => $universe,
+                'field' => 'description',
+                'field_type' => 'textarea',
+                'route' => ['universes.update', $universe->id],
+            ])
 
             <hr/>
 
-            <a href="{{ route('universes.stories.index', $universe->id) }}">See all the related stories …</a>
+            <a href="{{ route('universes.stories.index', $universe->id) }}">See all the related stories…</a>
         </div>
     </div>
 @endsection

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9825eb1ebdda2ca54a753f2c02c5b177",
+    "content-hash": "c793e54223089a86a313510d0b689334",
     "packages": [
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -467,16 +467,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.33",
+            "version": "v5.5.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ef7880e665390f999f4def7c9f78133636f973cf"
+                "reference": "1de7c0aec13eadbdddc2d1ba4019b064b2c6b966"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ef7880e665390f999f4def7c9f78133636f973cf",
-                "reference": "ef7880e665390f999f4def7c9f78133636f973cf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1de7c0aec13eadbdddc2d1ba4019b064b2c6b966",
+                "reference": "1de7c0aec13eadbdddc2d1ba4019b064b2c6b966",
                 "shasum": ""
             },
             "require": {
@@ -597,7 +597,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-01-30T15:06:13+00:00"
+            "time": "2018-02-06T15:36:55+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1084,63 +1084,6 @@
                 "random"
             ],
             "time": "2017-09-27T21:40:39+00:00"
-        },
-        {
-            "name": "parsedown/laravel",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/parsedown/laravel.git",
-                "reference": "a1dd13b4c4309be3f48c9ceb02e3a29ba81548b0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/parsedown/laravel/zipball/a1dd13b4c4309be3f48c9ceb02e3a29ba81548b0",
-                "reference": "a1dd13b4c4309be3f48c9ceb02e3a29ba81548b0",
-                "shasum": ""
-            },
-            "require": {
-                "erusev/parsedown": "~1.6",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.4",
-                "php": ">=7.1",
-                "phpunit/phpunit": "^6.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Parsedown\\Providers\\ParsedownServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/Support/helpers.php"
-                ],
-                "psr-4": {
-                    "Parsedown\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Eduardo Agostini",
-                    "email": "edu.agostini@gmail.com"
-                }
-            ],
-            "description": "Official Laravel Wrapper of Parsedown.",
-            "homepage": "http://parsedown.org",
-            "keywords": [
-                "laravel",
-                "parsedown"
-            ],
-            "time": "2018-01-09T22:08:08+00:00"
         },
         {
             "name": "psr/container",
@@ -2408,30 +2351,30 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "2b1273c45e2f8df7a625563e2283a17c14f02ae8"
+                "reference": "387efb9b42b90f4380d773362972b619f6ba9b58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/2b1273c45e2f8df7a625563e2283a17c14f02ae8",
-                "reference": "2b1273c45e2f8df7a625563e2283a17c14f02ae8",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/387efb9b42b90f4380d773362972b619f6ba9b58",
+                "reference": "387efb9b42b90f4380d773362972b619f6ba9b58",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/reflection-docblock": "^2.0.4",
-                "illuminate/console": "^5.0,<5.6",
-                "illuminate/filesystem": "^5.0,<5.6",
-                "illuminate/support": "^5.0,<5.6",
+                "illuminate/console": "^5.0,<5.7",
+                "illuminate/filesystem": "^5.0,<5.7",
+                "illuminate/support": "^5.0,<5.7",
                 "php": ">=5.4.0",
                 "symfony/class-loader": "^2.3|^3.0"
             },
             "require-dev": {
                 "doctrine/dbal": "~2.3",
-                "illuminate/config": "^5.0,<5.6",
-                "illuminate/view": "^5.0,<5.6",
+                "illuminate/config": "^5.0,<5.7",
+                "illuminate/view": "^5.0,<5.7",
                 "phpunit/phpunit": "4.*",
                 "scrutinizer/ocular": "~1.1",
                 "squizlabs/php_codesniffer": "~2.3"
@@ -2477,7 +2420,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2017-07-16T00:24:12+00:00"
+            "time": "2018-02-07T08:31:35+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",

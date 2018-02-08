@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -8358,11 +8358,6 @@ button.close {
 
 form textarea.form-control {
   font-family: monospace;
-}
-
-.markdown-content {
-  border: 1px #d3e0e9 solid;
-  padding: 2em;
 }
 
 .markdown-content img {

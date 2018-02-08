@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 // Variables
 @import "variables";
 // Bootstrap
@@ -16,8 +16,8 @@ form textarea.form-control {
 }
 
 .markdown-content {
-  border: 1px $laravel-border-color solid;
-  padding: 2em;
+  //border: 1px $laravel-border-color solid;
+  //padding: 2em;
 
   img {
     max-width: 100%;

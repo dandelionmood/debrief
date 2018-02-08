@@ -24,7 +24,7 @@ class StoreUniverse extends FormRequest
     public function rules()
     {
         return [
-            'label'       => 'required',
+            'label'       => 'nullable',
             'description' => 'nullable',
             'user_id'     => 'numeric|exists:users',
         ];

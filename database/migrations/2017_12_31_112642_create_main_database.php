@@ -50,6 +50,7 @@ class CreateMainDatabase extends Migration
         });
 
         Schema::create('comments', function (Blueprint $table) {
+            $table->increments('id');
             $table->text('description');
 
             $table->integer('meeting_id', false, true)->nullable();
@@ -57,6 +58,8 @@ class CreateMainDatabase extends Migration
 
             $table->integer('story_id', false, true);
             $table->foreign('story_id')->references('id')->on('story');
+
+            $table->softDeletes();
 
             $table->timestamps();
         });

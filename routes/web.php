@@ -11,9 +11,17 @@
 |
 */
 
+use App\Universe;
+
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
     Route::resource('universes', 'UniverseController');
+    Route::get('universes/{universe}/search', 'SearchController@search')->name('universes.search');
+
     Route::resource('universes.stories', 'StoryController');
+    Route::resource('universes.stories.comments', 'CommentController');
+
+
 });

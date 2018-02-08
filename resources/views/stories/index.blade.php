@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('breadcrumbs', Breadcrumbs::render('stories', $universe))
+@section('breadcrumbs', Breadcrumbs::render('stories.index', $universe))
 
 @section('content')
     <div class="row">

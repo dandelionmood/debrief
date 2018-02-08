@@ -22,4 +22,11 @@ class Story extends Model
     {
         return $this->belongsTo(Universe::class);
     }
+
+    function comments()
+    {
+        return $this->hasMany(Comment::class)
+            // comments almost always work in a backward fashion, we acknowledge this by making it our default.
+            ->orderByDesc('created_at');
+    }
 }
