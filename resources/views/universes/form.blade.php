@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('breadcrumbs', Breadcrumbs::render('universes'))
+@if(empty($universe->id))
+    @section('breadcrumbs', Breadcrumbs::render('universes.create'))
+@else
+    @section('breadcrumbs', Breadcrumbs::render('universes.edit', $universe))
+@endif
 
 @section('content')
     <div class="row">
