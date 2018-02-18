@@ -13,19 +13,29 @@ class CreateMainDatabase extends Migration
      */
     public function up()
     {
+        /* The universe is the core element */
         Schema::create('universes', function (Blueprint $table) {
             $table->increments('id');
             $table->text('label');
             $table->text('description')->nullable();
-
-            $table->integer('user_id', false, true);
-            $table->foreign('user_id')->references('id')->on('users');
 
             $table->softDeletes();
 
             $table->timestamps();
         });
 
+        /* Several users can access a given universe */
+        Schema::create('universe_user', function(Blueprint $table) {
+            $table->integer('universe_id', false, true);
+            $table->foreign('universe_id')->references('id')->on('universes');
+
+            $table->integer('user_id', false, true);
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->primary(['universe_id', 'user_id']);
+        });
+
+        /* Universes contains many stories, in a hierarchical fashion */
         Schema::create('stories', function (Blueprint $table) {
             $table->increments('id');
             $table->text('label');
@@ -33,6 +43,22 @@ class CreateMainDatabase extends Migration
 
             $table->integer('universe_id', false, true);
             $table->foreign('universe_id')->references('id')->on('universes');
+
+            // Will be null for root stories anyway
+            $table->integer('created_by_user_id', false, true)->nullable();
+            $table->foreign('created_by_user_id')->references('id')->on('users');
+            $table->integer('last_edited_by_user_id', false, true)->nullable();
+            $table->foreign('last_edited_by_user_id')->references('id')->on('users');
+
+            // Baum tree required attributes
+            $table->integer('parent_id', false, true)->nullable();
+            $table->foreign('parent_id')->references('id')->on('story');
+            $table->integer('lft', false, true)->nullable();
+            $table->integer('rgt', false, true)->nullable();
+            $table->integer('depth', false, true)->nullable();
+            $table->index('lft');
+            $table->index('rgt');
+            $table->index('depth');
 
             $table->softDeletes();
 
@@ -59,6 +85,11 @@ class CreateMainDatabase extends Migration
             $table->integer('story_id', false, true);
             $table->foreign('story_id')->references('id')->on('story');
 
+            $table->integer('created_by_user_id', false, true);
+            $table->foreign('created_by_user_id')->references('id')->on('users');
+            $table->integer('last_edited_by_user_id', false, true)->nullable();
+            $table->foreign('last_edited_by_user_id')->references('id')->on('users');
+
             $table->softDeletes();
 
             $table->timestamps();
@@ -73,6 +104,7 @@ class CreateMainDatabase extends Migration
     public function down()
     {
         Schema::dropIfExists('universes');
+        Schema::dropIfExists('universe_user');
         Schema::dropIfExists('stories');
         Schema::dropIfExists('meetings');
         Schema::dropIfExists('comments');

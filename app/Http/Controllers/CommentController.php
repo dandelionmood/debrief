@@ -19,9 +19,11 @@ class CommentController extends Controller
      */
     public function store(Request $request, Universe $universe, Story $story)
     {
-        $attributes             = $request->except(['_token']);
-        $attributes['story_id'] = $story->id;
-        $comment                = Comment::create($attributes);
+        $attributes                           = $request->except(['_token']);
+        $attributes['story_id']               = $story->id;
+        $attributes['created_by_user_id']     = $request->user()->id;
+        $attributes['last_edited_by_user_id'] = $request->user()->id;
+        $comment                              = Comment::create($attributes);
         return redirect()->route('universes.stories.show', [$universe->id, $story->id])
             ->with('success', 'Comment successfully added!');
     }
@@ -37,8 +39,9 @@ class CommentController extends Controller
      */
     public function update(Request $request, Universe $universe, Story $story, Comment $comment)
     {
-        $attributes             = $request->except(['_token']);
-        $attributes['story_id'] = $story->id;
+        $attributes                           = $request->except(['_token']);
+        $attributes['story_id']               = $story->id;
+        $attributes['last_edited_by_user_id'] = $request->user()->id;
         $comment->update($attributes);
         return redirect()->route('universes.stories.show', [$universe->id, $story->id])
             ->with('success', 'Comment successfully updated!');

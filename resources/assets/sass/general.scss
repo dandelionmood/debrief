@@ -1,0 +1,30 @@
+/*
+  GENERAL STRUCTURE STYLES
+ */
+body {
+  //margin-top: 1rem;
+  background-color: #ffffff;
+}
+
+.bd-header {
+  background-color: $theme-colors-menu_bg;
+  padding-top: 1rem;
+
+  .breadcrumb {
+    background: transparent;
+  }
+}
+
+.bd-sidebar {
+  background-color: $theme-colors-menu_bg;
+  color: $theme-colors-text_color;
+}
+
+.hide {
+  display: none;
+}
+
+form textarea.form-control {
+  font-family: monospace;
+  font-size: .75rem;
+}

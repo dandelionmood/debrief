@@ -28,8 +28,8 @@ class StoryController extends Controller
      */
     public function create(Universe $universe)
     {
-        $story           = with(new Story());
-        $story->universe = $universe;
+        $story = with(new Story());
+        $story->universe_id = $universe->id;
         return view('stories.form', ['story' => $story]);
     }
 
@@ -42,11 +42,31 @@ class StoryController extends Controller
      */
     public function store(StoreStory $request, Universe $universe)
     {
-        $attributes                = $request->except(['_token']);
-        $attributes['universe_id'] = $universe->id;
-        $story                     = Story::create($attributes);
+        $attributes                           = $request->except(['_token']);
+        $attributes['universe_id']            = $universe->id;
+        $attributes['created_by_user_id']     = $request->user()->id;
+        $attributes['last_edited_by_user_id'] = $request->user()->id;
+        $story                                = Story::create($attributes);
         return redirect()->route('universes.stories.show', [$universe->id, $story->id])
             ->with('success', 'Story successfully created!');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Universe $universe
+     * @param  \App\Story $story
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Universe $universe, Story $story)
+    {
+        $attributes                           = $request->except(['_token']);
+        $attributes['universe_id']            = $universe->id;
+        $attributes['last_edited_by_user_id'] = $request->user()->id;
+        $story->update($attributes);
+        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
+            ->with('success', 'Story successfully updated!');
     }
 
     /**
@@ -71,23 +91,6 @@ class StoryController extends Controller
     public function edit(Universe $universe, Story $story)
     {
         return view('stories.form', ['story' => $story]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Universe $universe
-     * @param  \App\Story $story
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Universe $universe, Story $story)
-    {
-        $attributes                = $request->except(['_token']);
-        $attributes['universe_id'] = $universe->id;
-        $story->update($attributes);
-        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
-            ->with('success', 'Story successfully updated!');
     }
 
     /**

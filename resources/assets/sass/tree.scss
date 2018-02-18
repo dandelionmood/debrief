@@ -1,0 +1,26 @@
+@import "~jstree/dist/themes/default/style";
+
+.debrief-universe-search {
+  margin-bottom: 1rem;
+}
+
+.jstree-default .jstree-search {
+  color: $theme-colors-active_item_text;
+}
+
+.jstree-default .jstree-clicked {
+  background-color: $theme-colors-active_item;
+  color: $theme-colors-active_item_text;
+}
+
+.jstree-default .jstree-hovered {
+  background-color: $theme-colors-hover_item;
+  //color: $theme-colors-active_item_text;
+}
+
+.jstree-default li a {
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

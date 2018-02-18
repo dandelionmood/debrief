@@ -5,7 +5,7 @@
 <div class="form-group">
     {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '2']) !!}
 </div>
-{!! Form::submit('Save!') !!}
+{!! Form::submit('Save!', ['class' => 'btn btn-primary']) !!}
 {!! Form::close() !!}
 
 @if($story->comments->count() > 0)

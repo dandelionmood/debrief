@@ -48,3 +48,7 @@
         </div>
     </div>
 @endsection
+
+@section('sidebar')
+    @include('shared.sidebar.stories-tree', ['universe' => $story->universe])
+@endsection

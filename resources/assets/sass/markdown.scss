@@ -1,0 +1,26 @@
+/*
+  EVERYTHING MARKDOWN RELATED
+ */
+.markdown-content {
+  //border: 1px $laravel-border-color solid;
+  //padding: 2em;
+
+  img {
+    max-width: 100%;
+  }
+
+  table {
+    width: 100%;
+
+    td, th {
+      padding: .5em;
+    }
+    td {
+      border: 1px #c6c8ca solid;
+    }
+    th {
+      //background: $gray-light;
+      //color: $gray-lighter;
+    }
+  }
+}

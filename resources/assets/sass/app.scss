@@ -1,40 +1,15 @@
-// Fonts
-//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// Included functions
+@import "_functions";
+@import "_theme-colors";
+
 // Variables
 @import "variables";
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 
-.breadcrumb {
-  background: $body-bg;
-  padding-top: 0;
-  margin: 0;
-}
-
-form textarea.form-control {
-  font-family: monospace;
-}
-
-.markdown-content {
-  //border: 1px $laravel-border-color solid;
-  //padding: 2em;
-
-  img {
-    max-width: 100%;
-  }
-
-  table {
-    width: 100%;
-
-    td, th {
-      padding: .5em;
-    }
-    td {
-      border: 1px $laravel-border-color solid;
-    }
-    th {
-      background: $gray-light;
-      color: $gray-lighter;
-    }
-  }
-}
+// Debrief specific-styles
+@import "general";
+@import "login";
+@import "autocomplete";
+@import "markdown";
+@import "tree";

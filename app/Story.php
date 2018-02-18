@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Baum\Node;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Story extends Model
+class Story extends Node
 {
     use SoftDeletes;
 
@@ -16,11 +16,25 @@ class Story extends Model
      */
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    protected $guarded = [];
+    /**
+     * Stories are scoped through their universe.
+     * @var array
+     */
+    protected $scoped = ['universe_id'];
 
     function universe()
     {
         return $this->belongsTo(Universe::class);
+    }
+
+    function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_user_id');
+    }
+
+    function last_edited_by()
+    {
+        return $this->belongsTo(User::class, 'last_edited_by_user_id');
     }
 
     function comments()

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Observers\UniverseObserver;
+use App\Universe;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Universe::observe(UniverseObserver::class);
     }
 
     /**
@@ -25,6 +27,14 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
+            /* \DB::listen(function($query) {
+                \Log::debug(
+                    $query->sql,
+                    $query->bindings,
+                    $query->time
+                );
+            }); */
         }
 
         //

@@ -27,6 +27,18 @@ class Universe extends Model
 
     public function stories()
     {
-        return $this->hasMany(Story::class);
+        return $this->hasMany(Story::class)
+            ->whereNotNull('parent_id');
+    }
+
+    public function root_story()
+    {
+        return $this->hasOne(Story::class)
+            ->whereNull('parent_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

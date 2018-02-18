@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     public function universes()
     {
-        return $this->hasMany(Universe::class);
+        return $this->belongsToMany(Universe::class);
     }
 
     public function stories()

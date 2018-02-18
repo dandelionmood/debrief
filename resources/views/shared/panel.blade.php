@@ -1,9 +1,7 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
+<div class="col">
+    <h2>
         {{ $heading }}
-    </div>
+    </h2>
 
-    <div class="panel-body">
-        {{ $slot }}
-    </div>
+    {{ $slot }}
 </div>
