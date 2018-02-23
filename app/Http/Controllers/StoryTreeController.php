@@ -13,45 +13,44 @@ class StoryTreeController extends Controller
     {
         $universe = Universe::findOrFail($universe_id);
 
-        $transform_to_tree = function ($stories) {
-            return $stories->map(function ($story) {
+        $transform_to_tree = function ($story) use ($universe) {
 
-                $children = $story->getImmediateDescendants()->map(function ($children) {
-                    return [
-                        'id'       => 'story[' . $children->id . ']',
-                        'text'     => $children->label,
-                        'a_attr'   => ['href' => route('universes.stories.show', [$children->universe_id, $children->id])],
-                        'children' => $children->descendants()->count() > 0,
-                    ];
-                });
-
+            $children = $story->getImmediateDescendants()->map(function ($children) {
                 return [
-                    'id'       => 'story[' . $story->id . ']',
-                    'text'     => $story->label,
-                    'state'    => ['opened' => true],
-                    'a_attr'   => ['href' => route('universes.stories.show', [$story->universe_id, $story->id])],
-                    'children' => $children->count() === 0 ? false : $children->all(),
+                    'id'       => 'story[' . $children->id . ']',
+                    'text'     => $children->label,
+                    'a_attr'   => ['href' => route('universes.stories.show', [$children->universe_id, $children->id])],
+                    'children' => $children->descendants()->count() > 0,
                 ];
             });
+
+            $r = [
+                'state'    => ['opened' => true],
+                'children' => $children->count() === 0 ? false : $children->all(),
+            ];
+
+            if ($story->isRoot()) {
+                $r['text']   = $universe->label;
+                $r['a_attr'] = ['href' => route('universes.show', [$universe->id])];
+            } else {
+                $r['id']     = 'story[' . $story->id . ']';
+                $r['text']   = $story->label;
+                $r['a_attr'] = ['href' => route('universes.stories.show', [$universe->id, $story->id])];
+            }
+
+            return $r;
         };
 
         $id = $request->input('id');
 
         // Root element required
         if ($id === '#') {
-            $stories = [
-                'id'       => '#',
-                'text'     => $universe->label,
-                'state'    => ['opened' => true],
-                'children' => $transform_to_tree(
-                    $universe->root_story->getImmediateDescendants()
-                ),
-            ];
+            $stories = $transform_to_tree($universe->root_story);
         } else {
             // Any other node …
             preg_match('/\[([0-9]*)\]/', $id, $matches);
             $id      = $matches[1];
-            $stories = $transform_to_tree(collect([Story::findOrFail($id)]));
+            $stories = $transform_to_tree(Story::findOrFail($id));
         }
 
         return response()->json($stories);

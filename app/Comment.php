@@ -11,8 +11,6 @@ class Comment extends Model
 
     protected $guarded = [];
 
-    use SoftDeletes;
-
     public function story()
     {
         return $this->belongsTo(Story::class);
@@ -21,5 +19,15 @@ class Comment extends Model
     public function meeting()
     {
         return $this->belongsTo(Meeting::class);
+    }
+
+    function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_user_id');
+    }
+
+    function last_edited_by()
+    {
+        return $this->belongsTo(User::class, 'last_edited_by_user_id');
     }
 }

@@ -21,6 +21,10 @@ class ParsedownServiceProvider extends ServiceProvider
         $this->compiler()->directive('parsedown', function ($expression) {
             return "<?php echo parsedown($expression); ?>";
         });
+
+        $this->compiler()->directive('parsedown_line', function ($expression) {
+            return "<?php echo parsedown_line($expression); ?>";
+        });
     }
 
     /**

@@ -24,7 +24,14 @@ body {
   display: none;
 }
 
-form textarea.form-control {
-  font-family: monospace;
-  font-size: .75rem;
+form {
+  textarea.form-control {
+    font-family: monospace;
+    font-size: .75rem;
+  }
+
+  .btn:hover {
+    background-color: $theme-colors-hover_item;
+    color: $theme-colors-active_item;
+  }
 }

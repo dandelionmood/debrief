@@ -3,40 +3,43 @@
 @section('breadcrumbs', Breadcrumbs::render('universes.stories.show', $story->universe, $story))
 
 @section('content')
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">
                 @include('shared.edit-in-place', [
                     'model' => $story,
                     'field' => 'label',
                     'field_type' => 'text',
                     'route' => ['universes.stories.update', $story->universe->id, $story->id],
                 ])
-
-                @include('shared.delete-in-place', [
+            </h3>
+            <p class="card-text">
+                @include('shared.edit-in-place', [
                     'model' => $story,
-                    'route' => ['universes.stories.destroy', $story->universe->id, $story->id],
+                    'field' => 'description',
+                    'field_type' => 'textarea',
+                    'route' => ['universes.stories.update', $story->universe->id, $story->id],
                 ])
-            </h1>
+            </p>
+        </div>
+        <div class="card-footer">
+            <span title="{{ $story->created_at }}">created {{ $story->created_at->diffForHumans() }}</span> by {{ $story->created_by->name }}
 
-            @include('shared.edit-in-place', [
-                'model' => $story,
-                'field' => 'description',
-                'field_type' => 'textarea',
-                'route' => ['universes.stories.update', $story->universe->id, $story->id],
-            ])
-
-            <hr/>
-
-            <h2>Comments</h2>
-
-            @include('stories.comments', ['only' => ['story' => $story]])
-
-            <a href="{{ route('universes.stories.index', $story->universe->id) }}">
-                Back to this universe stories…
-            </a>
+            @include('shared.delete-in-place', [
+               'model' => $story,
+               'route' => ['universes.stories.destroy', $story->universe->id, $story->id],
+           ])
         </div>
     </div>
+
+    <hr/>
+
+    @include('stories.comments', ['only' => ['story' => $story]])
+
+    <a href="{{ route('universes.stories.index', $story->universe->id) }}">
+        Back to this universe stories…
+    </a>
 @endsection
 
 @section('sidebar')

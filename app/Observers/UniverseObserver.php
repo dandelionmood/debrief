@@ -19,15 +19,4 @@ class UniverseObserver
         $universe->stories()->save($story_tree);
         $story_tree->makeRoot();
     }
-
-    /**
-     * Listen to the User deleting event.
-     *
-     * @param  Universe $universe
-     * @return void
-     */
-    public function deleting(Universe $universe)
-    {
-        $universe->story_tree->delete();
-    }
 }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Universe extends Model
 {
-    use SoftDeletes;
     use FormAccessible;
 
     /**

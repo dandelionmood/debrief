@@ -19,18 +19,20 @@ class CreateMainDatabase extends Migration
             $table->text('label');
             $table->text('description')->nullable();
 
-            $table->softDeletes();
-
             $table->timestamps();
         });
 
         /* Several users can access a given universe */
         Schema::create('universe_user', function(Blueprint $table) {
             $table->integer('universe_id', false, true);
-            $table->foreign('universe_id')->references('id')->on('universes');
+            $table->foreign('universe_id')
+                ->references('id')->on('universes')
+                ->onDelete('cascade');
 
             $table->integer('user_id', false, true);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
 
             $table->primary(['universe_id', 'user_id']);
         });
@@ -42,7 +44,9 @@ class CreateMainDatabase extends Migration
             $table->text('description')->nullable();
 
             $table->integer('universe_id', false, true);
-            $table->foreign('universe_id')->references('id')->on('universes');
+            $table->foreign('universe_id')
+                ->references('id')->on('universes')
+                ->onDelete('cascade');
 
             // Will be null for root stories anyway
             $table->integer('created_by_user_id', false, true)->nullable();
@@ -52,25 +56,16 @@ class CreateMainDatabase extends Migration
 
             // Baum tree required attributes
             $table->integer('parent_id', false, true)->nullable();
-            $table->foreign('parent_id')->references('id')->on('story');
+            $table->foreign('parent_id')
+                ->references('id')->on('story')
+                ->onDelete('cascade');
             $table->integer('lft', false, true)->nullable();
             $table->integer('rgt', false, true)->nullable();
             $table->integer('depth', false, true)->nullable();
             $table->index('lft');
             $table->index('rgt');
             $table->index('depth');
-
-            $table->softDeletes();
-
-            $table->timestamps();
-        });
-
-        Schema::create('meetings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('label');
-
-            $table->integer('universe_id', false, true);
-            $table->foreign('universe_id')->references('id')->on('universes');
+            // / Baum tree required attributes
 
             $table->timestamps();
         });
@@ -80,17 +75,19 @@ class CreateMainDatabase extends Migration
             $table->text('description');
 
             $table->integer('meeting_id', false, true)->nullable();
-            $table->foreign('meeting_id')->references('id')->on('meetings');
+            $table->foreign('meeting_id')
+                ->references('id')->on('meetings')
+                ->onDelete('cascade');
 
             $table->integer('story_id', false, true);
-            $table->foreign('story_id')->references('id')->on('story');
+            $table->foreign('story_id')
+                ->references('id')->on('story')
+                ->onDelete('cascade');
 
             $table->integer('created_by_user_id', false, true);
             $table->foreign('created_by_user_id')->references('id')->on('users');
             $table->integer('last_edited_by_user_id', false, true)->nullable();
             $table->foreign('last_edited_by_user_id')->references('id')->on('users');
-
-            $table->softDeletes();
 
             $table->timestamps();
         });
@@ -106,7 +103,6 @@ class CreateMainDatabase extends Migration
         Schema::dropIfExists('universes');
         Schema::dropIfExists('universe_user');
         Schema::dropIfExists('stories');
-        Schema::dropIfExists('meetings');
         Schema::dropIfExists('comments');
     }
 }

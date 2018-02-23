@@ -36,9 +36,9 @@ class UniverseController extends Controller
      */
     public function store(StoreUniverse $request)
     {
-        $attributes            = $request->except(['_token']);
-        $attributes['user_id'] = $request->user()->id;
-        Universe::create($attributes);
+        $attributes = $request->except(['_token']);
+        $universe = Universe::create($attributes);
+        $universe->users()->attach($request->user());
         return redirect()->route('universes.index')
             ->with('success', 'Universe successfully created!');
     }
@@ -75,7 +75,6 @@ class UniverseController extends Controller
     public function update(StoreUniverse $request, Universe $universe)
     {
         $attributes            = $request->except(['_token']);
-        $attributes['user_id'] = $request->user()->id;
         $universe->update($attributes);
         return redirect()->route('universes.show', $universe->id)
             ->with('success', 'Universe successfully updated!');

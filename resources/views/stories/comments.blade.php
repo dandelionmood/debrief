@@ -9,32 +9,31 @@
 {!! Form::close() !!}
 
 @if($story->comments->count() > 0)
-    <table style="width: 100%;">
-        <tbody>
-        @foreach($story->comments as $comment)
-            <tr>
-                <th>
-                    {{ $comment->created_at->diffForHumans() }}
-                </th>
-                <th>
-                    {!! Form::model($comment, ['route' => ['universes.stories.comments.destroy', $story->universe->id, $story->id, $comment->id], 'method' => 'DELETE']) !!}
-                    <button class="btn pull-right">
-                        <i class="glyphicon glyphicon-trash"></i>
-                    </button>
-                    {!! Form::close() !!}
-                </th>
-            </tr>
-            <tr>
-                <td colspan="2">
+    @foreach($story->comments as $comment)
+        <div class="card">
+            <div class="card-header">
+                <span title="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span> by {{ $comment->created_by->name }}
+                {!! Form::model($comment, [
+                    'route' => ['universes.stories.comments.destroy', $story->universe->id, $story->id, $comment->id],
+                    'method' => 'DELETE',
+                    'class' => 'float-right'
+                ]) !!}
+                <button class="btn btn-sm">
+                    <span class="oi oi-trash" title="trash" aria-hidden="true"></span>
+                </button>
+                {!! Form::close() !!}
+            </div>
+            <div class="card-body">
+                <div class="card-text">
                     @include('shared.edit-in-place', [
-                        'model' => $comment,
-                        'field' => 'description',
-                        'field_type' => 'textarea',
-                        'route' => ['universes.stories.comments.update', $story->universe->id, $story->id, $comment->id],
-                    ])
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                       'model' => $comment,
+                       'field' => 'description',
+                       'field_type' => 'textarea',
+                       'route' => ['universes.stories.comments.update', $story->universe->id, $story->id, $comment->id],
+                   ])
+                </div>
+
+            </div>
+        </div>
+    @endforeach
 @endif

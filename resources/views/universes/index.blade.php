@@ -17,7 +17,7 @@
                                 <a href="{{ route('universes.show', $universe->id) }}">{{ $universe->label }}</a>
                                 {!! Form::model($universe, ['class' => 'pull-right', 'route' => ['universes.edit', $universe->id], 'method' => 'GET']) !!}
                                 <button class="btn btn-sm">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                    <span class="oi oi-pencil" title="edit" aria-hidden="true"></span>
                                 </button>
                                 {!! Form::close() !!}
                             @endslot

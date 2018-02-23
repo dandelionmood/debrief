@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
 </head>
 <body class="">
 
@@ -23,10 +23,10 @@
     </div>
 
     <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        <div class="col-12 col-md-4 col-xl-4 d-none d-sm-block bd-sidebar">
             @yield('sidebar')
         </div>
-        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+        <main class="col-12 col-md-8 col-xl-8 py-md-3 pl-md-5 bd-content">
             @if(session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}

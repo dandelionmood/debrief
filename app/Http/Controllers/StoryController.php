@@ -28,7 +28,7 @@ class StoryController extends Controller
      */
     public function create(Universe $universe)
     {
-        $story = with(new Story());
+        $story              = with(new Story());
         $story->universe_id = $universe->id;
         return view('stories.form', ['story' => $story]);
     }
@@ -104,7 +104,7 @@ class StoryController extends Controller
     public function destroy(Universe $universe, Story $story)
     {
         $story->delete();
-        return redirect()->route('universes.stories.index', $universe->id)
-            ->with('success', 'Story successfully archived!');
+        return redirect()->route('universes.show', ['universe' => $universe])
+            ->with('success', 'Story successfully deleted!');
     }
 }
