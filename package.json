@@ -24,6 +24,7 @@
         "lodash": "^4.17.4",
         "popper.js": "^1.12",
         "textcomplete": "^0.16.0",
+        "dropzone": "^5.3.0",
         "vue": "^2.5.7"
     }
 }

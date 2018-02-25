@@ -16,6 +16,7 @@ use App\Universe;
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::post('file-upload', 'FileUploadController@create')->name('file-upload');
 
     Route::resource('universes', 'UniverseController');
     Route::get('universes/{universe_id}/search', 'SearchController@search')->name('universes.search');

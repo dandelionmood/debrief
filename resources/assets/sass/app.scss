@@ -1,13 +1,11 @@
 // Included functions
 @import "_functions";
 @import "_theme-colors";
-
 // Variables
 @import "variables";
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 @import "~open-iconic/font/css/open-iconic-bootstrap";
-
 // Debrief specific-styles
 @import "general";
 @import "login";

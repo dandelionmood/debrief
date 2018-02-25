@@ -7,7 +7,7 @@
     @endif
 </div>
 
-{!! Form::model($model, ['route' => $route, 'method' => 'PUT', 'class' => 'hide' ]) !!}
+{!! Form::model($model, ['route' => $route, 'method' => 'PUT', 'class' => 'hide']) !!}
 <div class="form-group">
     {!! Form::$field_type($field, null, ['class' => 'form-control']) !!}
 </div>
