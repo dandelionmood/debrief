@@ -11,5 +11,8 @@
 <div class="form-group">
     {!! Form::$field_type($field, null, ['class' => 'form-control']) !!}
 </div>
+<div class="form-group">
+    <button type="button" class="btn btn-primary">Save!</button>
+</div>
 {!! Form::close() !!}
 <!-- edit-in-place {{ $field }} / {{ $field_type }} -->

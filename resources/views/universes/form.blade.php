@@ -24,9 +24,9 @@
     @endif
 
     @if(empty($universe->id))
-        {!! Form::model($universe, ['route' => 'universes.store']) !!}
+        {!! Form::model($universe, ['route' => 'universes.store', 'files' => true]) !!}
     @else
-        {!! Form::model($universe, ['route' => ['universes.update', $universe->id], 'method' => 'PUT']) !!}
+        {!! Form::model($universe, ['route' => ['universes.update', $universe->id], 'method' => 'PUT', 'files' => true]) !!}
     @endif
 
     <div class="form-group">
@@ -35,6 +35,18 @@
 
         {!! Form::label('description', "Description:") !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+
+        <div class="row">
+            <div class="col-md-10">
+                {!! Form::label('picture', "Picture (optional):") !!}
+                {!! Form::file('picture', ['class' => 'form-control']) !!}
+            </div>
+            <div class="col-md-2">
+                @if(!empty($universe->id) && !empty($universe->picture_url))
+                    <img class="img-fluid" src="{{ $universe->picture_url }}" />
+                @endif
+            </div>
+        </div>
     </div>
     <div class="form-group">
         @if(empty($universe->id))

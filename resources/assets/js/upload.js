@@ -28,6 +28,7 @@ jQuery(document).ready(function ($) {
         // Hint label that will allow for files to be uploaded with a selection box (compulsory for mobile use).
         let manual_upload_link = $("<a><span class='oi oi-data-transfer-upload' title='upload' aria-hidden='true'></span>"
             + " Drop any file you want to upload, or click here.</a>")
+            .addClass('d-block d-sm-none ')
             .css({"display": "block", "margin-top": ".2rem"})
             .attr("href", "javascript:void(0)");
         textarea.after(manual_upload_link);

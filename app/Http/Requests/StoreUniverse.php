@@ -27,6 +27,7 @@ class StoreUniverse extends FormRequest
             'label'       => 'nullable',
             'description' => 'nullable',
             'user_id'     => 'numeric|exists:users',
+            'picture'     => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
         ];
     }
 }

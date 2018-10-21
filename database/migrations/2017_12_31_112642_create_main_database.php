@@ -18,6 +18,7 @@ class CreateMainDatabase extends Migration
             $table->increments('id');
             $table->text('label');
             $table->text('description')->nullable();
+            $table->text('picture_url')->nullable();
 
             $table->timestamps();
         });

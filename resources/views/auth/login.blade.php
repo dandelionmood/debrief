@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
     <form method="POST" action="{{ route('login') }}" class="form-signin">
         {{ csrf_field() }}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h3>Please sign in</h3>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" value="{{ old('email') }}" id="inputEmail" class="form-control"
                placeholder="Email address" required autofocus>
