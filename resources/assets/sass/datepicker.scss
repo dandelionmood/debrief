@@ -1,0 +1,37 @@
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone";
+
+/* @todo REWRITE that sometimes … */
+
+.datepicker-inline  {
+  margin-top: 2rem;
+  // OMG there is no other way that I know of
+  width: 248px;
+  background: lighten($theme-colors-menu_bg, 20%);
+}
+
+/* Quick'n'dirty tricks to style the plugin */
+.datepicker table tr td.active:active,
+.datepicker table tr td.active.highlighted:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active.highlighted.active {
+  background-color: $theme-colors-hover_item;
+  color: $theme-colors-active_item;
+  text-shadow: none;
+}
+
+.datepicker table tr td.active:active:hover,
+.datepicker table tr td.active.highlighted:active:hover,
+.datepicker table tr td.active.active:hover,
+.datepicker table tr td.active.highlighted.active:hover,
+.datepicker table tr td.active:active:focus,
+.datepicker table tr td.active.highlighted:active:focus,
+.datepicker table tr td.active.active:focus,
+.datepicker table tr td.active.highlighted.active:focus,
+.datepicker table tr td.active:active.focus,
+.datepicker table tr td.active.highlighted:active.focus,
+.datepicker table tr td.active.active.focus,
+.datepicker table tr td.active.highlighted.active.focus {
+  background-color: $theme-colors-hover_item;
+  color: $theme-colors-active_item;
+  text-shadow: none;
+}

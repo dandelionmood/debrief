@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Observers\StoryObserver;
 use App\Observers\UniverseObserver;
+use App\Story;
 use App\Universe;
 use Illuminate\Support\ServiceProvider;
 

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created comment in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param \App\Universe $universe
@@ -23,13 +23,15 @@ class CommentController extends Controller
         $attributes['story_id']               = $story->id;
         $attributes['created_by_user_id']     = $request->user()->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
-        $comment                              = Comment::create($attributes);
-        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
+
+        Comment::create($attributes);
+
+        return redirect($story->link())
             ->with('success', 'Comment successfully added!');
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the comment in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param \App\Universe $universe
@@ -43,12 +45,13 @@ class CommentController extends Controller
         $attributes['story_id']               = $story->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
         $comment->update($attributes);
-        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
+
+        return redirect($story->link())
             ->with('success', 'Comment successfully updated!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the comment from storage.
      *
      * @param \App\Universe $universe
      * @param  \App\Story $story
@@ -59,7 +62,8 @@ class CommentController extends Controller
     public function destroy(Universe $universe, Story $story, Comment $comment)
     {
         $comment->delete();
-        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
+
+        return redirect($story->link())
             ->with('success', 'Comment successfully archived!');
     }
 }

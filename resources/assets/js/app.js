@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('./in-place-editing');
 require('./textareas-autocomplete');
-require('./upload');
+require('./textareas-toolbar');
 require('./tree');
+require('./datepicker');

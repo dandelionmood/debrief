@@ -2,8 +2,6 @@
   EVERYTHING MARKDOWN RELATED
  */
 .markdown-content {
-  //border: 1px $laravel-border-color solid;
-  //padding: 2em;
 
   img {
     max-width: 100%;
@@ -13,7 +11,7 @@
     width: 100%;
 
     td, th {
-      padding: .5em;
+      padding: .5rem;
     }
     td {
       border: 1px #c6c8ca solid;
@@ -23,4 +21,25 @@
       //color: $gray-lighter;
     }
   }
+
+  blockquote {
+    padding: .5rem 1rem .5rem 1rem;
+    border-left: darken($theme-colors-menu_bg, 30%) 3px solid;
+    background-color: $theme-colors-menu_bg;
+    font-style: italic;
+
+    > p {
+      margin-bottom: .2rem;
+    }
+  }
+
+  &.empty-content {
+    background-color: transparentize($theme-colors-active_item, 0.8);
+
+    min-height: 20px;
+    padding: 1rem;
+
+    font-style: italic;
+  }
+
 }

@@ -4,30 +4,35 @@ const {Textcomplete, Textarea} = require('textcomplete');
 /**
  * Autocompletion in textareas
  */
-jQuery(document).ready(function ($) {
+$(function () {
     $('form textarea.form-control').each(function (i, e) {
+        const form = $(e).parents('form:eq(0)');
+        if (form.hasClass('diary')) {
+            // Autocompletion is not supported on diaries
+        }
+        else if (form.hasClass('wiki')) {
+            const form_url = form.attr('action');
+            const search_url = '/' + form_url.match(/(universes\/\d)/)[1] + '/search';
 
-        const form_url = $(e).parents('form:eq(0)').attr('action');
-        const search_url = '/' + form_url.match(/(universes\/\d)/)[1] + '/search';
+            const editor = new Textarea(e);
+            const textcomplete = new Textcomplete(editor);
 
-        const editor = new Textarea(e);
-        const textcomplete = new Textcomplete(editor);
-
-        // https://github.com/yuku-t/textcomplete/blob/master/doc/getting-started.md
-        textcomplete.register([{
-            match: /(^|\s)[#](\w*)$/,
-            search: function (term, callback) {
-                jQuery.getJSON(search_url, {'q': term}, function (r) {
-                    callback(r);
-                });
-            },
-            replace: function (value) {
-                return '$1[' + value.id + ']';
-            },
-            template: function (v) {
-                return v.label + ' <em>(' + v.id + ')</em>';
-            }
-        }]);
+            // https://github.com/yuku-t/textcomplete/blob/master/doc/getting-started.md
+            textcomplete.register([{
+                match: /(^|\s)[#](\w*)$/,
+                search: function (term, callback) {
+                    jQuery.getJSON(search_url, {'q': term}, function (r) {
+                        callback(r);
+                    });
+                },
+                replace: function (value) {
+                    return '$1[' + value.id + ']';
+                },
+                template: function (v) {
+                    return v.label + ' <em>(' + v.id + ')</em>';
+                }
+            }]);
+        }
 
     });
 });

@@ -38,4 +38,11 @@ form {
     background-color: $theme-colors-hover_item;
     color: $theme-colors-active_item;
   }
+
+  .toolbar {
+    margin-top: .3em;
+    a {
+      margin-right: 1em;
+    }
+  }
 }

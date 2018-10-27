@@ -24,7 +24,7 @@ class AppDevSeeder extends Seeder
     {
         factory(User::class, self::HOW_MANY_USERS)->create()
             ->each(function (User $user) {
-
+                echo "User generated : $user->email / secret", PHP_EOL;
                 factory(Universe::class, self::HOW_MANY_UNIVERSES_PER_USER)->make()
                     ->each(function (Universe $universe) use ($user) {
                         $user->universes()->save($universe);

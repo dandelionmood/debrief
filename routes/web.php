@@ -19,13 +19,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('file-upload', 'FileUploadController@create')->name('file-upload');
 
     Route::resource('universes', 'UniverseController');
-    Route::get('universes/{universe_id}/search', 'SearchController@search')->name('universes.search');
 
+    Route::get('universes/{universe_id}/search', 'SearchController@search')->name('universes.search');
     Route::get('universes/{universe_id}/stories/tree', 'StoryTreeController@index')->name('universes.stories-tree.index');
     Route::put('universes/{universe_id}/stories/tree/update', 'StoryTreeController@update')->name('universes.stories-tree.update');
 
+    Route::get('universes/{universe_id}/stories/diary/{date}', 'DiaryController@show')
+        ->name('universes.stories.diary.date');
+
     Route::resource('universes.stories', 'StoryController');
     Route::resource('universes.stories.comments', 'CommentController');
-
 
 });

@@ -13,13 +13,13 @@ class StoryTreeController extends Controller
     {
         $universe = Universe::findOrFail($universe_id);
 
-        $transform_to_tree = function ($story) use ($universe) {
+        $transform_to_tree = function (Story $story) use ($universe) {
 
-            $children = $story->getImmediateDescendants()->map(function ($children) {
+            $children = $story->getImmediateDescendants()->map(function (Story $children) {
                 return [
                     'id'       => 'story[' . $children->id . ']',
                     'text'     => $children->label,
-                    'a_attr'   => ['href' => route('universes.stories.show', [$children->universe_id, $children->id])],
+                    'a_attr'   => ['href' => $children->link()],
                     'children' => $children->descendants()->count() > 0,
                 ];
             });
@@ -35,7 +35,7 @@ class StoryTreeController extends Controller
             } else {
                 $r['id']     = 'story[' . $story->id . ']';
                 $r['text']   = $story->label;
-                $r['a_attr'] = ['href' => route('universes.stories.show', [$universe->id, $story->id])];
+                $r['a_attr'] = ['href' => $story->link()];
             }
 
             return $r;
@@ -59,18 +59,18 @@ class StoryTreeController extends Controller
     public function update($universe_id, Request $request)
     {
         preg_match('/.*\[([0-9]*)\]/', $request->input('node_id'), $m);
-        $node_id = (int)$m[1];
+        $node_id = (int) $m[1];
 
         $parent_node = $request->input('parent_node');
         if ($parent_node !== '#') {
             preg_match('/.*\[([0-9]*)\]/', $parent_node, $m);
-            $parent_node = (int)$m[1];
+            $parent_node = (int) $m[1];
         }
 
-        $node_position = (int)$request->input('node_position');
+        $node_position = (int) $request->input('node_position');
 
         // We first need to find our node within its universe
-        $universe = Universe::findOrFail((int)$universe_id);
+        $universe = Universe::findOrFail((int) $universe_id);
         /** @var Story $story */
         $story = $universe->stories->where('id', $node_id)->first();
         if (!$story) throw new InternalErrorException("No node found.");
@@ -84,7 +84,7 @@ class StoryTreeController extends Controller
             $story->makeChildOf($universe->root_story->getRoot());
         } else {
             /** @var Story $parent_node */
-            $parent_node = Story::findOrFail((int)$parent_node);
+            $parent_node = Story::findOrFail((int) $parent_node);
             $siblings    = $parent_node->getImmediateDescendants();
             $story->makeChildOf($parent_node);
         }

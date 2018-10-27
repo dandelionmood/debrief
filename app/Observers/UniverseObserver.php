@@ -13,6 +13,8 @@ class UniverseObserver
      */
     public function created(Universe $universe)
     {
+        // We need to initialize the Baum tree lib by giving it
+        // a root node.
         $story_tree = new Story([
             'label' => 'Root story',
         ]);

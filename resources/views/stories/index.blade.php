@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.'.$universe->type)
 
 @section('breadcrumbs', Breadcrumbs::render('universes.stories.index', $universe))
 
@@ -12,13 +12,13 @@
             <?php /** @var App\Universe $univers */ ?>
             @foreach($stories as $story)
                 <li>
-                    <a href="{{ route('universes.stories.show', [$story->universe->id, $story->id]) }}">{{ $story->label }}</a>
+                    <a href="{{ $story->link() }}">{{ $story->label }}</a>
                 </li>
             @endforeach
         </ul>
     @endif
 
     <p>
-        <a class="btn btn-primary" href="{{ route('universes.stories.create', $universe->id) }}">Add a new one!</a>
+        <a class="btn btn-primary" href="{{ route('universes.stories.create', $universe) }}">Add a new one!</a>
     </p>
 @endsection

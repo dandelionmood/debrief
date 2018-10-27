@@ -16,6 +16,7 @@ class SearchController extends Controller
         if (!empty($q)) {
             $stories->where('label', 'LIKE', '%' . $q . '%');
         }
+
         $stories = $stories->get(['id', 'label'])->map(function ($s) {
             return [
                 'id'    => "#$s->id",

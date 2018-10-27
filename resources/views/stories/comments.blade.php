@@ -1,5 +1,5 @@
 {!! Form::model(new \App\Comment(), [
-    'route' => ['universes.stories.comments.store', $story->universe->id, $story->id],
+    'route' => ['universes.stories.comments.store', $story->universe, $story],
     'method' => 'POST',
 ]) !!}
 <div class="form-group">
@@ -14,7 +14,7 @@
             <div class="card-header">
                 <span title="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span> by {{ $comment->created_by->name }}
                 {!! Form::model($comment, [
-                    'route' => ['universes.stories.comments.destroy', $story->universe->id, $story->id, $comment->id],
+                    'route' => ['universes.stories.comments.destroy', $story->universe, $story, $comment],
                     'method' => 'DELETE',
                     'class' => 'float-right'
                 ]) !!}
@@ -29,7 +29,7 @@
                        'model' => $comment,
                        'field' => 'description',
                        'field_type' => 'textarea',
-                       'route' => ['universes.stories.comments.update', $story->universe->id, $story->id, $comment->id],
+                       'route' => ['universes.stories.comments.update', $story->universe, $story, $comment],
                    ])
                 </div>
 

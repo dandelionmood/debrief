@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.'.$universe->type)
 
 @if(empty($universe->id))
     @section('breadcrumbs', Breadcrumbs::render('universes.create'))
@@ -32,6 +32,9 @@
     <div class="form-group">
         {!! Form::label('label', "Label:") !!}
         {!! Form::text('label', null, ['class' => 'form-control input-lg']) !!}
+
+        {!! Form::label('label', "Type:") !!}
+        {!! Form::select('type', \App\Universe::getTypes(), null, ['class' => 'form-control']) !!}
 
         {!! Form::label('description', "Description:") !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}

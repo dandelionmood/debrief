@@ -19,6 +19,12 @@ mix
     .js('resources/assets/js/app.js', 'public/js')
         .sourceMaps() // we add sourcemaps to ease debug
         // .browserSync('localhost:8000') // we allow for automatic browser refresh
+        .extract([
+            'jquery', 'bootstrap', 'lodash', 'axios',
+            'moment', 'bootstrap-datepicker',
+            'textcomplete', 'dropzone',
+            'jstree'
+        ])
     // CSS compilation
     .sass('resources/assets/sass/app.scss', 'public/css', {
         // Theme colors are read from the .env file, in a «slack» fashion.

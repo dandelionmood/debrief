@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.'.$universe->type)
 
 @section('breadcrumbs', Breadcrumbs::render('universes.show', $universe))
 
@@ -44,5 +44,5 @@
 @endsection
 
 @section('sidebar')
-    @include('shared.sidebar.stories-tree', ['universe' => $universe])
+    @include('shared.sidebar.'.$universe->type, ['universe' => $universe])
 @endsection

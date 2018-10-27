@@ -3,7 +3,6 @@
 namespace App;
 
 use Baum\Node;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Story extends Node
 {
@@ -40,5 +39,32 @@ class Story extends Node
         return $this->hasMany(Comment::class)
             // comments almost always work in a backward fashion, we acknowledge this by making it our default.
             ->orderByDesc('created_at');
+    }
+
+    /**
+     * Automatic label conversion : it depends on the universe type.
+     *
+     * @param $label string original label
+     * @return string
+     */
+    public function getLabelAttribute($label): string
+    {
+        switch ($this->universe->type) {
+            case Universe::TYPE_DIARY:
+                $label = \Carbon\Carbon::parse($label)->formatLocalized('%A %d %B %Y');
+                break;
+        }
+
+        return $label;
+    }
+
+    /**
+     * Common method to get a link for the story.
+     *
+     * @return string a http link to show the story
+     */
+    function link()
+    {
+        return route('universes.stories.show', [$this->universe, $this]);
     }
 }

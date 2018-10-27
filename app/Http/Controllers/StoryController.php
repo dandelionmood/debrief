@@ -10,18 +10,29 @@ use Illuminate\Http\Request;
 class StoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the stories.
      *
      * @param  \App\Universe $universe
      * @return \Illuminate\Http\Response
      */
     public function index(Universe $universe)
     {
-        return view('stories.index', ['universe' => $universe, 'stories' => $universe->stories]);
+        // That doesn't make much sense for a diary : we go simply
+        // to the current date.
+        if( $universe->type === Universe::TYPE_DIARY ) {
+            return redirect()->route('universes.stories.diary.date', [
+                $universe, strftime('%F')
+            ]);
+        }
+
+        return view('stories.index', [
+            'universe' => $universe,
+            'stories' => $universe->stories
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new story.
      *
      * @param  \App\Universe $universe
      * @return \Illuminate\Http\Response
@@ -34,7 +45,7 @@ class StoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created story in storage.
      *
      * @param  StoreStory $request
      * @param  \App\Universe $universe
@@ -46,13 +57,15 @@ class StoryController extends Controller
         $attributes['universe_id']            = $universe->id;
         $attributes['created_by_user_id']     = $request->user()->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
+        $attributes['slug']                   = str_limit(str_slug($attributes['label'], 255));
         $story                                = Story::create($attributes);
-        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
+
+        return redirect($story->link())
             ->with('success', 'Story successfully created!');
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the story in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \App\Universe $universe
@@ -65,24 +78,26 @@ class StoryController extends Controller
         $attributes['universe_id']            = $universe->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
         $story->update($attributes);
-        return redirect()->route('universes.stories.show', [$universe->id, $story->id])
+
+        return redirect($story->link())
             ->with('success', 'Story successfully updated!');
     }
 
     /**
-     * Display the specified resource.
+     * Display the story.
      *
      * @param  \App\Universe $universe
      * @param  \App\Story $story
      * @return \Illuminate\Http\Response
      */
-    public function show(Universe $universe, Story $story)
+    public function show(Request $request, Universe $universe, Story $story)
     {
+        app('parsedown')->setUniverse($universe);
         return view('stories.show', ['story' => $story]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the story.
      *
      * @param  \App\Universe $universe
      * @param  \App\Story $story
@@ -94,7 +109,7 @@ class StoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the story from storage.
      *
      * @param  \App\Universe $universe
      * @param  \App\Story $story

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.'.$story->universe->type)
 
 @section('breadcrumbs', Breadcrumbs::render('universes.stories.show', $story->universe, $story))
 
@@ -7,28 +7,34 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">
-                @include('shared.edit-in-place', [
-                    'model' => $story,
-                    'field' => 'label',
-                    'field_type' => 'text',
-                    'route' => ['universes.stories.update', $story->universe->id, $story->id],
-                ])
+                @if($story->universe->type === \App\Universe::TYPE_DIARY)
+                    {{-- we only *display* the date of the day, as it can't be altered --}}
+                    {{ $story->label }}
+                @else
+                    @include('shared.edit-in-place', [
+                        'model' => $story,
+                        'field' => 'label',
+                        'field_type' => 'text',
+                        'route' => ['universes.stories.update', $story->universe, $story],
+                    ])
+                @endif
             </h3>
             <p class="card-text">
                 @include('shared.edit-in-place', [
                     'model' => $story,
                     'field' => 'description',
                     'field_type' => 'textarea',
-                    'route' => ['universes.stories.update', $story->universe->id, $story->id],
+                    'route' => ['universes.stories.update', $story->universe, $story],
                 ])
             </p>
         </div>
         <div class="card-footer">
-            <span title="{{ $story->created_at }}">created {{ $story->created_at->diffForHumans() }}</span> by {{ $story->created_by->name }}
+            <span title="{{ $story->created_at }}">created {{ $story->created_at->diffForHumans() }}</span>
+            by {{ $story->created_by->name }}
 
             @include('shared.delete-in-place', [
                'model' => $story,
-               'route' => ['universes.stories.destroy', $story->universe->id, $story->id],
+               'route' => ['universes.stories.destroy', $story->universe, $story],
            ])
         </div>
     </div>
@@ -37,11 +43,8 @@
 
     @include('stories.comments', ['only' => ['story' => $story]])
 
-    <a href="{{ route('universes.stories.index', $story->universe->id) }}">
-        Back to this universe stories…
-    </a>
 @endsection
 
 @section('sidebar')
-    @include('shared.sidebar.stories-tree', ['universe' => $story->universe])
+    @include('shared.sidebar.'.$story->universe->type, ['universe' => $story->universe])
 @endsection

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMainDatabase extends Migration
 {
@@ -17,14 +17,20 @@ class CreateMainDatabase extends Migration
         Schema::create('universes', function (Blueprint $table) {
             $table->increments('id');
             $table->text('label');
+            $table->enum('type', [
+                \App\Universe::TYPE_WIKI,
+                \App\Universe::TYPE_DIARY,
+            ]);
             $table->text('description')->nullable();
             $table->text('picture_url')->nullable();
+
+            $table->index('type');
 
             $table->timestamps();
         });
 
         /* Several users can access a given universe */
-        Schema::create('universe_user', function(Blueprint $table) {
+        Schema::create('universe_user', function (Blueprint $table) {
             $table->integer('universe_id', false, true);
             $table->foreign('universe_id')
                 ->references('id')->on('universes')

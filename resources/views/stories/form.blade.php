@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app.'.$story->universe->type)
 
 @section('breadcrumbs', Breadcrumbs::render('universes.stories.create', $story->universe))
 
@@ -20,9 +20,9 @@
     @endif
 
     @if(empty($story->id))
-        {!! Form::model($story, ['route' => ['universes.stories.store', $story->universe->id]]) !!}
+        {!! Form::model($story, ['route' => ['universes.stories.store', $story->universe]]) !!}
     @else
-        {!! Form::model($story, ['route' => ['universes.stories.update', $story->universe->id, $story->id], 'method' => 'PUT']) !!}
+        {!! Form::model($story, ['route' => ['universes.stories.update', $story->universe, $story], 'method' => 'PUT']) !!}
     @endif
 
     <div class="form-group">
@@ -45,5 +45,5 @@
 @endsection
 
 @section('sidebar')
-    @include('shared.sidebar.stories-tree', ['universe' => $story->universe])
+    @include('shared.sidebar.'.$story->universe->type, ['universe' => $story->universe])
 @endsection

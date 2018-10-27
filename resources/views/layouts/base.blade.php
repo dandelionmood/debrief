@@ -21,6 +21,9 @@
 <script>
     const URL_FILE_UPLOAD = '{{ route('file-upload') }}';
 </script>
+
+<script src="{{ asset('js/manifest.js') }}"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

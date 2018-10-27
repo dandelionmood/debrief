@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * App\User
@@ -20,21 +20,23 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable
+        = [
+            'name',
+            'email',
+            'password',
+        ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden
+        = [
+            'password',
+            'remember_token',
+        ];
 
     public function universes()
     {
@@ -44,10 +46,5 @@ class User extends Authenticatable
     public function stories()
     {
         return $this->hasManyThrough(Story::class, Universe::class);
-    }
-
-    public function meetings()
-    {
-        return $this->hasManyThrough(Meeting::class, Universe::class);
     }
 }
