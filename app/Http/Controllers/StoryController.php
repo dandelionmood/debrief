@@ -92,7 +92,11 @@ class StoryController extends Controller
      */
     public function show(Request $request, Universe $universe, Story $story)
     {
+        // We need to give some context to Parsedown to make it work.
+        // @todo maybe move this code elsewhere (middleware ?)
         app('parsedown')->setUniverse($universe);
+        app('parsedown')->setUser($request->user());
+
         return view('stories.show', ['story' => $story]);
     }
 

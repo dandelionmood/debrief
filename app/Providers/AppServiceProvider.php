@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Universe::observe(UniverseObserver::class);
+        Story::observe(StoryObserver::class);
     }
 
     /**

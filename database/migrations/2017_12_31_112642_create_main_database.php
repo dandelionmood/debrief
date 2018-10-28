@@ -81,11 +81,6 @@ class CreateMainDatabase extends Migration
             $table->increments('id');
             $table->text('description');
 
-            $table->integer('meeting_id', false, true)->nullable();
-            $table->foreign('meeting_id')
-                ->references('id')->on('meetings')
-                ->onDelete('cascade');
-
             $table->integer('story_id', false, true);
             $table->foreign('story_id')
                 ->references('id')->on('story')

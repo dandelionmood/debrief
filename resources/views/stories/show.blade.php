@@ -39,6 +39,17 @@
         </div>
     </div>
 
+    @if($story->related_stories->count() > 0)
+        <hr/>
+
+        <h5>Related stories</h5>
+        <ul>
+            @foreach($story->related_stories as $s)
+                <li><a href="{{ $s->link() }}">{{ $s->label }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <hr/>
 
     @include('stories.comments', ['only' => ['story' => $story]])

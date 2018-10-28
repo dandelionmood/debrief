@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Baum\Extensions\Query\Builder;
 use Baum\Node;
+use Illuminate\Support\Collection;
 
 class Story extends Node
 {
@@ -41,6 +43,21 @@ class Story extends Node
             ->orderByDesc('created_at');
     }
 
+    function relations()
+    {
+        return $this->morphMany(Relation::class, 'relatable');
+    }
+
+    function related_stories()
+    {
+        // This a clever trick to use our polymorphic relationship WITH
+        // an as many through to avoid dealing with meaningless Relation
+        // objects.
+        return $this->hasManyThrough(Story::class, Relation::class,
+            'relatable_to_id', 'id', 'id', 'relatable_id')
+            ->where('relatable_to_type', Story::class);
+    }
+
     /**
      * Automatic label conversion : it depends on the universe type.
      *
@@ -63,7 +80,7 @@ class Story extends Node
      *
      * @return string a http link to show the story
      */
-    function link()
+    public function link()
     {
         return route('universes.stories.show', [$this->universe, $this]);
     }
