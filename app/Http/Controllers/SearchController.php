@@ -17,7 +17,7 @@ class SearchController extends Controller
             $stories->where('label', 'LIKE', '%' . $q . '%');
         }
 
-        $stories = $stories->get(['id', 'label'])->map(function ($s) {
+        $stories = $stories->get(['id', 'label', 'universe_id'])->map(function ($s) {
             return [
                 'id'    => "#$s->id",
                 'label' => $s->label,
