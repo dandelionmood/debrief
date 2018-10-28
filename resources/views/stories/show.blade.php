@@ -45,7 +45,7 @@
         <h5>Related stories</h5>
         <ul>
             @foreach($story->related_stories as $s)
-                <li><a href="{{ $s->link() }}">{{ $s->label }}</li>
+                <li><a href="{{ $s->link() }}">{{ $s->label }}</a></li>
             @endforeach
         </ul>
     @endif
