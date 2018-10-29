@@ -10,9 +10,9 @@
         "davejamesmiller/laravel-breadcrumbs": "^5.1",
         "erusev/parsedown": "^1.7",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "5.6.*",
+        "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.6.0",
+        "laravelcollective/html": "^5.7.0",
         "watson/validating": "^3.1"
     },
     "require-dev": {
