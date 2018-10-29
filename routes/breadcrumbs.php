@@ -33,6 +33,12 @@ try {
         $breadcrumbs->push('New story');
     });
 
+
+    \Breadcrumbs::register('universes.people.show', function ($breadcrumbs, $universe, $person) {
+        $breadcrumbs->parent('universes.stories.index', $universe);
+        $breadcrumbs->push($person->label, route('universes.people.show', [$universe->id, $person->id]));
+    });
+
 }
 catch (\DaveJamesMiller\Breadcrumbs\Facades\DuplicateBreadcrumbException $e) {
     throw $e;

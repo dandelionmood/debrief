@@ -20,7 +20,7 @@ class Universe extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
     protected $guarded = [];
 
@@ -28,6 +28,11 @@ class Universe extends Model
     {
         return $this->hasMany(Story::class)
             ->whereNotNull('parent_id');
+    }
+
+    public function people(): BelongsToMany
+    {
+        return $this->belongsToMany(Person::class, 'person_universe');
     }
 
     public function root_story(): HasOne

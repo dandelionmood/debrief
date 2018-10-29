@@ -20,7 +20,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('universes', 'UniverseController');
 
-    Route::get('universes/{universe_id}/search', 'SearchController@search')->name('universes.search');
+    Route::get('universes/{universe_id}/stories/search', 'SearchController@story')->name('universes.stories.search');
+    Route::get('universes/{universe_id}/people/search', 'SearchController@person')->name('universes.people.search');
+
     Route::get('universes/{universe_id}/stories/tree', 'StoryTreeController@index')->name('universes.stories-tree.index');
     Route::put('universes/{universe_id}/stories/tree/update', 'StoryTreeController@update')->name('universes.stories-tree.update');
 
@@ -29,5 +31,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('universes.stories', 'StoryController');
     Route::resource('universes.stories.comments', 'CommentController');
+    Route::resource('universes.people', 'PeopleController')->only(['show', 'update']);
 
 });

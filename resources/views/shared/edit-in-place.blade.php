@@ -5,7 +5,7 @@
         @if(empty($model->$field)) empty-content @endif
 @endif">
     @if(empty($model->$field))
-        Nothing yet… <small>(psst, you can double-click here to edit !)</small>
+        No <code>{{ $field }}</code> yet… <small>(double-click to add one!)</small>
     @else
         @if($field_type === 'textarea')
             @parsedown($model->$field)

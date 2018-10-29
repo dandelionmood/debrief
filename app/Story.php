@@ -8,12 +8,14 @@ use Illuminate\Support\Collection;
 
 class Story extends Node
 {
+    protected $guarded = [];
+
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
     /**
      * Stories are scoped through their universe.
