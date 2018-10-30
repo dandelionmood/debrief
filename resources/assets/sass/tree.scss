@@ -1,12 +1,10 @@
-//@import "~jstree/dist/themes/default/style";
-@import "~jstree-bootstrap-theme/dist/themes/proton/style";
+@import "vendor/jstree-theme.css";
 
 .debrief-universe-search {
   margin-bottom: 1rem;
 }
 
 .jstree-proton {
-
   & {
     font-family: inherit;
   }
