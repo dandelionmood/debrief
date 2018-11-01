@@ -1,7 +1,7 @@
 /**
  * In place editing (simple label and textarea modification without the need of a full blown form).
  */
-jQuery(document).ready(function ($) {
+$(function () {
 
     // ctrl-enter on a textarea will submit form
     $('form textarea.form-control').keypress(function (ev) {

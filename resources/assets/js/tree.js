@@ -1,7 +1,7 @@
 // Story tree hierarchy plugin.
 require('jstree');
 
-jQuery(document).ready(function ($) {
+$(function () {
 
     const debrief_tree = $('#debrief-universe-tree');
 

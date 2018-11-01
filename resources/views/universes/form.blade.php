@@ -1,4 +1,4 @@
-@extends('layouts.app.'.$universe->type)
+@extends('layouts.universe', ['universe' => $universe])
 
 @if(empty($universe->id))
     @section('breadcrumbs', Breadcrumbs::render('universes.create'))
@@ -39,12 +39,12 @@
         {!! Form::label('description', "Description:") !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
-        <div class="row">
-            <div class="col-md-10">
+        <div class="row col-12">
+            <div class="col-sm-10">
                 {!! Form::label('picture', "Picture (optional):") !!}
-                {!! Form::file('picture', ['class' => 'form-control']) !!}
+                {!! Form::file('picture', ['class' => 'form-control-file']) !!}
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-2">
                 @if(!empty($universe->id) && !empty($universe->picture_url))
                     <img class="img-fluid" src="{{ $universe->picture_url }}" />
                 @endif
@@ -60,4 +60,8 @@
     </div>
 
     {!! Form::close() !!}
+@endsection
+
+@section('sidebar')
+    @include('shared.sidebar.'.$universe->type, ['universe' => $universe])
 @endsection

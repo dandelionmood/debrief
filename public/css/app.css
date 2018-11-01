@@ -13242,13 +13242,22 @@ body {
   background: transparent;
 }
 
-.bd-breadcrumbs {
-  margin-bottom: 1rem;
-}
-
 .bd-sidebar {
   background-color: #f3f3f3;
   color: #564f4d;
+}
+
+.bd-sidebar .bd-sidebar-content {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.bd-sidebar .bd-sidebar-placeholder {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.bd-content {
+  padding-top: 1rem;
 }
 
 .hide {
@@ -13271,6 +13280,15 @@ form .toolbar {
 
 form .toolbar a {
   margin-right: 1em;
+}
+
+h1 img,
+h2 img,
+h3 img,
+h4 img,
+h5 img {
+  max-height: 3rem;
+  vertical-align: middle;
 }
 
 /*
@@ -13428,7 +13446,6 @@ form .toolbar a {
 /* @todo REWRITE that sometimes … */
 
 .datepicker-inline {
-  margin-top: 2rem;
   width: 248px;
   background: white;
 }

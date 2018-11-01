@@ -1,4 +1,4 @@
-@extends('layouts.app.'.$universe->type)
+@extends('layouts.universe', ['universe' => $story->universe])
 
 @section('breadcrumbs', Breadcrumbs::render('universes.stories.index', $universe))
 

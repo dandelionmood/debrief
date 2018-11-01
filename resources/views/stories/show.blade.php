@@ -1,4 +1,4 @@
-@extends('layouts.app.'.$story->universe->type)
+@extends('layouts.universe', ['universe' => $story->universe])
 
 @section('breadcrumbs', Breadcrumbs::render('universes.stories.show', $story->universe, $story))
 
@@ -7,6 +7,11 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">
+                @if(!empty($story->universe) && !empty($story->universe->picture_url))
+                    <img class="rounded img-fluid d-none d-sm-inline"
+                         src="{{ $story->universe->picture_url }}"/>
+                @endif
+
                 @if($story->universe->type === \App\Universe::TYPE_DIARY)
                     {{-- we only *display* the date of the day, as it can't be altered --}}
                     {{ $story->label }}

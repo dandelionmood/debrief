@@ -15,13 +15,22 @@ body {
   }
 }
 
-.bd-breadcrumbs {
-  margin-bottom: 1rem;
-}
-
 .bd-sidebar {
   background-color: $theme-colors-menu_bg;
   color: $theme-colors-text_color;
+
+  .bd-sidebar-content {
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  .bd-sidebar-placeholder {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+}
+
+.bd-content {
+  padding-top: 1rem;
 }
 
 .hide {
@@ -44,5 +53,12 @@ form {
     a {
       margin-right: 1em;
     }
+  }
+}
+
+h1,h2,h3,h4,h5 {
+  img {
+    max-height: 3rem;
+    vertical-align: middle;
   }
 }

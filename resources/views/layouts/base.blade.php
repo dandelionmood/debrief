@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+
+    @section('favicon')
+        {{-- no default favicon, will change for each universe --}}
+    @show
 </head>
 <body class="">
 
