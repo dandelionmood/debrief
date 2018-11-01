@@ -14,16 +14,19 @@ let mix = require('laravel-mix');
 // Needed to use process.env in this context.
 require('dotenv').config();
 
+// Uncomment to activate bundle analyzer.
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const webpack = require('webpack');
+
 mix
-    // JS compilation
+// JS compilation
     .js('resources/assets/js/app.js', 'public/js')
     .sourceMaps() // we add sourcemaps to ease debug
     // .browserSync('localhost:8000') // we allow for automatic browser refresh
     .extract([
-        'jquery', 'bootstrap', 'lodash', 'axios',
-        'moment', 'bootstrap-datepicker',
-        'textcomplete', 'dropzone',
-        'jstree'
+        'jquery', 'moment', 'bootstrap-datepicker',
+        'textcomplete', 'dropzone', 'jstree'
     ])
     // CSS compilation
     .sass('resources/assets/sass/app.scss', 'public/css', {
@@ -35,5 +38,17 @@ mix
             alias: {
                 // './fonts/titillium': path.resolve(__dirname, 'public/fonts/vendor/jstree-bootstrap-theme/dist/themes/proton/titillium')
             }
-        }
+        },
+        plugins: [
+            // Uncomment to activate bundle analyzer.
+            // new BundleAnalyzerPlugin(),
+
+            // We don't want ALL locales for moment.js to be compiled in the
+            // vendor file, it's too big !
+            //
+            // Note : When adding support for other languages it
+            // should be possible to do this to load other locales :
+            // require('moment/locale/fr.js');
+            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        ]
     });

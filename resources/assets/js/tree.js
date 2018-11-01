@@ -99,7 +99,7 @@ jQuery(document).ready(function ($) {
     $('#search-input').keypress(function (e) {
         let elm = $(this);
         clearInterval(chrono_search);
-        chrono_search = setInterval(function () {
+        let chrono_search = setInterval(function () {
             clearInterval(chrono_search);
             search(elm.val());
         }, 500);
