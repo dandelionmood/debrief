@@ -19,45 +19,38 @@ class StoryController extends Controller
     {
         // That doesn't make much sense for a diary : we go simply
         // to the current date.
-        if( $universe->type === Universe::TYPE_DIARY ) {
+        if ($universe->type === Universe::TYPE_DIARY) {
             return redirect()->route('universes.stories.diary.date', [
-                $universe, strftime('%F')
+                $universe, strftime('%F'),
             ]);
         }
 
         return view('stories.index', [
             'universe' => $universe,
-            'stories' => $universe->stories
+            'stories'  => $universe->stories,
         ]);
-    }
-
-    /**
-     * Show the form for creating a new story.
-     *
-     * @param  \App\Universe $universe
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Universe $universe)
-    {
-        $story              = with(new Story());
-        $story->universe_id = $universe->id;
-        return view('stories.form', ['story' => $story]);
     }
 
     /**
      * Store a newly created story in storage.
      *
-     * @param  StoreStory $request
-     * @param  \App\Universe $universe
+     * @param Request $request
+     * @param $universe_id
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStory $request, Universe $universe)
+    public function add(Request $request, $universe_id)
     {
-        $attributes                           = $request->except(['_token']);
-        $attributes['universe_id']            = $universe->id;
+        $attributes                           = [];
+        $attributes['universe_id']            = $universe_id;
         $attributes['created_by_user_id']     = $request->user()->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
+        $attributes['label']                  = "New story";
         $story                                = Story::create($attributes);
+
+        $parent_story_id = $request->get('parent_story_id');
+        if (!empty($parent_story_id)) {
+            $story->makeChildOf(Story::find($parent_story_id));
+        }
 
         return redirect($story->link())
             ->with('success', 'Story successfully created!');
@@ -74,7 +67,6 @@ class StoryController extends Controller
     public function update(Request $request, Universe $universe, Story $story)
     {
         $attributes                           = $request->except(['_token']);
-        $attributes['universe_id']            = $universe->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
         $story->update($attributes);
 
@@ -97,18 +89,6 @@ class StoryController extends Controller
         app('parsedown')->setUser($request->user());
 
         return view('stories.show', ['story' => $story]);
-    }
-
-    /**
-     * Show the form for editing the story.
-     *
-     * @param  \App\Universe $universe
-     * @param  \App\Story $story
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Universe $universe, Story $story)
-    {
-        return view('stories.form', ['story' => $story]);
     }
 
     /**

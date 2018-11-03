@@ -1,7 +1,7 @@
 @import "vendor/jstree-theme.css";
 
 .debrief-universe-search {
-  margin-bottom: 1rem;
+
 }
 
 .jstree-proton {
@@ -9,8 +9,17 @@
     font-family: inherit;
   }
 
+  em {
+    font-size: .9rem;
+  }
+
   .jstree-node {
-    margin-left: .75rem;
+    margin-left: 24px;
+  }
+
+  .jstree-themeicon.jstree-icon:empty {
+    font-size: .8rem;
+    color: lighten($theme-colors-text_color, 25%);
   }
 
   .jstree-search {
@@ -34,7 +43,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    padding: 0 0 0 .3rem;
   }
 }

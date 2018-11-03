@@ -29,7 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('universes/{universe_id}/stories/diary/{date}', 'DiaryController@show')
         ->name('universes.stories.diary.date');
 
-    Route::resource('universes.stories', 'StoryController');
+    Route::get('universes/{universe_id}/stories/add', 'StoryController@add')
+        ->name('universes.stories.add');
+    Route::resource('universes.stories', 'StoryController')->except(['create', 'edit']);
+
     Route::resource('universes.stories.comments', 'CommentController');
     Route::resource('universes.people', 'PeopleController')->only(['show', 'update']);
 

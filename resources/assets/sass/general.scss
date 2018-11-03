@@ -2,8 +2,8 @@
   GENERAL STRUCTURE STYLES
  */
 body {
-  //margin-top: 1rem;
   background-color: #ffffff;
+  color: $theme-colors-text_color;
 }
 
 .bd-header {
@@ -17,10 +17,9 @@ body {
 
 .bd-sidebar {
   background-color: $theme-colors-menu_bg;
-  color: $theme-colors-text_color;
 
   .bd-sidebar-content {
-    padding: 0 2rem 2rem 2rem;
+    //padding: 0 2rem 2rem 2rem;
   }
 
   .bd-sidebar-placeholder {

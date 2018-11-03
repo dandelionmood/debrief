@@ -13231,6 +13231,7 @@ a.text-dark:focus {
 
 body {
   background-color: #ffffff;
+  color: #564f4d;
 }
 
 .bd-header {
@@ -13244,11 +13245,6 @@ body {
 
 .bd-sidebar {
   background-color: #f3f3f3;
-  color: #564f4d;
-}
-
-.bd-sidebar .bd-sidebar-content {
-  padding: 0 2rem 2rem 2rem;
 }
 
 .bd-sidebar .bd-sidebar-placeholder {
@@ -13407,16 +13403,21 @@ h5 img {
   font-style: italic;
 }
 
-.debrief-universe-search {
-  margin-bottom: 1rem;
-}
-
 .jstree-proton {
   font-family: inherit;
 }
 
+.jstree-proton em {
+  font-size: .9rem;
+}
+
 .jstree-proton .jstree-node {
-  margin-left: .75rem;
+  margin-left: 24px;
+}
+
+.jstree-proton .jstree-themeicon.jstree-icon:empty {
+  font-size: .8rem;
+  color: #978e8b;
 }
 
 .jstree-proton .jstree-search {
@@ -13440,7 +13441,6 @@ h5 img {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 0 0 .3rem;
 }
 
 /* @todo REWRITE that sometimes … */

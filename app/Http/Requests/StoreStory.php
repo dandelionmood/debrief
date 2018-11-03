@@ -24,9 +24,10 @@ class StoreStory extends FormRequest
     public function rules()
     {
         return [
-            'label'       => 'required',
-            'description' => 'nullable',
-            'universe_id' => 'numeric|exists:users',
+            'label'                  => 'required',
+            'description'            => 'nullable',
+            'universe_id'            => 'numeric|exists:universes',
+            'last_edited_by_user_id' => 'numeric|exists:users',
         ];
     }
 }

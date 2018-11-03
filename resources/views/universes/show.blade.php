@@ -9,6 +9,8 @@
             @if(!empty($universe) && !empty($universe->picture_url))
                 <img class="rounded img-fluid"
                      src="{{ $universe->picture_url }}"/>
+            @else
+                <em>No picture yet, edit the universe to add one !</em>
             @endif
         </div>
         <div class="col-12 col-md-10">
