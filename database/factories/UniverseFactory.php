@@ -9,3 +9,10 @@ $factory->define(\App\Universe::class, function (Faker $faker) {
         'description' => $faker->realText(500),
     ];
 });
+
+$factory->state(\App\Universe::class, 'of_type_wiki', [
+    'type' => \App\Universe::TYPE_WIKI,
+]);
+$factory->state(\App\Universe::class, 'of_type_diary', [
+    'type' => \App\Universe::TYPE_DIARY,
+]);

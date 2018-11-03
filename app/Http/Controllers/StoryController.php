@@ -57,7 +57,6 @@ class StoryController extends Controller
         $attributes['universe_id']            = $universe->id;
         $attributes['created_by_user_id']     = $request->user()->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
-        $attributes['slug']                   = str_limit(str_slug($attributes['label'], 255));
         $story                                = Story::create($attributes);
 
         return redirect($story->link())
