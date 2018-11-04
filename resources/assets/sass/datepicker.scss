@@ -2,9 +2,18 @@
 
 /* @todo REWRITE that sometimes … */
 
+.bootstrap-datepicker {
+  position: relative;
+  width: 100%;
+}
+
 .datepicker-inline  {
   // OMG there is no other way that I know of
+  position: relative;
   width: 248px;
+  left: 47%;
+  margin-left: -124px;
+
   background: lighten($theme-colors-menu_bg, 20%);
 }
 

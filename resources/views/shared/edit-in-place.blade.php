@@ -5,7 +5,8 @@
         @if(empty($model->$field)) empty-content @endif
 @endif">
     @if(empty($model->$field))
-        No <code>{{ $field }}</code> yet… <small>(double-click to add one!)</small>
+        No <code>{{ $field }}</code> yet…
+        <small>(double-click to add one!)</small>
     @else
         @if($field_type === 'textarea')
             @parsedown($model->$field)
@@ -21,11 +22,18 @@
 @endif
 
 {!! Form::model($model, ['route' => $route, 'method' => 'PUT', 'class' => implode(' ', $classes)]) !!}
-<div class="form-group">
-    {!! Form::$field_type($field, null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::submit('Update!') !!}
-</div>
+@if($field_type === 'textarea')
+    <div class="form-group">
+        {!! Form::$field_type($field, null, ['class' => 'form-control']) !!}
+        {!! Form::button('<span class="oi oi-check" title="save" aria-hidden="true"></span> Save!',
+            ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+    </div>
+@else
+    <div class="form-inline">
+        {!! Form::$field_type($field, null, ['class' => 'form-control form-control-lg mr-sm-2']) !!}
+        {!! Form::button('<span class="oi oi-check" title="save" aria-hidden="true"></span>',
+            ['type' => 'submit', 'class' => 'form-control form-control-lg btn btn-primary']) !!}
+    </div>
+@endif
 {!! Form::close() !!}
 <!-- edit-in-place {{ $field }} / {{ $field_type }} -->

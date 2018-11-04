@@ -17,7 +17,7 @@ class StoryRepository
             'created_by_user_id'     => $user->id,
             'last_edited_by_user_id' => $user->id,
         ]);
-        
+
         return $story;
     }
 

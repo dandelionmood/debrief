@@ -6,7 +6,7 @@ use App\Repositories\StoryRepository;
 use App\Universe;
 use Illuminate\Http\Request;
 
-class DiaryController extends Controller
+class StoryDiaryController extends Controller
 {
     public function show(Request $request, $universe_id, $date)
     {
@@ -16,7 +16,7 @@ class DiaryController extends Controller
         $story = app()->make(StoryRepository::class)
             ->findOrCreateForDiary(
                 $universe,
-                request()->user(),
+                $request->user(),
                 $date
             );
 
@@ -24,6 +24,7 @@ class DiaryController extends Controller
         // sense for diary handling.
         $story->makeChildOf($universe->root_story);
 
-        return redirect($story->link());
+        return redirect($story->link())
+            ->with('success', "Successfully added a new diary entry.");
     }
 }

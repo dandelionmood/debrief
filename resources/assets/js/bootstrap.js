@@ -18,4 +18,14 @@ $(function () {
             .hide().attr('class', 'bd-sidebar-content d-block d-lg-none')
             .slideDown('fast');
     });
+
+    // Flashing flash messages (SEE app.blade.php).
+    $('.bd-flash-messages > div').slideDown('fast', function () {
+        let elm = $(this);
+        let chrono_flash = setInterval(function () {
+            clearInterval(chrono_flash);
+            elm.slideUp('fast');
+        }, 5000);
+    });
+
 });

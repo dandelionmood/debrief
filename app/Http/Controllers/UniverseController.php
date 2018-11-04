@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUniverse;
 use App\Universe;
+use Illuminate\Http\Request;
 use Storage;
 
 class UniverseController extends Controller
@@ -31,10 +31,10 @@ class UniverseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreUniverse $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUniverse $request)
+    public function store(Request $request)
     {
         $attributes = $request->except(['_token', 'picture']);
 
@@ -76,11 +76,11 @@ class UniverseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  StoreUniverse $request
+     * @param  Request $request
      * @param  \App\Universe $universe
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUniverse $request, Universe $universe)
+    public function update(Request $request, Universe $universe)
     {
         $attributes = $request->except(['_token', 'picture']);
 
@@ -89,6 +89,7 @@ class UniverseController extends Controller
             $path                      = $uploadedFile->storePublicly('public/universes');
             $attributes['picture_url'] = Storage::url($path);
         }
+
         $universe->update($attributes);
 
         return redirect()->route('universes.show', $universe->id)

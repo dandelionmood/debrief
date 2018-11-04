@@ -77,8 +77,8 @@ $(function () {
             }
 
             // We need to wait a bit before carrying on.
-            const chrono = setInterval(function () {
-                clearInterval(chrono);
+            let chrono_tree = setInterval(function () {
+                clearInterval(chrono_tree);
                 debrief_tree.jstree('deselect_all');
                 debrief_tree.jstree('open_node', current_node, function () {
                     debrief_tree.jstree('select_node', current_node);
@@ -95,7 +95,6 @@ $(function () {
         debrief_tree.jstree('search', q);
     };
 
-    let chrono_search;
     $('#search-input').keypress(function (e) {
         let elm = $(this);
         clearInterval(chrono_search);

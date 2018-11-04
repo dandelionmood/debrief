@@ -19,6 +19,6 @@ $(function () {
         $(this).addClass('hide');
         $(this).next('form:eq(0)').removeClass('hide');
     };
-    $('div.hide-and-show-next-form').on('dblclick', hide_and_show_next_form);
+    $('div.hide-and-show-next-form').on('dblclick taphold', hide_and_show_next_form);
 
 });

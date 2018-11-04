@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Baum\Extensions\Query\Builder;
 use Baum\Node;
-use Illuminate\Support\Collection;
+use Watson\Validating\ValidatingTrait;
 
 class Story extends Node
 {
@@ -22,6 +21,17 @@ class Story extends Node
      * @var array
      */
     protected $scoped = ['universe_id'];
+
+    use ValidatingTrait;
+    protected $rules
+                                         = [
+            'label'                  => 'required|filled',
+            'description'            => 'nullable',
+            'universe_id'            => 'required|numeric|exists:universes,id',
+            'last_edited_by_user_id' => 'required|numeric|exists:users,id',
+            'created_by_user_id'     => 'required|numeric|exists:users,id',
+        ];
+    protected $throwValidationExceptions = true;
 
     function universe()
     {
@@ -66,7 +76,7 @@ class Story extends Node
      * @param $label string original label
      * @return string
      */
-    public function getLabelAttribute($label): string
+    public function getLabelAttribute($label): ?string
     {
         switch ($this->universe->type) {
             case Universe::TYPE_DIARY:

@@ -13,6 +13,15 @@
 
         <!-- NAV SYSTEM -->
         <div class="d-none d-lg-block bd-sidebar-content">
+
+            <div class="header">
+                @if(!empty($universe) && !empty($universe->picture_url))
+                    <img class="img-fluid d-none d-lg-inline"
+                         src="{{ $universe->picture_url }}"/>
+                @endif
+                <h2>{{ $universe->label }}</h2>
+            </div>
+
             @yield('sidebar')
         </div>
         <!-- / NAV SYSTEM -->
@@ -32,11 +41,17 @@
 
     <!-- CONTENT -->
     <main class="col-xl-9 col-lg-8 bd-content">
-        @if(session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <h4>Errors</h4>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
+
         @yield('content')
     </main>
     <!-- / CONTENT -->

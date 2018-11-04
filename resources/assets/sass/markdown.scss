@@ -22,16 +22,20 @@
     }
   }
 
-  blockquote {
+  blockquote, pre {
     padding: .5rem 1rem .5rem 1rem;
     border-left: darken($theme-colors-menu_bg, 30%) 3px solid;
     background-color: $theme-colors-menu_bg;
-    font-style: italic;
 
     > p {
       margin-bottom: .2rem;
     }
   }
+
+  blockquote {
+    font-style: italic;
+  }
+
 
   &.empty-content {
     background-color: transparentize($theme-colors-active_item, 0.8);

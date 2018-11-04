@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Watson\Validating\ValidatingTrait;
 
 class Universe extends Model
 {
@@ -23,6 +24,16 @@ class Universe extends Model
     protected $dates = ['created_at', 'updated_at'];
 
     protected $guarded = [];
+
+    use ValidatingTrait;
+    protected $rules
+        = [
+            'label'       => 'required',
+            'description' => 'nullable',
+            'user_id'     => 'numeric|exists:users',
+            'picture'     => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
+        ];
+    protected $throwValidationExceptions = true;
 
     public function stories(): HasMany
     {

@@ -13234,22 +13234,48 @@ body {
   color: #564f4d;
 }
 
+.bd-flash-messages {
+  background-color: #f3f3f3;
+}
+
+.bd-flash-messages > div {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: none;
+}
+
 .bd-header {
   background-color: #f3f3f3;
-  padding-top: 1rem;
 }
 
 .bd-header .breadcrumb {
   background: transparent;
+  margin-bottom: auto;
 }
 
 .bd-sidebar {
   background-color: #f3f3f3;
+  padding-bottom: 1rem;
 }
 
 .bd-sidebar .bd-sidebar-placeholder {
   text-align: center;
   padding-bottom: 1rem;
+}
+
+.bd-sidebar .header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.bd-sidebar .header img {
+  max-width: 30%;
+  margin-bottom: .50rem;
+}
+
+.bd-sidebar .header h2 {
+  border-bottom: 5px white dotted;
+  padding-bottom: .75rem;
 }
 
 .bd-content {
@@ -13272,6 +13298,7 @@ form .btn:hover {
 
 form .toolbar {
   margin-top: .3em;
+  margin-bottom: 1rem;
 }
 
 form .toolbar a {
@@ -13385,15 +13412,20 @@ h5 img {
   border: 1px #c6c8ca solid;
 }
 
-.markdown-content blockquote {
+.markdown-content blockquote,
+.markdown-content pre {
   padding: .5rem 1rem .5rem 1rem;
   border-left: #a7a6a6 3px solid;
   background-color: #f3f3f3;
-  font-style: italic;
 }
 
-.markdown-content blockquote > p {
+.markdown-content blockquote > p,
+.markdown-content pre > p {
   margin-bottom: .2rem;
+}
+
+.markdown-content blockquote {
+  font-style: italic;
 }
 
 .markdown-content.empty-content {
@@ -13445,8 +13477,16 @@ h5 img {
 
 /* @todo REWRITE that sometimes … */
 
+.bootstrap-datepicker {
+  position: relative;
+  width: 100%;
+}
+
 .datepicker-inline {
+  position: relative;
   width: 248px;
+  left: 47%;
+  margin-left: -124px;
   background: white;
 }
 
