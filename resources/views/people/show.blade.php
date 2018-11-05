@@ -41,10 +41,13 @@
     @if($person->related_stories($universe)->count() > 0)
         <hr/>
 
-        <h5>Mentioned in these stories:</h5>
-        <ul>
+        <h4>Mentioned in these stories:</h4>
+        <ul class="list-group">
             @foreach($person->related_stories($universe)->get() as $s)
-                <li><a href="{{ $s->link() }}">{{ $s->label }}</a></li>
+                <li class="list-group-item">
+                    <a href="{{ $s->link() }}">{{ $s->label }}</a>
+                    <span class="text-muted">(last updated {{ $s->updated_at->diffForHumans() }})</span>
+                </li>
             @endforeach
         </ul>
     @endif

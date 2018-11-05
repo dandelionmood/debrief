@@ -1,39 +1,59 @@
-{!! Form::model(new \App\Comment(), [
-    'route' => ['universes.stories.comments.store', $story->universe, $story],
-    'method' => 'POST',
-]) !!}
-<div class="form-group">
-    {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '2']) !!}
-</div>
-{!! Form::submit('Save!', ['class' => 'btn btn-primary']) !!}
-{!! Form::close() !!}
-
-@if($story->comments->count() > 0)
-    @foreach($story->comments as $comment)
-        <div class="card">
-            <div class="card-header">
-                <span title="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span> by {{ $comment->created_by->name }}
-                {!! Form::model($comment, [
-                    'route' => ['universes.stories.comments.destroy', $story->universe, $story, $comment],
-                    'method' => 'DELETE',
-                    'class' => 'float-right'
-                ]) !!}
-                <button class="btn btn-sm">
-                    <span class="oi oi-trash" title="trash" aria-hidden="true"></span>
-                </button>
+<div class="row">
+    <div class="col-12">
+        <div class="media comment-box">
+            <div class="media-left">
+                <a href="#">
+                    <img class="img-fluid user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </a>
+            </div>
+            <div class="media-body">
+                {!! Form::model(new \App\Comment(), [
+                            'route' => ['universes.stories.comments.store', $story->universe, $story],
+                            'method' => 'POST',
+                        ]) !!}
+                <div class="form-group">
+                    {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '2']) !!}
+                </div>
+                {!! Form::submit('Save!', ['class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
             </div>
-            <div class="card-body">
-                <div class="card-text">
-                    @include('shared.edit-in-place', [
-                       'model' => $comment,
-                       'field' => 'description',
-                       'field_type' => 'textarea',
-                       'route' => ['universes.stories.comments.update', $story->universe, $story, $comment],
-                   ])
-                </div>
-
-            </div>
         </div>
-    @endforeach
-@endif
+
+        @if($story->comments->count() > 0)
+            @foreach($story->comments as $comment)
+                <div class="media comment-box">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="img-fluid user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="media-heading">
+                            {{ $comment->created_by->name }}
+                            <span title="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span>
+
+                            {!! Form::model($comment, [
+                                'route' => ['universes.stories.comments.destroy', $story->universe, $story, $comment],
+                                'method' => 'DELETE',
+                                'class' => 'float-right'
+                            ]) !!}
+                            <button class="btn btn-sm">
+                                <span class="oi oi-trash" title="trash" aria-hidden="true"></span>
+                            </button>
+                            {!! Form::close() !!}
+                        </div>
+
+                        <div class="media-content">
+                            @include('shared.edit-in-place', [
+                               'model' => $comment,
+                               'field' => 'description',
+                               'field_type' => 'textarea',
+                               'route' => ['universes.stories.comments.update', $story->universe, $story, $comment],
+                           ])
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+    </div>
+</div>

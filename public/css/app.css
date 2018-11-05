@@ -13314,6 +13314,56 @@ h5 img {
   vertical-align: middle;
 }
 
+.comment-box {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: .9rem;
+}
+
+.comment-box img {
+  width: 50px;
+  height: 50px;
+}
+
+.comment-box .media-left {
+  padding-right: 10px;
+  width: 65px;
+}
+
+.comment-box .media-body .media-content {
+  border: 1px solid #f3f3f3;
+  padding: 0.75rem 1.25rem;
+}
+
+.comment-box .media-body .media p {
+  margin-bottom: 0;
+}
+
+.comment-box .media-heading {
+  background-color: #f3f3f3;
+  border: 1px solid #f3f3f3;
+  padding: 0.75rem 1.25rem;
+  position: relative;
+  margin-bottom: -1px;
+}
+
+.comment-box .media-heading > span {
+  font-style: italic;
+}
+
+.comment-box .media-heading:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: #f3f3f3;
+  border: 1px 0 0 1px solid #f3f3f3;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 10px;
+  left: -6px;
+}
+
 /*
   LOGIN FORM ETC.
  */

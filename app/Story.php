@@ -3,6 +3,10 @@
 namespace App;
 
 use Baum\Node;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Watson\Validating\ValidatingTrait;
 
 class Story extends Node
@@ -33,34 +37,41 @@ class Story extends Node
         ];
     protected $throwValidationExceptions = true;
 
-    function universe()
+    function universe(): BelongsTo
     {
         return $this->belongsTo(Universe::class);
     }
 
-    function created_by()
+    function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by_user_id');
     }
 
-    function last_edited_by()
+    function last_edited_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'last_edited_by_user_id');
     }
 
-    function comments()
+    function comments(): HasMany
     {
         return $this->hasMany(Comment::class)
             // comments almost always work in a backward fashion, we acknowledge this by making it our default.
             ->orderByDesc('created_at');
     }
 
-    function relations()
+    /**
+     * @return MorphMany All the «relations» via the relatable relationship.
+     */
+    function relations(): MorphMany
     {
         return $this->morphMany(Relation::class, 'relatable');
     }
 
-    function related_stories()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     *  Stories that are related to this one.
+     */
+    function related_stories(): HasManyThrough
     {
         // This a clever trick to use our polymorphic relationship WITH
         // an as many through to avoid dealing with meaningless Relation
@@ -68,6 +79,17 @@ class Story extends Node
         return $this->hasManyThrough(Story::class, Relation::class,
             'relatable_to_id', 'id', 'id', 'relatable_id')
             ->where('relatable_to_type', Story::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     *  People that got mentioned in this story.
+     */
+    function mentioned_people(): HasManyThrough
+    {
+        return $this->hasManyThrough(Person::class, Relation::class,
+            'relatable_id', 'id', 'id', 'relatable_to_id')
+            ->where('relatable_to_type', Person::class);
     }
 
     /**
@@ -92,7 +114,7 @@ class Story extends Node
      *
      * @return string a http link to show the story
      */
-    public function link()
+    public function link(): string
     {
         return route('universes.stories.show', [$this->universe, $this]);
     }

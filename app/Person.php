@@ -46,7 +46,8 @@ class Person extends Model
         return $this->hasManyThrough(Story::class, Relation::class,
             'relatable_to_id', 'id', 'id', 'relatable_id')
             ->where('relatable_to_type', Person::class)
-            ->where('universe_id', '=', $universe->id);
+            ->where('universe_id', '=', $universe->id)
+            ->orderBy('updated_at', 'DESC');
     }
 
 
