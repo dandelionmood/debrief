@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Person extends Model
@@ -41,7 +42,7 @@ class Person extends Model
         return $this->belongsToMany(Universe::class, 'person_universe');
     }
 
-    function related_stories(Universe $universe)
+    function related_stories(Universe $universe): HasManyThrough
     {
         return $this->hasManyThrough(Story::class, Relation::class,
             'relatable_to_id', 'id', 'id', 'relatable_id')
@@ -51,7 +52,7 @@ class Person extends Model
     }
 
 
-    public function getLabelAttribute()
+    public function getLabelAttribute(): string
     {
         if( !empty($this->first_name) || !empty($this->last_name) ) {
             return "$this->first_name $this->last_name";

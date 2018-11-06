@@ -32,9 +32,10 @@ class Story extends Node
             'label'                  => 'required|filled',
             'description'            => 'nullable',
             'universe_id'            => 'required|numeric|exists:universes,id',
-            'last_edited_by_user_id' => 'required|numeric|exists:users,id',
-            'created_by_user_id'     => 'required|numeric|exists:users,id',
+            'last_edited_by_user_id' => 'numeric|exists:users,id',
+            'created_by_user_id'     => 'numeric|exists:users,id',
         ];
+
     protected $throwValidationExceptions = true;
 
     function universe(): BelongsTo
@@ -102,7 +103,9 @@ class Story extends Node
     {
         switch ($this->universe->type) {
             case Universe::TYPE_DIARY:
-                $label = \Carbon\Carbon::parse($label)->formatLocalized('%A %d %B %Y');
+                if (!$this->isRoot()) {
+                    $label = \Carbon\Carbon::parse($label)->formatLocalized('%A %d %B %Y');
+                }
                 break;
         }
 

@@ -1,5 +1,6 @@
 <?php namespace App\Observers;
 
+use App\Repositories\StoryRepository;
 use App\Story;
 use App\Universe;
 

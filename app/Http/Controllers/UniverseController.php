@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UniverseRepository;
 use App\Universe;
 use Illuminate\Http\Request;
 use Storage;

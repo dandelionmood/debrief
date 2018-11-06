@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class StoryDiaryController extends Controller
 {
-    public function show(Request $request, $universe_id, $date)
+    public function show_or_create(Request $request, $universe_id, $date)
     {
         /** @var Universe $universe */
         $universe = Universe::findOrFail($universe_id);
 
         $story = app()->make(StoryRepository::class)
-            ->findOrCreateForDiary(
+            ->findOrCreate(
                 $universe,
                 $request->user(),
                 $date

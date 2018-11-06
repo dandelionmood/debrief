@@ -6,6 +6,11 @@ use App\Story;
 use App\Universe;
 use Tests\TestCase;
 
+/**
+ * Main tests on the stories (diary / wiki)
+ *
+ * @package Tests\Unit
+ */
 class StoriesTest extends TestCase
 {
     public function testBasicDiaryStory()
@@ -39,16 +44,4 @@ class StoriesTest extends TestCase
 
         $this->assertEquals(10, count($universe->stories));
     }
-
-    /*
-    public function testLinkToAnotherStory()
-    {
-
-    }
-
-    public function testLinkToAnotherDate()
-    {
-
-    }
-    */
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -30,7 +31,6 @@ class Universe extends Model
         = [
             'label'       => 'required',
             'description' => 'nullable',
-            'user_id'     => 'numeric|exists:users',
             'picture'     => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
         ];
     protected $throwValidationExceptions = true;
@@ -52,6 +52,9 @@ class Universe extends Model
             ->whereNull('parent_id');
     }
 
+    /**
+     * @return BelongsToMany all the users that have access to this universe
+     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

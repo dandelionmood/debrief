@@ -41,11 +41,12 @@ class StoryObserver
                 if (!empty($matches[1])) {
                     foreach (array_unique($matches[1]) as $m) {
                         $s = Story::find($m);
-
-                        $relations[] = new Relation([
-                            'relatable_to_type' => Story::class,
-                            'relatable_to_id'   => $s->id,
-                        ]);
+                        if ($s !== null) { // if the link is wrong, we simply carry on.
+                            $relations[] = new Relation([
+                                'relatable_to_type' => Story::class,
+                                'relatable_to_id'   => $s->id,
+                            ]);
+                        }
                     }
                 }
                 break;
@@ -55,9 +56,9 @@ class StoryObserver
                 if (!empty($matches[1])) {
                     foreach (array_unique($matches[1]) as $date) {
                         $s = app()->make(StoryRepository::class)
-                            ->findOrCreateForDiary(
+                            ->findOrCreate(
                                 $story->universe,
-                                request()->user(),
+                                $story->last_edited_by, // the related story was just saved by this user : we assume it's the same.
                                 $date
                             );
 
@@ -85,7 +86,7 @@ class StoryObserver
                 $p = app()->make(PersonRepository::class)
                     ->findOrCreate(
                         $story->universe,
-                        request()->user(),
+                        $story->last_edited_by, // the related story was just saved by this user : we assume it's the same.
                         $nickname
                     );
 

@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('universes/{universe_id}/stories/tree', 'StoryTreeController@index')->name('universes.stories-tree.index');
     Route::put('universes/{universe_id}/stories/tree/update', 'StoryTreeController@update')->name('universes.stories-tree.update');
 
-    Route::get('universes/{universe_id}/stories/diary/{date}', 'StoryDiaryController@show')
+    Route::get('universes/{universe_id}/stories/diary/{date}', 'StoryDiaryController@show_or_create')
         ->name('universes.stories.diary.date');
 
     Route::get('universes/{universe_id}/stories/add', 'StoryController@add')

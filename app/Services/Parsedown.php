@@ -95,7 +95,7 @@ class Parsedown extends \Parsedown
         if (preg_match('/\[([0-9]{4}-[0-9]{2}-[0-9]{2})\]/', $excerpt['text'], $matches)) {
             $tag_size = mb_strlen($matches[0], 'UTF-8');
             $date     = $matches[1];
-            $story    = app()->make(StoryRepository::class)->findOrCreateForDiary(
+            $story    = app()->make(StoryRepository::class)->findOrCreate(
                 $this->_universe,
                 $this->_user,
                 $date
