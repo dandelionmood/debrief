@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            @component('shared.panel')
-                @slot('heading')Navigation @endslot
-                <a href="{{ route('universes.index') }}">My universes</a>
-            @endcomponent
-        </div>
+    <div class="list-group">
+        <a class="list-group-item"
+           href="{{ route('universes.index') }}">My universes
+        </a>
+        <a class="list-group-item"
+           href="{{ route('users.index') }}">User management
+        </a>
     </div>
 @endsection

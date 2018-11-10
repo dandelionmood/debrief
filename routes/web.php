@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('file-upload', 'FileUploadController@create')->name('file-upload');
 
+    Route::resource('users', 'UserController');
     Route::resource('universes', 'UniverseController');
 
     Route::get('universes/{universe_id}/stories/search', 'SearchController@story')->name('universes.stories.search');

@@ -4,8 +4,22 @@ use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 
 try {
 
+    \Breadcrumbs::register('home', function (BreadcrumbsGenerator $breadcrumbs) {
+        $breadcrumbs->push('Home', route('home'));
+    });
+
+    \Breadcrumbs::register('users.index', function (BreadcrumbsGenerator $breadcrumbs) {
+        $breadcrumbs->parent('home');
+        $breadcrumbs->push('Users management', route('users.index'));
+    });
+    \Breadcrumbs::register('users.edit', function (BreadcrumbsGenerator $breadcrumbs, $user) {
+        $breadcrumbs->parent('users.index');
+        $breadcrumbs->push('Edit this universe');
+    });
+
     // Universes index
     \Breadcrumbs::register('universes.index', function (BreadcrumbsGenerator $breadcrumbs) {
+        $breadcrumbs->parent('home');
         $breadcrumbs->push('Universes', route('universes.index'));
     });
     \Breadcrumbs::register('universes.show', function (BreadcrumbsGenerator $breadcrumbs, $universe) {

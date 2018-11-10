@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Watson\Validating\ValidatingTrait;
 
 /**
  * App\User
@@ -25,6 +26,8 @@ class User extends Authenticatable
             'name',
             'email',
             'password',
+            'is_admin',
+            'picture_url',
         ];
 
     /**
@@ -37,6 +40,17 @@ class User extends Authenticatable
             'password',
             'remember_token',
         ];
+
+    use ValidatingTrait;
+    protected $rules
+                                         = [
+            'name'        => 'required|filled',
+            'email'       => 'required|email|unique',
+            'password'    => 'sometimes|filled',
+            'picture_url' => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
+            'is_admin'    => 'required|boolean',
+        ];
+    protected $throwValidationExceptions = true;
 
     public function universes()
     {

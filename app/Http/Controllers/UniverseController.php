@@ -108,6 +108,6 @@ class UniverseController extends Controller
     {
         $universe->delete();
         return redirect()->route('universes.index')
-            ->with('success', 'Universe successfully archived!');
+            ->with('success', 'Universe successfully deleted!');
     }
 }
