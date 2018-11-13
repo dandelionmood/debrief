@@ -1,7 +1,7 @@
-@extends('layouts.user', ['universe' => $user])
+@extends('layouts.admin', ['universe' => $user])
 
 @if(empty($user->id))
-    @section('breadcrumbs', Breadcrumbs::render('users.create'))
+    @section('breadcrumbs', Breadcrumbs::render('users.create', $user))
 @else
     @section('breadcrumbs', Breadcrumbs::render('users.edit', $user))
 @endif
@@ -38,24 +38,23 @@
         {!! Form::email('email', null, ['class' => 'form-control input-lg']) !!}
     </div>
     <div class="form-group">
-        {!! Form::checkbox('is_admin', null, null, ['class' => '']) !!}
+        {!! Form::checkbox('is_admin', null, null, ['class' => '', 'id' => 'is_admin']) !!}
         {!! Form::label('is_admin', "Is admin?", ['class' => 'form-label']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('password', "Password:") !!}
-        {!! Form::password('password', ['class' => 'form-control input-lg']) !!}
-        {!! Form::password('password_confirmation', ['class' => 'form-control input-lg']) !!}
+        {!! Form::password('password', ['class' => 'form-control input-lg', 'autocomplete' => 'new-password']) !!}
     </div>
     <div class="form-group">
-        <div class="row col-12">
+        <div class="row">
+            <div class="col-sm-2">
+                @if(!empty($user->id) && !empty($user->picture_url))
+                    <img alt="user avatar" class="img-fluid" src="{{ $user->picture_url }}"/>
+                @endif
+            </div>
             <div class="col-sm-10">
                 {!! Form::label('picture', "Picture (optional):") !!}
                 {!! Form::file('picture', ['class' => 'form-control-file']) !!}
-            </div>
-            <div class="col-sm-2">
-                @if(!empty($user->id) && !empty($user->picture_url))
-                    <img class="img-fluid" src="{{ $user->picture_url }}" />
-                @endif
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +24,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        Route::bind('story', function ($value) {
-//            return Story::firstOrNew([
-//                'slug' => $value,
-//            ], [
-//                'label' => $value,
-//            ]);
-//        });
-
         parent::boot();
+
+        Route::bind('user', function ($id) {
+            return User::query()
+                ->withTrashed()
+                ->where('id', $id)->first();
+        });
     }
 
     /**

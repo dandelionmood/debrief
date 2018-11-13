@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Watson\Validating\ValidatingTrait;
@@ -14,7 +15,7 @@ use Watson\Validating\ValidatingTrait;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -44,11 +45,10 @@ class User extends Authenticatable
     use ValidatingTrait;
     protected $rules
                                          = [
-            'name'        => 'required|filled',
-            'email'       => 'required|email|unique',
-            'password'    => 'sometimes|filled',
-            'picture_url' => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
-            'is_admin'    => 'required|boolean',
+            'name'     => 'required|filled',
+            'email'    => 'required|email|unique',
+            'password' => 'sometimes|filled',
+            'is_admin' => 'required|boolean',
         ];
     protected $throwValidationExceptions = true;
 

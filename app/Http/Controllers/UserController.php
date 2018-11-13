@@ -15,7 +15,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index', ['users' => User::all()]);
+        return view('users.index', [
+            'users' =>
+                User::query()
+                    ->withTrashed()
+                    ->orderBy('name')
+                    ->get(),
+        ]);
     }
 
     /**
@@ -36,23 +42,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes = $request->except(['_token', 'picture', 'password']);
-
-        if ($request->hasFile('picture')) {
-            $uploadedFile              = $request->file('picture');
-            $path                      = $uploadedFile->storePublicly('public/users');
-            $attributes['picture_url'] = $path;
-        }
-
-        if ($request->get('password') !== '') {
-            $attributes['password'] = $request->input('password');
-        }
-
-        $attributes['is_admin'] = $request->has('is_admin');
-
-        $user = User::create($attributes);
-
-        return redirect()->route('universes.edit', $user)
+        $attributes = $this->getUserAttributes($request);
+        User::create($attributes);
+        return redirect()->route('users.index')
             ->with('success', 'User successfully created!');
     }
 
@@ -76,26 +68,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $attributes = $request->except(['_token', 'picture', 'password']);
-
-        if ($request->hasFile('picture')) {
-            $uploadedFile              = $request->file('picture');
-            $path                      = $uploadedFile->storePublicly('public/users');
-            $attributes['picture_url'] = $path;
-
-            dd( $path );
-
-        }
-
-        if (!is_null($request->get('password'))) {
-            $attributes['password'] = $request->input('password');
-        }
-
-        $attributes['is_admin'] = $request->has('is_admin');
-
+        $attributes = $this->getUserAttributes($request);
         $user->update($attributes);
-
-        return redirect()->route('users.edit', $user)
+        return redirect()->route('users.index')
             ->with('success', 'User successfully updated!');
     }
 
@@ -103,12 +78,45 @@ class UserController extends Controller
      * Remove the specified user from storage.
      *
      * @param  \App\User $user
+     * @throws
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
     {
+        \Auth::logoutOtherDevices($user->getAuthPassword());
         $user->delete();
+
         return redirect()->route('users.index')
-            ->with('success', 'User successfully deleted!');
+            ->with('success', 'User disabled!');
+    }
+
+    public function restore(User $user)
+    {
+        $user->restore();
+
+        return redirect()->route('users.index')
+            ->with('success', 'User was successfully enabled!');
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function getUserAttributes(Request $request): array
+    {
+        $attributes = $request->except(['_token', '_method', 'picture', 'password']);
+
+        if ($request->hasFile('picture')) {
+            $uploadedFile              = $request->file('picture');
+            $path                      = $uploadedFile->storePublicly('public/users');
+            $attributes['picture_url'] = Storage::url($path);
+        }
+
+        if (!is_null($request->get('password'))) {
+            $attributes['password'] = \Hash::make($request->input('password'));
+        }
+
+        $attributes['is_admin'] = $request->has('is_admin');
+        return $attributes;
     }
 }

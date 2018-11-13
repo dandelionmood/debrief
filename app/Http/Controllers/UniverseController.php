@@ -26,7 +26,7 @@ class UniverseController extends Controller
      */
     public function create()
     {
-        return view('universes.form', ['universe' => new Universe()]);
+        return view('universes.form', ['universe' => new Universe]);
     }
 
     /**
@@ -37,13 +37,7 @@ class UniverseController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes = $request->except(['_token', 'picture']);
-
-        if ($request->hasFile('picture')) {
-            $uploadedFile              = $request->file('picture');
-            $path                      = $uploadedFile->storePublicly('public/universes');
-            $attributes['picture_url'] = Storage::url($path);
-        }
+        $attributes = $this->getUniverseAttributes($request);
 
         $universe = Universe::create($attributes);
         $universe->users()->attach($request->user());
@@ -83,13 +77,7 @@ class UniverseController extends Controller
      */
     public function update(Request $request, Universe $universe)
     {
-        $attributes = $request->except(['_token', 'picture']);
-
-        if ($request->hasFile('picture')) {
-            $uploadedFile              = $request->file('picture');
-            $path                      = $uploadedFile->storePublicly('public/universes');
-            $attributes['picture_url'] = Storage::url($path);
-        }
+        $attributes = $this->getUniverseAttributes($request);
 
         $universe->update($attributes);
 
@@ -109,5 +97,22 @@ class UniverseController extends Controller
         $universe->delete();
         return redirect()->route('universes.index')
             ->with('success', 'Universe successfully deleted!');
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function getUniverseAttributes(Request $request): array
+    {
+        $attributes = $request->except(['_token', '_verb', 'picture']);
+
+        if ($request->hasFile('picture')) {
+            $uploadedFile              = $request->file('picture');
+            $path                      = $uploadedFile->storePublicly('public/universes');
+            $attributes['picture_url'] = Storage::url($path);
+        }
+        
+        return $attributes;
     }
 }

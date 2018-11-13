@@ -14,7 +14,11 @@ try {
     });
     \Breadcrumbs::register('users.edit', function (BreadcrumbsGenerator $breadcrumbs, $user) {
         $breadcrumbs->parent('users.index');
-        $breadcrumbs->push('Edit this universe');
+        $breadcrumbs->push('Edit this user');
+    });
+    \Breadcrumbs::register('users.create', function (BreadcrumbsGenerator $breadcrumbs, $user) {
+        $breadcrumbs->parent('users.index');
+        $breadcrumbs->push('Add a new user');
     });
 
     // Universes index

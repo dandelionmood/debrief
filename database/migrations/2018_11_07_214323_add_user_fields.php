@@ -16,6 +16,7 @@ class AddUserFields extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->text('picture_url')->nullable();
             $table->boolean('is_admin')->default(false);
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +30,7 @@ class AddUserFields extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->removeColumn('picture_url');
             $table->removeColumn('is_admin');
+            $table->dropSoftDeletes();
         });
     }
 }

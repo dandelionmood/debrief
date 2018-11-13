@@ -30,7 +30,6 @@ class Universe extends Model
                                          = [
             'label'       => 'required',
             'description' => 'nullable',
-            'picture_url' => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
         ];
     protected $throwValidationExceptions = true;
 
