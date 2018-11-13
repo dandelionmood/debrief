@@ -2,8 +2,10 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Watson\Validating\ValidatingTrait;
 
 /**
  * App\User
@@ -13,7 +15,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +27,8 @@ class User extends Authenticatable
             'name',
             'email',
             'password',
+            'is_admin',
+            'picture_url',
         ];
 
     /**
@@ -37,6 +41,16 @@ class User extends Authenticatable
             'password',
             'remember_token',
         ];
+
+    use ValidatingTrait;
+    protected $rules
+                                         = [
+            'name'     => 'required|filled',
+            'email'    => 'required|email|unique',
+            'password' => 'sometimes|filled',
+            'is_admin' => 'required|boolean',
+        ];
+    protected $throwValidationExceptions = true;
 
     public function universes()
     {

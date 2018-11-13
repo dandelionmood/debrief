@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-2">
                 @if(!empty($universe->id) && !empty($universe->picture_url))
-                    <img class="img-fluid" src="{{ $universe->picture_url }}" />
+                    <img alt="universe avatar" class="img-fluid" src="{{ $universe->picture_url }}" />
                 @endif
             </div>
         </div>
@@ -63,5 +63,7 @@
 @endsection
 
 @section('sidebar')
-    @include('shared.sidebar.'.$universe->type, ['universe' => $universe])
+    @if($universe->type)
+        @include('shared.sidebar.'.$universe->type, ['universe' => $universe])
+    @endif
 @endsection

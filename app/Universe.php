@@ -4,7 +4,6 @@ namespace App;
 
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -28,10 +27,9 @@ class Universe extends Model
 
     use ValidatingTrait;
     protected $rules
-        = [
+                                         = [
             'label'       => 'required',
             'description' => 'nullable',
-            'picture'     => ['nullable', 'file', 'image', 'dimensions:ratio=1/1'],
         ];
     protected $throwValidationExceptions = true;
 

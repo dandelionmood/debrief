@@ -11,12 +11,16 @@
 |
 */
 
-use App\Universe;
-
 Auth::routes();
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
     Route::post('file-upload', 'FileUploadController@create')->name('file-upload');
+
+    // User management
+    Route::resource('users', 'UserController');
+    Route::put('users/{user}/restore', 'UserController@restore')->name('users.restore');
 
     Route::resource('universes', 'UniverseController');
 
