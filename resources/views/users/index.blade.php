@@ -6,7 +6,7 @@
     <h1>
         Users
         <a class="btn btn-primary" href="{{ route('users.create') }}">
-            <span class="oi oi-plus" title="add" aria-hidden="true"></span>
+            <span class="oi oi-plus" title="add" aria-label="Add a new user!" aria-hidden="true" ></span>
         </a>
     </h1>
 

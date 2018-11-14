@@ -68,4 +68,13 @@ class Universe extends Model
             self::TYPE_DIARY => 'Diary',
         ];
     }
+
+    public static function getForSelect(): array
+    {
+        $d = [];
+        foreach(Universe::all(['id', 'label']) as $u) {
+            $d[$u->id] = $u->label;
+        }
+        return $d;
+    }
 }

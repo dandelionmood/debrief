@@ -43,7 +43,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $attributes = $this->getUserAttributes($request);
-        User::create($attributes);
+        $user = User::create($attributes);
+        $user->universes()->sync($request->get('universes'));
         return redirect()->route('users.index')
             ->with('success', 'User successfully created!');
     }
@@ -70,6 +71,7 @@ class UserController extends Controller
     {
         $attributes = $this->getUserAttributes($request);
         $user->update($attributes);
+        $user->universes()->sync($request->get('universes'));
         return redirect()->route('users.index')
             ->with('success', 'User successfully updated!');
     }
@@ -104,7 +106,7 @@ class UserController extends Controller
      */
     private function getUserAttributes(Request $request): array
     {
-        $attributes = $request->except(['_token', '_method', 'picture', 'password']);
+        $attributes = $request->except(['_token', '_method', 'picture', 'password', 'universes']);
 
         if ($request->hasFile('picture')) {
             $uploadedFile              = $request->file('picture');
@@ -117,6 +119,7 @@ class UserController extends Controller
         }
 
         $attributes['is_admin'] = $request->has('is_admin');
+
         return $attributes;
     }
 }

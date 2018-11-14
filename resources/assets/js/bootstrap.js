@@ -6,6 +6,9 @@
 
 window.$ = window.jQuery = require('jquery');
 
+require('bootstrap');
+require('bootstrap-select');
+
 $(function () {
 
     // MOBILE NAVIGATION TOGGLE LINK (SEE universe.blade.php).
@@ -27,5 +30,7 @@ $(function () {
             elm.slideUp('fast');
         }, 5000);
     });
+
+    $('select').selectpicker();
 
 });

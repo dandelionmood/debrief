@@ -16,7 +16,7 @@ class UniverseController extends Controller
      */
     public function index()
     {
-        return view('universes.index', ['universes' => Universe::all()]);
+        return view('universes.index', ['universes' => request()->user()->universes]);
     }
 
     /**

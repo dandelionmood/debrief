@@ -26,6 +26,14 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot();
 
+        // We make sure universes can only be reached
+        // if the user actually *owns* them
+        Route::bind('universe', function ($id) {
+            return request()->user()
+                ->universes()
+                ->where('id', $id)->first();
+        });
+
         Route::bind('user', function ($id) {
             return User::query()
                 ->withTrashed()

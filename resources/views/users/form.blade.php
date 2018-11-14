@@ -59,6 +59,10 @@
         </div>
     </div>
     <div class="form-group">
+        {!! Form::label('universes', "Universes:") !!}
+        {!! Form::select('universes[]', \App\Universe::getForSelect(), null, ['class' => 'form-control', 'multiple' => true]) !!}
+    </div>
+    <div class="form-group">
         @if(empty($user->id))
             {!! Form::submit('Save!') !!}
         @else

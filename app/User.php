@@ -61,4 +61,11 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Story::class, Universe::class);
     }
+
+    public function getPictureUrlAttribute($pictureUrl)
+    {
+        return empty($pictureUrl)
+            ? 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'
+            : $pictureUrl;
+    }
 }

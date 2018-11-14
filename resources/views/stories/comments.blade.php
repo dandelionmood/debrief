@@ -2,8 +2,8 @@
     <div class="col-12">
         <div class="media comment-box">
             <div class="media-left">
-                <a href="#">
-                    <img class="img-fluid user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                <a href="@can('manage-users'){{ route('users.edit', [request()->user()]) }} @else javascript:void(0); @endcan">
+                    <img class="img-fluid user-photo" src="{{ request()->user()->picture_url }}">
                 </a>
             </div>
             <div class="media-body">
@@ -23,8 +23,8 @@
             @foreach($story->comments as $comment)
                 <div class="media comment-box">
                     <div class="media-left">
-                        <a href="#">
-                            <img class="img-fluid user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                        <a href="@can('manage-users'){{ route('users.edit', [request()->user()]) }} @else javascript:void(0); @endcan">
+                            <img class="img-fluid user-photo" src="{{ $comment->created_by->picture_url }}">
                         </a>
                     </div>
                     <div class="media-body">
