@@ -19,6 +19,10 @@ class StoryRepository
             'last_edited_by_user_id' => $user->id,
         ]);
 
+        // We make sure to update the tree, even though it makes no real
+        // sense for diary handling.
+        $story->makeChildOf($universe->root_story);
+
         return $story;
     }
 

@@ -20,10 +20,6 @@ class StoryDiaryController extends Controller
                 $date
             );
 
-        // we make sure to update the tree, even though it makes no real
-        // sense for diary handling.
-        $story->makeChildOf($universe->root_story);
-
         return redirect($story->link())
             ->with('success', "Successfully added a new diary entry.");
     }
