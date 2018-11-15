@@ -1,3 +1,5 @@
+const autosize = require('autosize');
+
 /**
  * In place editing (simple label and textarea modification without the need of a full blown form).
  */
@@ -17,7 +19,11 @@ $(function () {
     const hide_and_show_next_form = function (ev) {
         ev.preventDefault();
         $(this).addClass('hide');
-        $(this).next('form:eq(0)').removeClass('hide');
+        let form = $(this).next('form:eq(0)');
+        form.removeClass('hide');
+
+        // automatically resize the textarea height
+        autosize(form.find('textarea.form-control'));
     };
     $('div.hide-and-show-next-form').on('dblclick taphold', hide_and_show_next_form);
 

@@ -7,7 +7,7 @@
 window.$ = window.jQuery = require('jquery');
 
 require('bootstrap');
-require('bootstrap-select');
+require('bootstrap-select'); // requires poppers.js under the hood
 
 $(function () {
 
