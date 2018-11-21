@@ -15,7 +15,7 @@ let mix = require('laravel-mix');
 require('dotenv').config();
 
 // Uncomment to activate bundle analyzer.
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const webpack = require('webpack');
 
@@ -42,7 +42,7 @@ mix
         },
         plugins: [
             // Uncomment to activate bundle analyzer.
-            new BundleAnalyzerPlugin(),
+            // new BundleAnalyzerPlugin(),
 
             // We don't want ALL locales for moment.js to be compiled in the
             // vendor file, it's too big !

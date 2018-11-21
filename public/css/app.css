@@ -13737,7 +13737,7 @@ body {
 
 form textarea.form-control {
   font-family: monospace;
-  font-size: 1.25rem;
+  font-size: 1rem;
   height: auto;
 }
 
@@ -13747,12 +13747,12 @@ form .btn:hover {
 }
 
 form .toolbar {
-  margin-top: .3em;
+  margin-top: .3rem;
   margin-bottom: 1rem;
 }
 
 form .toolbar a {
-  margin-right: 1em;
+  margin-right: 1rem;
 }
 
 h1 img,
@@ -13895,6 +13895,12 @@ h5 img {
   EVERYTHING MARKDOWN RELATED
  */
 
+.markdown-content {
+  border-left: 2px gray solid;
+  padding: .5rem 0 0 .75rem;
+  background-color: #fafafa;
+}
+
 .markdown-content img {
   max-width: 100%;
 }
@@ -13915,8 +13921,8 @@ h5 img {
 .markdown-content blockquote,
 .markdown-content pre {
   padding: .5rem 1rem .5rem 1rem;
-  border-left: #a7a6a6 3px solid;
-  background-color: #f3f3f3;
+  border-left: #aeadad 3px solid;
+  background-color: #fafafa;
 }
 
 .markdown-content blockquote > p,

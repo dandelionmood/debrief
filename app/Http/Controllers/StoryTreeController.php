@@ -8,10 +8,8 @@ use Illuminate\Http\Request;
 
 class StoryTreeController extends Controller
 {
-    public function index($universe_id, Request $request)
+    public function index(Universe $universe, Request $request)
     {
-        $universe = Universe::findOrFail($universe_id);
-
         $id = $request->input('id');
 
         // Root element required
@@ -29,7 +27,7 @@ class StoryTreeController extends Controller
         return response()->json($stories);
     }
 
-    public function update($universe_id, Request $request)
+    public function update(Universe $universe, Request $request)
     {
         preg_match('/.*\[([0-9]*)\]/', $request->input('node_id'), $m);
         $node_id = (int)$m[1];
@@ -43,7 +41,6 @@ class StoryTreeController extends Controller
         $node_position = (int)$request->input('node_position');
 
         // We first need to find our node within its universe
-        $universe = Universe::findOrFail((int)$universe_id);
         /** @var Story $story */
         $story = $universe->stories->where('id', $node_id)->first();
         if (!$story) abort(503, 'No node found.');

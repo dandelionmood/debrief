@@ -23,7 +23,7 @@ $(function () {
         form.removeClass('hide');
 
         // automatically resize the textarea height
-        autosize(form.find('textarea.form-control'));
+        autosize.update(form.find('textarea.form-control'));
     };
     $('div.hide-and-show-next-form').on('dblclick taphold', hide_and_show_next_form);
 

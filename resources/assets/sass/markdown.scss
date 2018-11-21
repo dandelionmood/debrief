@@ -3,6 +3,10 @@
  */
 .markdown-content {
 
+  border-left: 2px invert($theme-colors-column_bg, 50) solid;
+  padding: .5rem 0 0 .75rem;
+  background-color: $theme-colors-column_bg;
+
   img {
     max-width: 100%;
   }
@@ -24,8 +28,8 @@
 
   blockquote, pre {
     padding: .5rem 1rem .5rem 1rem;
-    border-left: darken($theme-colors-menu_bg, 30%) 3px solid;
-    background-color: $theme-colors-menu_bg;
+    border-left: darken($theme-colors-column_bg, 30%) 3px solid;
+    background-color: $theme-colors-column_bg;
 
     > p {
       margin-bottom: .2rem;

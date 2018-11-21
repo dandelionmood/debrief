@@ -38,10 +38,10 @@ class StoryController extends Controller
      * @param $universe_id
      * @return \Illuminate\Http\Response
      */
-    public function add(Request $request, $universe_id)
+    public function add(Request $request, Universe $universe)
     {
         $attributes                           = [];
-        $attributes['universe_id']            = $universe_id;
+        $attributes['universe_id']            = $universe->id;
         $attributes['created_by_user_id']     = $request->user()->id;
         $attributes['last_edited_by_user_id'] = $request->user()->id;
         $attributes['label']                  = "New story";

@@ -24,7 +24,7 @@
 {!! Form::model($model, ['route' => $route, 'method' => 'PUT', 'class' => implode(' ', $classes)]) !!}
 @if($field_type === 'textarea')
     <div class="form-group">
-        {!! Form::$field_type($field, null, ['class' => 'form-control']) !!}
+        {!! Form::textarea($field, null, ['class' => 'form-control', 'rows' => 3]) !!}
         {!! Form::button('<span class="oi oi-check" title="save" aria-hidden="true"></span> Save!',
             ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
     </div>

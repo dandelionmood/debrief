@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function story($universe_id, Request $request)
+    public function story(Universe $universe, Request $request)
     {
         $q = $request->input('q');
 
-        $universe = Universe::findOrFail($universe_id);
-        $stories  = $universe->stories();
+        $stories = $universe->stories();
         if (!empty($q)) {
             $stories->where('label', 'LIKE', '%' . $q . '%');
         }
@@ -27,13 +26,11 @@ class SearchController extends Controller
         return response()->json($stories);
     }
 
-    public function person($universe_id, Request $request)
+    public function person(Universe $universe, Request $request)
     {
         $q = str_slug($request->input('q'));
 
-        /** @var Universe $universe */
-        $universe = Universe::findOrFail($universe_id);
-        $people   = $universe->people();
+        $people = $universe->people();
         if (!empty($q)) {
             $people->where('nickname', 'LIKE', '%' . $q . '%');
         }
@@ -46,7 +43,7 @@ class SearchController extends Controller
                 ];
             });
 
-        if( !empty($q) ) {
+        if (!empty($q)) {
             $people = $people->prepend([
                 'id'    => "@$q",
                 'label' => '',

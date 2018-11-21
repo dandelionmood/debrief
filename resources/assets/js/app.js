@@ -4,3 +4,4 @@ require('./textareas-autocomplete');
 require('./textareas-toolbar');
 require('./tree');
 require('./datepicker');
+require('./comment');

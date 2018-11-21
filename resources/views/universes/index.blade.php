@@ -17,32 +17,48 @@
             <div class="list-group">
                 <?php /** @var App\Universe $univers */ ?>
                 @foreach($universes as $universe)
-                    <div class="card flex-md-row mb-3">
-                        @if(!empty($universe->picture_url))
-                            <a class="d-none d-md-block w-25" href="{{ route('universes.show', [$universe->id]) }}">
-                                <img class="img-fluid" alt="user avatar"
-                                     src="{{ $universe->picture_url }}">
-                            </a>
-                        @endif
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <h3 class="mb-0">
-                                <a href="{{ route('universes.show', [$universe->id]) }}">
-                                    {{ $universe->label }}</a>
-                                @if($universe->type === \App\Universe::TYPE_DIARY)
-                                    <span class="badge badge-pill badge-secondary">Diary</span>
-                                @elseif($universe->type === \App\Universe::TYPE_WIKI)
-                                    <span class="badge badge-pill badge-secondary">Wiki</span>
-                                @endif
-                            </h3>
-                            <div class="mb-2 text-muted">
-                                {!! parsedown($universe->description) !!}
+                    <div class="card mb-3">
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <div class="d-none d-md-block col-md-3 col-lg-4">
+                                    @if(!empty($universe->picture_url))
+                                        <a href="{{ route('universes.show', [$universe->id]) }}">
+                                            <img class="img-fluid" alt="user avatar"
+                                                 src="{{ $universe->picture_url }}">
+                                        </a>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-9 col-lg-8">
+
+                                    <div class="d-flex">
+                                        <h3 class="flex-grow-1">
+                                            <a href="{{ route('universes.show', [$universe->id]) }}">
+                                                {{ $universe->label }}</a>
+                                            @if($universe->type === \App\Universe::TYPE_DIARY)
+                                                <span class="badge badge-pill badge-secondary">Diary</span>
+                                            @elseif($universe->type === \App\Universe::TYPE_WIKI)
+                                                <span class="badge badge-pill badge-secondary">Wiki</span>
+                                            @endif
+                                        </h3>
+                                        {!! Form::model($universe, ['route' => ['universes.edit', $universe], 'method' => 'GET']) !!}
+                                        <button type="submit" class="btn btn-sm btn-secondary">
+                                            <span class="oi oi-pencil" title="edit" aria-hidden="true"></span>
+                                        </button>
+                                        {!! Form::close() !!}
+                                    </div>
+
+
+                                    <div class="mb-2 markdown-content">
+                                        {!! parsedown($universe->description) !!}
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            {!! Form::model($universe, ['route' => ['universes.edit', $universe], 'method' => 'GET']) !!}
-                            <button type="submit" class="btn btn-sm btn-secondary">
-                                <span class="oi oi-pencil" title="edit" aria-hidden="true"></span>
-                            </button>
-                            {!! Form::close() !!}
                         </div>
 
                     </div>

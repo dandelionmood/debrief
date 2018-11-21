@@ -8,11 +8,8 @@ use Illuminate\Http\Request;
 
 class StoryDiaryController extends Controller
 {
-    public function show_or_create(Request $request, $universe_id, $date)
+    public function show_or_create(Request $request, Universe $universe, $date)
     {
-        /** @var Universe $universe */
-        $universe = Universe::findOrFail($universe_id);
-
         $story = app()->make(StoryRepository::class)
             ->findOrCreate(
                 $universe,
@@ -20,7 +17,12 @@ class StoryDiaryController extends Controller
                 $date
             );
 
-        return redirect($story->link())
-            ->with('success', "Successfully added a new diary entry.");
+        $r = redirect($story->link());
+
+        // This message as no meaning if the entry already existed.
+        if( $story->wasRecentlyCreated )
+            $r = $r->with('success', "Successfully added a new diary entry.");
+
+        return $r;
     }
 }
