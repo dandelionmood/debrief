@@ -64,8 +64,7 @@ class CreateMainDatabase extends Migration
             // Baum tree required attributes
             $table->integer('parent_id', false, true)->nullable();
             $table->foreign('parent_id')
-                ->references('id')->on('story')
-                ->onDelete('cascade');
+                ->references('id')->on('story');
             $table->integer('lft', false, true)->nullable();
             $table->integer('rgt', false, true)->nullable();
             $table->integer('depth', false, true)->nullable();

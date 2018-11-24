@@ -27,6 +27,12 @@ class StoryObserver
         $story->relations()->saveMany($relations);
     }
 
+    public function deleting(Story $story)
+    {
+        // We make sure to delete children stories as well.
+        $story->children()->delete();
+    }
+
     /**
      * We handle story links
      *
