@@ -114,6 +114,8 @@ class UserController extends Controller
             $attributes['picture_url'] = Storage::url($path);
         }
 
+        $attributes['email'] = strtolower($request->input('email'));
+
         if (!is_null($request->get('password'))) {
             $attributes['password'] = \Hash::make($request->input('password'));
         }
