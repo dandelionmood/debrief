@@ -39,7 +39,10 @@ class AppInitCommand extends Command
      */
     public function handle()
     {
-        $admin_user = User::query()->first(['is_admin' => 1]);
+        $admin_user = User::query()
+            ->where('is_admin', '=', true)
+            ->first();
+        
         if ($admin_user) {
             $this->warn("At least one admin account is already defined, nothing was done.");
         } else {
