@@ -2,7 +2,7 @@
   GENERAL STRUCTURE STYLES
  */
 body {
-  background-color: #ffffff;
+  background-color: $theme-colors-column_bg;
   color: $theme-colors-text_color;
 }
 
@@ -86,5 +86,19 @@ h1,h2,h3,h4,h5 {
   img {
     max-height: 3rem;
     vertical-align: middle;
+  }
+}
+
+.card {
+  .card-body {
+    .card-title {
+      font-family: serif;
+      text-align: center;
+
+      h1 {
+        display: inline-block;
+        padding-bottom: 1rem;
+      }
+    }
   }
 }

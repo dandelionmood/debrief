@@ -8,19 +8,21 @@
         <div class="col-12 col-lg-8 col-xl-9">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">
-                        @if($story->universe->type === \App\Universe::TYPE_DIARY)
-                            {{-- we only *display* the date of the day, as it can't be altered --}}
-                            {{ $story->label }}
-                        @else
-                            @include('shared.edit-in-place', [
-                                'model' => $story,
-                                'field' => 'label',
-                                'field_type' => 'text',
-                                'route' => ['universes.stories.update', $story->universe, $story],
-                            ])
-                        @endif
-                    </h3>
+                    <div class="card-title">
+                        <h1>
+                            @if($story->universe->type === \App\Universe::TYPE_DIARY)
+                                {{-- we only *display* the date of the day, as it can't be altered --}}
+                                {{ $story->label }}
+                            @else
+                                @include('shared.edit-in-place', [
+                                    'model' => $story,
+                                    'field' => 'label',
+                                    'field_type' => 'text',
+                                    'route' => ['universes.stories.update', $story->universe, $story],
+                                ])
+                            @endif
+                        </h1>
+                    </div>
                     <p class="card-text">
                         @include('shared.edit-in-place', [
                             'model' => $story,
@@ -57,7 +59,7 @@
                         </li>
                     @endforeach
                 </ul>
-                <hr />
+                <hr/>
             @endif
 
             @if($story->mentioned_people->count() > 0)

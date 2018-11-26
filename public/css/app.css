@@ -1,4 +1,4 @@
-/*
+@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700);/*
 
     DIRECTLY COPIED FROM THE JSTREE THEME
 
@@ -13679,7 +13679,7 @@ select.selectpicker {
  */
 
 body {
-  background-color: #ffffff;
+  background-color: #fafafa;
   color: #564f4d;
 }
 
@@ -13762,6 +13762,16 @@ h4 img,
 h5 img {
   max-height: 3rem;
   vertical-align: middle;
+}
+
+.card .card-body .card-title {
+  font-family: serif;
+  text-align: center;
+}
+
+.card .card-body .card-title h1 {
+  display: inline-block;
+  padding-bottom: 1rem;
 }
 
 .comment-box {
@@ -13896,9 +13906,8 @@ h5 img {
  */
 
 .markdown-content {
-  border-left: 2px gray solid;
+  font-family: serif;
   padding: .5rem 0 0 .75rem;
-  background-color: #fafafa;
 }
 
 .markdown-content img {
@@ -14022,5 +14031,15 @@ h5 img {
   background-color: #ededed;
   color: #e7412a;
   text-shadow: none;
+}
+
+.markdown-content {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.2em;
+  line-height: 2.2rem;
+}
+
+.card .card-body .card-title {
+  font-family: 'Libre Baskerville', serif;
 }
 

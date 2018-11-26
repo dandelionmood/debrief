@@ -1,0 +1,15 @@
+// We load a serif font from Google to allow for a nicer default to markdown preview
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700');
+.markdown-content {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.2em;
+  line-height: 2.2rem;
+}
+
+.card {
+  .card-body {
+    .card-title {
+      font-family: 'Libre Baskerville', serif;
+    }
+  }
+}
