@@ -66,6 +66,15 @@ form {
     font-family: monospace;
     font-size: 1rem;
     height: auto;
+
+    background: $theme-colors-menu_bg;
+    border: none;
+    color: $theme-colors-text_color;
+  }
+
+  textarea.form-control:focus {
+    background: inherit;
+    color: inherit;
   }
 
   .btn:hover {
@@ -90,6 +99,8 @@ h1,h2,h3,h4,h5 {
 }
 
 .card {
+  background: inherit;
+
   .card-body {
     .card-title {
       font-family: serif;

@@ -30,8 +30,13 @@
 
   blockquote, pre {
     padding: .5rem 1rem .5rem 1rem;
-    border-left: darken($theme-colors-column_bg, 30%) 3px solid;
-    background-color: $theme-colors-column_bg;
+    border-left: invert(darken($theme-colors-column_bg, 30%), 100%) 3px solid;
+    background-color: invert($theme-colors-column_bg, 75%);
+    color: invert($theme-colors-text_color);
+
+    code {
+      color: inherit;
+    }
 
     > p {
       margin-bottom: .2rem;
@@ -42,6 +47,9 @@
     font-style: italic;
   }
 
+  code {
+    color: $theme-colors-active_item;
+  }
 
   &.empty-content {
     background-color: transparentize($theme-colors-active_item, 0.8);

@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.datepicker-inline  {
+.datepicker-inline {
   // OMG there is no other way that I know of
   position: relative;
   width: 248px;
@@ -39,6 +39,13 @@
 .datepicker table tr td.active.highlighted:active.focus,
 .datepicker table tr td.active.active.focus,
 .datepicker table tr td.active.highlighted.active.focus {
+  background-color: $theme-colors-hover_item;
+  color: $theme-colors-active_item;
+  text-shadow: none;
+}
+
+.datepicker table tr td.day:hover,
+  .datepicker table tr td.focused {
   background-color: $theme-colors-hover_item;
   color: $theme-colors-active_item;
   text-shadow: none;
