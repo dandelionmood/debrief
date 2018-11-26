@@ -33,4 +33,11 @@ $(function () {
 
     $('select').selectpicker();
 
+    // We make sure to confirm every delete action … jQuery to the rescue.
+    $('form input[name="_method"][value="DELETE"]')
+        .parent('form')
+        .on('submit', function () {
+            return window.confirm("Are you sure you want to delete this?");
+        });
+
 });
