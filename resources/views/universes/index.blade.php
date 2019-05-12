@@ -5,14 +5,14 @@
 @section('content')
     <div class="container">
         <h1>
-            Your universes
+            @lang('Your universes')
             <a class="btn btn-primary" href="{{ route('universes.create') }}">
-                <span class="oi oi-plus" title="add" aria-hidden="true" aria-label="Add a new one!"></span>
+                <span class="oi oi-plus" title="add" aria-hidden="true" aria-label="@lang('Add a new one!')"></span>
             </a>
         </h1>
 
         @if($universes->isEmpty())
-            <p><em>No universes for now!</em></p>
+            <p><em>@lang('No universes for now!')</em></p>
         @else
             <div class="list-group">
                 <?php /** @var App\Universe $univers */ ?>
@@ -25,7 +25,7 @@
                                 <div class="d-none d-md-block col-md-3 col-lg-4">
                                     @if(!empty($universe->picture_url))
                                         <a href="{{ route('universes.show', [$universe->id]) }}">
-                                            <img class="img-fluid" alt="user avatar"
+                                            <img class="img-fluid" alt="@lang('user avatar')"
                                                  src="{{ $universe->picture_url }}">
                                         </a>
                                     @endif
@@ -38,9 +38,9 @@
                                             <a href="{{ route('universes.show', [$universe->id]) }}">
                                                 {{ $universe->label }}</a>
                                             @if($universe->type === \App\Universe::TYPE_DIARY)
-                                                <span class="badge badge-pill badge-secondary">Diary</span>
+                                                <span class="badge badge-pill badge-secondary">@lang('Diary')</span>
                                             @elseif($universe->type === \App\Universe::TYPE_WIKI)
-                                                <span class="badge badge-pill badge-secondary">Wiki</span>
+                                                <span class="badge badge-pill badge-secondary">@lang('Wiki')</span>
                                             @endif
                                         </h3>
                                         {!! Form::model($universe, ['route' => ['universes.edit', $universe], 'method' => 'GET']) !!}

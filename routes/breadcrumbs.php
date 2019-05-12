@@ -5,26 +5,26 @@ use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 try {
 
     \Breadcrumbs::register('home', function (BreadcrumbsGenerator $breadcrumbs) {
-        $breadcrumbs->push('Home', route('home'));
+        $breadcrumbs->push(__('Home'), route('home'));
     });
 
     \Breadcrumbs::register('users.index', function (BreadcrumbsGenerator $breadcrumbs) {
         $breadcrumbs->parent('home');
-        $breadcrumbs->push('Users management', route('users.index'));
+        $breadcrumbs->push(__('Users management'), route('users.index'));
     });
     \Breadcrumbs::register('users.edit', function (BreadcrumbsGenerator $breadcrumbs, $user) {
         $breadcrumbs->parent('users.index');
-        $breadcrumbs->push('Edit this user');
+        $breadcrumbs->push(__('Edit this user'));
     });
     \Breadcrumbs::register('users.create', function (BreadcrumbsGenerator $breadcrumbs, $user) {
         $breadcrumbs->parent('users.index');
-        $breadcrumbs->push('Add a new user');
+        $breadcrumbs->push(__('Add a new user'));
     });
 
     // Universes index
     \Breadcrumbs::register('universes.index', function (BreadcrumbsGenerator $breadcrumbs) {
         $breadcrumbs->parent('home');
-        $breadcrumbs->push('Universes', route('universes.index'));
+        $breadcrumbs->push(__('Universes'), route('universes.index'));
     });
     \Breadcrumbs::register('universes.show', function (BreadcrumbsGenerator $breadcrumbs, $universe) {
         $breadcrumbs->parent('universes.index');
@@ -32,17 +32,17 @@ try {
     });
     \Breadcrumbs::register('universes.create', function (BreadcrumbsGenerator $breadcrumbs) {
         $breadcrumbs->parent('universes.index');
-        $breadcrumbs->push('Add a new universe');
+        $breadcrumbs->push(__('Add a new universe'));
     });
     \Breadcrumbs::register('universes.edit', function (BreadcrumbsGenerator $breadcrumbs, $universe) {
         $breadcrumbs->parent('universes.show', $universe);
-        $breadcrumbs->push('Edit this universe');
+        $breadcrumbs->push(__('Edit this universe'));
     });
 
 
     \Breadcrumbs::register('universes.stories.index', function (BreadcrumbsGenerator $breadcrumbs, $universe) {
         $breadcrumbs->parent('universes.show', $universe);
-        $breadcrumbs->push('Stories', route('universes.stories.index', $universe->id));
+        $breadcrumbs->push(__('Stories'), route('universes.stories.index', $universe->id));
     });
     \Breadcrumbs::register('universes.stories.show', function (BreadcrumbsGenerator $breadcrumbs, $universe, $story) {
         $breadcrumbs->parent('universes.stories.index', $universe);
@@ -50,7 +50,7 @@ try {
     });
     \Breadcrumbs::register('universes.stories.create', function (BreadcrumbsGenerator $breadcrumbs, $universe) {
         $breadcrumbs->parent('universes.stories.index', $universe);
-        $breadcrumbs->push('New story');
+        $breadcrumbs->push(__('New story'));
     });
 
 

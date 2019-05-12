@@ -2,7 +2,7 @@
     <div class="btn-group">
         <a href="{{ route('universes.stories.index', [$universe]) }}" class="btn btn-outline-primary">
             <span class="oi oi-calendar"></span>
-            Go today!
+            @lang('Go today!')
         </a>
     </div>
 </div>

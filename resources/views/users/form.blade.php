@@ -8,9 +8,9 @@
 
 @section('content')
     @if(empty($user->id))
-        <h1>Add a new user</h1>
+        <h1>@lang('Add a new user')</h1>
     @else
-        <h1>Edit this user</h1>
+        <h1>@lang('Edit this user')</h1>
     @endif
 
     @if ($errors->any())
@@ -30,43 +30,43 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('name', "Name:") !!}
+        {!! Form::label('name', __("Name:")) !!}
         {!! Form::text('name', null, ['class' => 'form-control input-lg']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('email', "Email:") !!}
+        {!! Form::label('email', __("Email:")) !!}
         {!! Form::email('email', null, ['class' => 'form-control input-lg']) !!}
     </div>
     <div class="form-group">
         {!! Form::checkbox('is_admin', null, null, ['class' => '', 'id' => 'is_admin']) !!}
-        {!! Form::label('is_admin', "Is admin?", ['class' => 'form-label']) !!}
+        {!! Form::label('is_admin', __("Is admin?"), ['class' => 'form-label']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('password', "Password:") !!}
+        {!! Form::label('password', __("Password:")) !!}
         {!! Form::password('password', ['class' => 'form-control input-lg', 'autocomplete' => 'new-password']) !!}
     </div>
     <div class="form-group">
         <div class="row">
             <div class="col-sm-2">
                 @if(!empty($user->id) && !empty($user->picture_url))
-                    <img alt="user avatar" class="img-fluid" src="{{ $user->picture_url }}"/>
+                    <img alt="@lang('user avatar')" class="img-fluid" src="{{ $user->picture_url }}"/>
                 @endif
             </div>
             <div class="col-sm-10">
-                {!! Form::label('picture', "Picture (optional):") !!}
+                {!! Form::label('picture', __("Picture (optional):")) !!}
                 {!! Form::file('picture', ['class' => 'form-control-file']) !!}
             </div>
         </div>
     </div>
     <div class="form-group">
-        {!! Form::label('universes', "Universes:") !!}
+        {!! Form::label('universes', __("Universes:")) !!}
         {!! Form::select('universes[]', \App\Universe::getForSelect(), null, ['class' => 'form-control', 'multiple' => true]) !!}
     </div>
     <div class="form-group">
         @if(empty($user->id))
-            {!! Form::submit('Save!') !!}
+            {!! Form::submit(__('Save!')) !!}
         @else
-            {!! Form::submit('Update!') !!}
+            {!! Form::submit(__('Update!')) !!}
         @endif
     </div>
 

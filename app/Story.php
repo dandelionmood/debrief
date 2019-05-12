@@ -104,7 +104,7 @@ class Story extends Node
         switch ($this->universe->type) {
             case Universe::TYPE_DIARY:
                 if (!$this->isRoot()) {
-                    $label = \Carbon\Carbon::parse($label)->formatLocalized('%A %d %B %Y');
+                    $label = ucfirst(\Carbon\Carbon::parse($label)->formatLocalized('%A %d %B %Y'));
                 }
                 break;
         }

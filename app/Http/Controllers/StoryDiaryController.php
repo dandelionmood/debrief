@@ -21,7 +21,7 @@ class StoryDiaryController extends Controller
 
         // This message as no meaning if the entry already existed.
         if( $story->wasRecentlyCreated )
-            $r = $r->with('success', "Successfully added a new diary entry.");
+            $r = $r->with('success', __("Successfully added a new diary entry."));
 
         return $r;
     }

@@ -31,7 +31,7 @@
             <a href="javascript:void(0);" id="mobileNavToggle">
                 <span class='oi oi-arrow-bottom' title='nav'
                       aria-hidden='true'></span>
-                Show navigation menu
+                @lang('Show navigation menu')
             </a>
         </div>
         <!-- / PLACEHOLDER FOR SMALLER VIEWPOINTS -->
@@ -43,7 +43,7 @@
     <main class="col-xl-9 col-lg-8 bd-content">
         @if($errors->any())
             <div class="alert alert-danger">
-                <h4>Errors</h4>
+                <h4>@lang('Errors')</h4>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

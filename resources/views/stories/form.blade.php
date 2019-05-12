@@ -4,9 +4,9 @@
 
 @section('content')
     @if(empty($story->id))
-        <h1>Add a new story</h1>
+        <h1>@lang('Add a new story')</h1>
     @else
-        <h1>Edit this story</h1>
+        <h1>@lang('Edit this story')</h1>
     @endif
 
     @if ($errors->any())
@@ -26,18 +26,18 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('label', "Label:") !!}
+        {!! Form::label('label', __("Label:")) !!}
         {!! Form::text('label', null, ['class' => 'form-control input-lg']) !!}
 
-        {!! Form::label('description', "Description:") !!}
+        {!! Form::label('description', __("Description:")) !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         @if(empty($story->id))
-            {!! Form::submit('Save!') !!}
+            {!! Form::submit(__('Save!')) !!}
         @else
-            {!! Form::submit('Update!') !!}
+            {!! Form::submit(__('Update!')) !!}
         @endif
     </div>
 

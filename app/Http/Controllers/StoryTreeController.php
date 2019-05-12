@@ -99,7 +99,7 @@ class StoryTreeController extends Controller
         // We add here the link that will allow for adding a story in a seamless way.
         $children->push([
             'id'     => uniqid('story-', true),
-            'text'   => '<em>Add new story…</em>',
+            'text'   => '<em>'.__('Add new story…').'</em>',
             'a_attr' => ['href' => route('universes.stories.add', [$universe->id, 'parent_story_id' => $story->id])],
             'icon'   => 'oi oi-plus',
         ]);

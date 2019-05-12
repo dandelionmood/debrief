@@ -33,20 +33,27 @@
             </p>
         </div>
         <div class="card-footer">
-            <span title="{{ $person->created_at }}">created {{ $person->created_at->diffForHumans() }}</span>
-            by {{ $person->created_by->name }}
+            @lang('<span title=":date_created_at">created :date_created_at_diff_human</span> by :creator_name', [
+                'date_created_at' => $person->created_at,
+                'date_created_at_diff_human' => $person->created_at->diffForHumans(),
+                'creator_name' => $person->created_by->name
+            ])
         </div>
     </div>
 
     @if($person->related_stories($universe)->count() > 0)
         <hr/>
 
-        <h4>Mentioned in these stories:</h4>
+        <h4>@lang('Mentioned in these stories:')</h4>
         <ul class="list-group">
             @foreach($person->related_stories($universe)->get() as $s)
                 <li class="list-group-item">
                     <a href="{{ $s->link() }}">{{ $s->label }}</a>
-                    <span class="text-muted">(last updated {{ $s->updated_at->diffForHumans() }})</span>
+                    <span class="text-muted">
+                        @lang('(last updated :date_updated_at_diff_human)', [
+                            'date_updated_at_diff_human' => $s->updated_at->diffForHumans(),
+                        ])
+                    </span>
                 </li>
             @endforeach
         </ul>

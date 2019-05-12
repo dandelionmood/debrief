@@ -33,11 +33,12 @@ $(function () {
 
     function dateInsert(textarea, toolbar) {
         let date_insert_link = $("<a><span class='oi oi-calendar' title='calendar' aria-hidden='true'></span>"
-            + "Insert a date</a>")
+            + Lang.get('js.insert_a_date') + "</a>")
             .attr("href", "javascript:void(0)")
             .datepicker({
                 'calendarWeeks': true,
                 'autoclose': true,
+                'language': Lang.locale(),
             }).on('changeDate', function (e) {
                 textarea.trigger('focus');
                 textarea[0].insertAtCaret('[' + moment(e.date).format('YYYY-MM-DD') + ']');
@@ -63,7 +64,7 @@ $(function () {
 
         // Hint label that will allow for files to be uploaded with a selection box (compulsory for mobile use).
         let manual_upload_link = $("<a><span class='oi oi-data-transfer-upload' title='upload' aria-hidden='true'></span>"
-            + " Drop any file you want to upload, or click here.</a>")
+            + " " + Lang.get('js.drop_any_file') + "</a>")
             .attr("href", "javascript:void(0)");
 
         toolbar.append(manual_upload_link);

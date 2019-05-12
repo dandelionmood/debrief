@@ -8,9 +8,9 @@
 
 @section('content')
     @if(empty($universe->id))
-        <h1>Add a new universe</h1>
+        <h1>@lang('Add a new universe')</h1>
     @else
-        <h1>Edit this universe</h1>
+        <h1>@lang('Edit this universe')</h1>
     @endif
 
     @if ($errors->any())
@@ -30,32 +30,32 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('label', "Label:") !!}
+        {!! Form::label('label', __("Label:")) !!}
         {!! Form::text('label', null, ['class' => 'form-control input-lg']) !!}
 
-        {!! Form::label('label', "Type:") !!}
+        {!! Form::label('label', __("Type:")) !!}
         {!! Form::select('type', \App\Universe::getTypes(), null, ['class' => 'form-control']) !!}
 
-        {!! Form::label('description', "Description:") !!}
+        {!! Form::label('description', __("Description:")) !!}
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 
         <div class="row col-12">
             <div class="col-sm-10">
-                {!! Form::label('picture', "Picture (optional):") !!}
+                {!! Form::label('picture', __("Picture (optional):")) !!}
                 {!! Form::file('picture', ['class' => 'form-control-file']) !!}
             </div>
             <div class="col-sm-2">
                 @if(!empty($universe->id) && !empty($universe->picture_url))
-                    <img alt="universe avatar" class="img-fluid" src="{{ $universe->picture_url }}" />
+                    <img alt="@lang('universe avatar')" class="img-fluid" src="{{ $universe->picture_url }}" />
                 @endif
             </div>
         </div>
     </div>
     <div class="form-group">
         @if(empty($universe->id))
-            {!! Form::submit('Save!') !!}
+            {!! Form::submit(__('Save!')) !!}
         @else
-            {!! Form::submit('Update!') !!}
+            {!! Form::submit(__('Update!')) !!}
         @endif
     </div>
 

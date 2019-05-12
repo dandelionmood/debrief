@@ -9,6 +9,13 @@ window.$ = window.jQuery = require('jquery');
 require('bootstrap');
 require('bootstrap-select'); // requires poppers.js under the hood
 
+// I18N
+// We need to add localization to moment.js
+require('moment/locale/fr.js');
+// We need to add localization to bootstrap datepicker
+require('bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js');
+// / I18N
+
 $(function () {
 
     // MOBILE NAVIGATION TOGGLE LINK (SEE universe.blade.php).
@@ -37,7 +44,7 @@ $(function () {
     $('form input[name="_method"][value="DELETE"]')
         .parent('form')
         .on('submit', function () {
-            return window.confirm("Are you sure you want to delete this?");
+            return window.confirm(Lang.get('js.are_you_sure_you_want_to_delete'));
         });
 
 });

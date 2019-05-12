@@ -21,7 +21,13 @@ const webpack = require('webpack');
 
 mix
 // JS compilation
-    .js('resources/assets/js/app.js', 'public/js')
+    .js([
+        // we append the localization lib to the sources
+        'vendor/andywer/js-localization/resources/js/localization.js',
+        'public/vendor/js-localization/messages.js',
+        // standard entry point
+        'resources/assets/js/app.js',
+    ], 'public/js/app.js')
     .sourceMaps() // we add sourcemaps to ease debug
     // .browserSync('localhost:8000') // we allow for automatic browser refresh
     .extract([

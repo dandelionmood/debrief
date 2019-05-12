@@ -53,7 +53,7 @@ class StoryController extends Controller
         }
 
         return redirect($story->link())
-            ->with('success', 'Story successfully created!');
+            ->with('success', __('Story successfully created!'));
     }
 
     /**
@@ -71,7 +71,7 @@ class StoryController extends Controller
         $story->update($attributes);
 
         return redirect($story->link())
-            ->with('success', 'Story successfully updated!');
+            ->with('success', __('Story successfully updated!'));
     }
 
     /**
@@ -103,6 +103,6 @@ class StoryController extends Controller
     {
         $story->delete();
         return redirect()->route('universes.show', ['universe' => $universe])
-            ->with('success', 'Story successfully deleted!');
+            ->with('success', __('Story successfully deleted!'));
     }
 }

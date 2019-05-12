@@ -46,7 +46,7 @@ class UserController extends Controller
         $user = User::create($attributes);
         $user->universes()->sync($request->get('universes'));
         return redirect()->route('users.index')
-            ->with('success', 'User successfully created!');
+            ->with('success', __('User successfully created!'));
     }
 
     /**
@@ -73,7 +73,7 @@ class UserController extends Controller
         $user->update($attributes);
         $user->universes()->sync($request->get('universes'));
         return redirect()->route('users.index')
-            ->with('success', 'User successfully updated!');
+            ->with('success', __('User successfully updated!'));
     }
 
     /**
@@ -89,7 +89,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')
-            ->with('success', 'User disabled!');
+            ->with('success', __('User disabled!'));
     }
 
     public function restore(User $user)
@@ -97,7 +97,7 @@ class UserController extends Controller
         $user->restore();
 
         return redirect()->route('users.index')
-            ->with('success', 'User was successfully enabled!');
+            ->with('success', __('User was successfully enabled!'));
     }
 
     /**

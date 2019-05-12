@@ -31,6 +31,6 @@ class PeopleController extends Controller
         $person->update($attributes);
 
         return redirect($person->link($universe))
-            ->with('success', 'Person successfully updated!');
+            ->with('success', __('Person successfully updated!'));
     }
 }

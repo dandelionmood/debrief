@@ -5,8 +5,10 @@
         @if(empty($model->$field)) empty-content @endif
 @endif">
     @if(empty($model->$field))
-        No <code>{{ $field }}</code> yet…
-        <small>(double-click to add one!)</small>
+        @lang('No <code>:field</code> yet…', [
+            'field' => $field,
+        ])
+        <small>@lang('(double-click to add one!)')</small>
     @else
         @if($field_type === 'textarea')
             @parsedown($model->$field)
@@ -25,7 +27,7 @@
 @if($field_type === 'textarea')
     <div class="form-group">
         {!! Form::textarea($field, null, ['class' => 'form-control', 'rows' => 3]) !!}
-        {!! Form::button('<span class="oi oi-check" title="save" aria-hidden="true"></span> Save!',
+        {!! Form::button('<span class="oi oi-check" title="save" aria-hidden="true"></span>' . __('Save!'),
             ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
     </div>
 @else

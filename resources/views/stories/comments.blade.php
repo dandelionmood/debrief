@@ -14,7 +14,7 @@
                 <div class="form-group">
                     {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '2']) !!}
                 </div>
-                {!! Form::submit('Save!', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit(__('Save!'), ['class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

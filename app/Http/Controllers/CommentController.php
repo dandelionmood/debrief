@@ -27,7 +27,7 @@ class CommentController extends Controller
         Comment::create($attributes);
 
         return redirect($story->link())
-            ->with('success', 'Comment successfully added!');
+            ->with('success', __('Comment successfully added!'));
     }
 
     /**
@@ -47,7 +47,7 @@ class CommentController extends Controller
         $comment->update($attributes);
 
         return redirect($story->link())
-            ->with('success', 'Comment successfully updated!');
+            ->with('success', __('Comment successfully updated!'));
     }
 
     /**
@@ -64,6 +64,6 @@ class CommentController extends Controller
         $comment->delete();
 
         return redirect($story->link())
-            ->with('success', 'Comment successfully archived!');
+            ->with('success', __('Comment successfully archived!'));
     }
 }

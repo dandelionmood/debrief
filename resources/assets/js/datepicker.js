@@ -1,11 +1,13 @@
 require('bootstrap-datepicker');
+
 let moment = require('moment');
 
 $(function () {
 
     // we startup the datepicker plugin
     let dp = $('.bootstrap-datepicker').datepicker({
-        'calendarWeeks': true
+        'calendarWeeks': true,
+        'language': Lang.locale()
     });
 
     // we update the selected date if it has been specified

@@ -82,6 +82,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Locales Configuration
+    |--------------------------------------------------------------------------
+    |
+    | These locales are available : to add a new one please add it to this
+    | array.
+    |
+    */
+   
+   'available_locales' => [ 
+        'en', 
+        'fr'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
@@ -167,6 +182,7 @@ return [
         /*
          * Package Service Providers...
          */
+        JsLocalization\JsLocalizationServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -43,7 +43,7 @@ class UniverseController extends Controller
         $universe->users()->attach($request->user());
 
         return redirect()->route('universes.index')
-            ->with('success', 'Universe successfully created!');
+            ->with('success', __('Universe successfully created!'));
     }
 
     /**
@@ -82,7 +82,7 @@ class UniverseController extends Controller
         $universe->update($attributes);
 
         return redirect()->route('universes.show', $universe->id)
-            ->with('success', 'Universe successfully updated!');
+            ->with('success', __('Universe successfully updated!'));
     }
 
     /**
@@ -96,7 +96,7 @@ class UniverseController extends Controller
     {
         $universe->delete();
         return redirect()->route('universes.index')
-            ->with('success', 'Universe successfully deleted!');
+            ->with('success', __('Universe successfully deleted!'));
     }
 
     /**

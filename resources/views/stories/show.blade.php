@@ -33,8 +33,11 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <span title="{{ $story->created_at }}">created {{ $story->created_at->diffForHumans() }}</span>
-                    by {{ $story->created_by->name }}
+                    @lang('<span title=":date_created_at">created :date_created_at_diff_human</span> by :creator_name', [
+                        'date_created_at' => $story->created_at,
+                        'date_created_at_diff_human' => $story->created_at->diffForHumans(),
+                        'creator_name' => $story->created_by->name
+                    ])
 
                     @include('shared.delete-in-place', [
                        'model' => $story,
@@ -49,11 +52,13 @@
 
         <div class="col-12 col-lg-4 col-xl-3">
             @if($story->related_stories->count() > 0)
-                <h4>Related stories</h4>
+                <h4>@lang('Related stories')</h4>
                 <ul class="list-group">
                     @foreach($story->related_stories as $s)
                         <li class="list-group-item">
-                            <a href="{{ $s->link() }}" title="Last updated {{ $s->updated_at->diffForHumans() }}">
+                            <a href="{{ $s->link() }}" title="@lang('Last updated :date_updated_at_diff_human', [
+                                'date_updated_at_diff_human' => $s->updated_at->diffForHumans(),
+                            ])">
                                 {{ $s->label }}
                             </a>
                         </li>
@@ -63,7 +68,7 @@
             @endif
 
             @if($story->mentioned_people->count() > 0)
-                <h4>Mentioned people</h4>
+                <h4>@lang('Mentioned people')</h4>
                 <ul class="list-group">
                     @foreach($story->mentioned_people as $p)
                         <li class="list-group-item">
