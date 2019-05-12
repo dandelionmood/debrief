@@ -1,5 +1,3 @@
-require('bootstrap-datepicker');
-
 let moment = require('moment');
 
 $(function () {

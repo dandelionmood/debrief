@@ -8,6 +8,7 @@ window.$ = window.jQuery = require('jquery');
 
 require('bootstrap');
 require('bootstrap-select'); // requires poppers.js under the hood
+require('bootstrap-datepicker');
 
 // I18N
 // We need to add localization to moment.js
