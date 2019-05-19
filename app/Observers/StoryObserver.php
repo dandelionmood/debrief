@@ -4,7 +4,9 @@ use App\Person;
 use App\Relation;
 use App\Repositories\PersonRepository;
 use App\Repositories\StoryRepository;
+use App\Repositories\TagRepository;
 use App\Story;
+use App\Tag;
 use App\Universe;
 
 class StoryObserver
@@ -21,6 +23,7 @@ class StoryObserver
 
         $this->handleStoryLinks($story, $relations);
         $this->handlePersonLinks($story, $relations);
+        $this->handleTagLinks($story, $relations);
 
 //        dd( $relations );
 
@@ -98,6 +101,32 @@ class StoryObserver
 
                 $relations[] = new Relation([
                     'relatable_to_type' => Person::class,
+                    'relatable_to_id'   => $p->id,
+                ]);
+            }
+        }
+    }
+
+    /**
+     * We handle tags links
+     *
+     * @param Story $story
+     * @param array $relations
+     */
+    private function handleTagLinks(Story $story, array &$relations): void
+    {
+        preg_match_all('/\[!([^\]]*)/', $story->description, $matches);
+        if (!empty($matches[1])) {
+            foreach (array_unique($matches[1]) as $nickname) {
+                $p = app()->make(TagRepository::class)
+                    ->findOrCreate(
+                        $story->universe,
+                        $story->last_edited_by, // the related story was just saved by this user : we assume it's the same.
+                        $nickname
+                    );
+
+                $relations[] = new Relation([
+                    'relatable_to_type' => Tag::class,
                     'relatable_to_id'   => $p->id,
                 ]);
             }

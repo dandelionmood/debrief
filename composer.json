@@ -9,7 +9,7 @@
         "andywer/js-localization": "dev-laravel-5",
         "baum/baum": "^1.1",
         "davejamesmiller/laravel-breadcrumbs": "^5.1",
-        "erusev/parsedown": "^1.7",
+        "erusev/parsedown": "^1.8",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
@@ -62,5 +62,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

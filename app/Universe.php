@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Tag;
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -42,6 +43,11 @@ class Universe extends Model
     public function people(): BelongsToMany
     {
         return $this->belongsToMany(Person::class, 'person_universe');
+    }
+
+    public function tags(): HasMany
+    {
+        return $this->hasMany(Tag::class);
     }
 
     public function root_story(): HasOne

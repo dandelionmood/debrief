@@ -2,9 +2,11 @@
 
 use App\Repositories\PersonRepository;
 use App\Repositories\StoryRepository;
+use App\Repositories\TagRepository;
 use App\Story;
 use App\Universe;
 use App\User;
+use Illuminate\Support\HtmlString;
 
 class Parsedown extends \Parsedown
 {
@@ -41,6 +43,9 @@ class Parsedown extends \Parsedown
         if( is_array($r) ) return $r;
 
         $r = $this->inlineLinkToPerson($excerpt);
+        if( is_array($r) ) return $r;
+
+        $r = $this->inlineLinkToTag($excerpt);
         if( is_array($r) ) return $r;
     }
 
@@ -133,6 +138,31 @@ class Parsedown extends \Parsedown
                     'text'       => $person->label,
                     'attributes' => [
                         'href' => $person->link($this->_universe)
+                    ],
+                ],
+            ];
+        }
+    }
+
+    protected function inlineLinkToTag($excerpt)
+    {
+        if (preg_match('/\[\!([^\]]*)\]/', $excerpt['text'], $matches)) {
+            $tag_size = mb_strlen($matches[0], 'UTF-8');
+            $label = $matches[1];
+
+            $tag = app()->make(TagRepository::class)->findOrCreate(
+                $this->_universe,
+                $this->_user,
+                $label
+            );
+
+            return [
+                'extent'  => $tag_size,
+                'element' => [
+                    'name'       => 'a',
+                    'rawHtml'    => $tag->toHtml(),
+                    'attributes' => [
+                        'href' => $tag->link($this->_universe)
                     ],
                 ],
             ];

@@ -47,6 +47,26 @@ $(function () {
         }]);
     };
 
+    const _activate_tag_autocomplete = function (form_url, textcomplete) {
+        textcomplete.register([{
+            match: /(^|\s)[\!](\w*)$/,
+            search: function (term, callback) {
+                $.getJSON('/' + form_url.match(/(universes\/\d)/)[1] + '/tags/search',
+                    {'q': term},
+                    function (r) {
+                        callback(r);
+                    }
+                );
+            },
+            replace: function (value) {
+                return '$1[' + value.id + ']';
+            },
+            template: function (v) {
+                return v.label;
+            }
+        }]);
+    };
+
 
 
     $('form textarea.form-control').each(function (i, e) {
@@ -57,6 +77,8 @@ $(function () {
 
         // People autocomplete is always active.
         _activate_person_autocomplete(form_url, textcomplete);
+        // … As well as tag autocompletion
+        _activate_tag_autocomplete(form_url, textcomplete);
 
         if (form.hasClass('diary')) {
             // Story autocompletion is not supported on diaries

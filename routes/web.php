@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('universes/{universe}/stories/search', 'SearchController@story')->name('universes.stories.search');
     Route::get('universes/{universe}/people/search', 'SearchController@person')->name('universes.people.search');
+    Route::get('universes/{universe}/tags/search', 'SearchController@tag')->name('universes.tags.search');
 
     Route::get('universes/{universe}/stories/tree', 'StoryTreeController@index')->name('universes.stories-tree.index');
     Route::put('universes/{universe}/stories/tree/update', 'StoryTreeController@update')->name('universes.stories-tree.update');
@@ -44,5 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('universes.stories.comments', 'CommentController');
     Route::resource('universes.people', 'PeopleController')->only(['show', 'update']);
+
+    Route::resource('universes.tags', 'TagsController')->only(['show', 'update']);
 
 });

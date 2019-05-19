@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Universe;
 use Illuminate\Http\Request;
 
@@ -51,5 +52,32 @@ class SearchController extends Controller
         }
 
         return response()->json($people);
+    }
+
+    public function tag(Universe $universe, Request $request)
+    {
+        $q = str_slug($request->input('q'));
+
+        $tags = $universe->tags();
+        if (!empty($q)) {
+            $tags->where('label', 'LIKE', '%' . $q . '%');
+        }
+
+        $tags = $tags->get()
+            ->map(function ($p) {
+                return [
+                    'id'    => "!$p->label",
+                    'label' => $p->toHtml(),
+                ];
+            });
+
+        if (!empty($q)) {
+            $tags = $tags->prepend([
+                'id'    => "!$q",
+                'label' => with(new Tag(['label' => $q]))->toHtml(),
+            ]);
+        }
+
+        return response()->json($tags);
     }
 }

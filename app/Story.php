@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Tag;
 use Baum\Node;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -91,6 +92,17 @@ class Story extends Node
         return $this->hasManyThrough(Person::class, Relation::class,
             'relatable_id', 'id', 'id', 'relatable_to_id')
             ->where('relatable_to_type', Person::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     *  Tags that got mentioned in this story.
+     */
+    function mentioned_tags(): HasManyThrough
+    {
+        return $this->hasManyThrough(Tag::class, Relation::class,
+            'relatable_id', 'id', 'id', 'relatable_to_id')
+            ->where('relatable_to_type', Tag::class);
     }
 
     /**
