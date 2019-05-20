@@ -64,8 +64,11 @@ class Tag extends Model implements Htmlable
      */
     public function toHtml(): string
     {
-        return sprintf('<span class="html-tag" style="%s"><span class="oi oi-tag"></span>&nbsp;%s</span>',
-            !empty($this->colour) ? 'color: '.$this->colour.';' : '',
+        return sprintf('<span class="badge badge-pill" style="%s"><span class="oi oi-tag"></span>&nbsp;%s</span>',
+            sprintf('background-color: %s; color: %s', 
+                !empty($this->colour) ? $this->colour : '',
+                !empty($this->colour) ? getContrastColor($this->colour) : ''
+            ),
             $this->label
         );
     }

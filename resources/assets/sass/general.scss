@@ -59,6 +59,10 @@ body {
 
 .bd-content {
   padding-top: 1rem;
+
+  .list-group {
+    margin-bottom: 1rem;
+  }
 }
 
 .hide {
@@ -79,6 +83,11 @@ form {
   textarea.form-control:focus {
     background: inherit;
     color: inherit;
+  }
+
+  input[type="color"] {
+    width: 5rem !important;
+    padding: 0;
   }
 
   .btn:hover {
@@ -116,12 +125,4 @@ h1,h2,h3,h4,h5 {
       }
     }
   }
-}
-
-.html-tag {
-  background: white;
-  font-size: .9rem;
-  border: 1px #ccc solid;
-  border-radius: 3px;
-  padding: .3rem .1rem;
 }

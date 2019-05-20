@@ -1,5 +1,5 @@
 <!-- edit-in-place {{ $field }} / {{ $field_type }} -->
-<div class="hide-and-show-next-form
+<div class="@if(empty($show)) hide-and-show-next-form @else hide @endif
     @if($field_type === 'textarea')
         markdown-content
         @if(empty($model->$field)) empty-content @endif
@@ -18,7 +18,7 @@
     @endif
 </div>
 
-@php($classes = ['hide'])
+@php($classes = (empty($show)) ? ['hide'] : [])
 @if(get_class($model) === \App\Story::class)
     @php($classes[] = $model->universe->type)
 @endif
