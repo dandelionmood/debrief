@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('universes/{universe}/stories/add', 'StoryController@add')
         ->name('universes.stories.add');
 
-    Route::resource('universes.stories', 'StoryController')->except(['create', 'edit']);
+    Route::resource('universes.stories', 'StoryController')->except(['index', 'create', 'edit']);
 
     Route::resource('universes.stories.comments', 'CommentController');
     Route::resource('universes.people', 'PeopleController')->only(['show', 'update']);

@@ -40,22 +40,18 @@ try {
     });
 
 
-    \Breadcrumbs::register('universes.stories.index', function (BreadcrumbsGenerator $breadcrumbs, $universe) {
-        $breadcrumbs->parent('universes.show', $universe);
-        $breadcrumbs->push(__('Stories'), route('universes.stories.index', $universe->id));
-    });
     \Breadcrumbs::register('universes.stories.show', function (BreadcrumbsGenerator $breadcrumbs, $universe, $story) {
-        $breadcrumbs->parent('universes.stories.index', $universe);
+        $breadcrumbs->parent('universes.index', $universe);
         $breadcrumbs->push($story->label, route('universes.stories.show', [$universe->id, $story->id]));
     });
     \Breadcrumbs::register('universes.stories.create', function (BreadcrumbsGenerator $breadcrumbs, $universe) {
-        $breadcrumbs->parent('universes.stories.index', $universe);
+        $breadcrumbs->parent('universes.show', $universe);
         $breadcrumbs->push(__('New story'));
     });
 
 
     \Breadcrumbs::register('universes.people.show', function (BreadcrumbsGenerator $breadcrumbs, $universe, $person) {
-        $breadcrumbs->parent('universes.stories.index', $universe);
+        $breadcrumbs->parent('universes.show', $universe);
         $breadcrumbs->push($person->label, route('universes.people.show', [$universe->id, $person->id]));
     });
 

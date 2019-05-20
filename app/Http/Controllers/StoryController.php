@@ -10,28 +10,6 @@ use Illuminate\Http\Request;
 class StoryController extends Controller
 {
     /**
-     * Display a listing of the stories.
-     *
-     * @param  \App\Universe $universe
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Universe $universe)
-    {
-        // That doesn't make much sense for a diary : we go simply
-        // to the current date.
-        if ($universe->type === Universe::TYPE_DIARY) {
-            return redirect()->route('universes.stories.diary.date', [
-                $universe, strftime('%F'),
-            ]);
-        }
-
-        return view('stories.index', [
-            'universe' => $universe,
-            'stories'  => $universe->stories,
-        ]);
-    }
-
-    /**
      * Store a newly created story in storage.
      *
      * @param Request $request
