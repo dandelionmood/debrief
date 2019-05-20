@@ -56,7 +56,7 @@ try {
     });
 
     \Breadcrumbs::register('universes.tags.show', function (BreadcrumbsGenerator $breadcrumbs, $universe, $tag) {
-        $breadcrumbs->parent('universes.stories.index', $universe);
+        $breadcrumbs->parent('universes.index', $universe);
         $breadcrumbs->push($tag->label, route('universes.tags.show', [$universe->id, $tag->id]));
     });
 
