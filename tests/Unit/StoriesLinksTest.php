@@ -172,4 +172,44 @@ class StoriesLinksTest extends TestCase
         $this->assertTrue($r);
         $this->assertEquals(0, $main_story->mentioned_people()->count());
     }
+
+    /**
+     *  We should be able to link to arbitrary tags
+     */
+    public function testLinkToTag()
+    {
+        $universe = factory(Universe::class)
+            ->state('of_type_diary')->create();
+
+        /** @var Story $main_story */
+        $main_story = factory(Story::class)->state('diary_entry')->make();
+        $main_story->universe()->associate($universe);
+        $main_story->save();
+        $main_story->makeChildOf($universe->root_story->getRoot());
+
+        $r = $main_story->update(['description' => trim("
+            This is a test with a given tag! [!urgent]
+        ")]);
+        $this->assertTrue($r);
+
+        // One person should now be registered as being mentioned in the story
+        $this->assertEquals(1, $main_story->mentioned_tags()->count());
+        $this->assertEquals('urgent', $main_story->mentioned_tags->first()->label);
+
+        // On the other end, we should be able to list the stories for this person.
+        /** @var Tag $tag */
+        $tag = $main_story->mentioned_tags->first();
+        $this->assertEquals(1, $tag->related_stories($universe)->count());
+        $this->assertEquals($main_story->id, $tag->related_stories($universe)->first()->id);
+
+        // -------------------------------------------
+
+        // We now try and remove this relation
+        $r = $main_story->update(['description' => trim("
+            This is a test ! No tags anymore. 
+            And the following text.
+        ")]);
+        $this->assertTrue($r);
+        $this->assertEquals(0, $main_story->mentioned_tags()->count());
+    }
 }

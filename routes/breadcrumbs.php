@@ -55,6 +55,11 @@ try {
         $breadcrumbs->push($person->label, route('universes.people.show', [$universe->id, $person->id]));
     });
 
+    \Breadcrumbs::register('universes.tags.show', function (BreadcrumbsGenerator $breadcrumbs, $universe, $tag) {
+        $breadcrumbs->parent('universes.stories.index', $universe);
+        $breadcrumbs->push($tag->label, route('universes.tags.show', [$universe->id, $tag->id]));
+    });
+
 } catch (\DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException $e) {
     throw $e;
 }

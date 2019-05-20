@@ -59,6 +59,10 @@ body {
 
 .bd-content {
   padding-top: 1rem;
+
+  .list-group {
+    margin-bottom: 1rem;
+  }
 }
 
 .hide {
@@ -79,6 +83,11 @@ form {
   textarea.form-control:focus {
     background: inherit;
     color: inherit;
+  }
+
+  input[type="color"] {
+    width: 5rem !important;
+    padding: 0;
   }
 
   .btn:hover {

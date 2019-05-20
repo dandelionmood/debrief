@@ -79,6 +79,19 @@
                     @endforeach
                 </ul>
             @endif
+
+            @if($story->mentioned_tags->count() > 0)
+                <h4>@lang('Mentioned tags')</h4>
+                <ul class="list-group">
+                    @foreach($story->mentioned_tags as $t)
+                        <li class="list-group-item">
+                            <a href="{{ $t->link($story->universe) }}">
+                                {{ $t }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
     </div>
 
