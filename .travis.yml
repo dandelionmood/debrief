@@ -1,11 +1,21 @@
-language: generic
+sudo: required
+dist: xenial
+language: php
+php:
+  - 7
+  - hhvm
+matrix:
+  allow_failures:
+    - php: hhvm
+env:
+  - NODE_RELEASE=10.x
 before_install:
   - composer install
+  - sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
+  - sudo apt-get install -y nodejs
+install:
+  - composer install
   - npm install
-php:
-  - '7.0'
-node_js:
-  - '10'
 jobs:
   include:
     - stage: "Tests"
@@ -14,7 +24,7 @@ jobs:
     - stage: "Build"
       name: "JS/CSS compilation"
       script: npm run production
-cache:
-  directories:
-  - vendor
-  - node_modules
+# cache:
+#   directories:
+#   - vendor
+#   - node_modules
