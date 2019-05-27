@@ -9,7 +9,7 @@ install:
   # we need PHP dependencies
   - composer install
   # we need an .env file to carry on
-  - if [ ! -f .env ]; cp .env.example .env; fi;
+  - if [ ! -f .env ]; then; cp .env.example .env; fi
 
   # manual node installation
   - sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
