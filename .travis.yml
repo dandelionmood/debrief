@@ -3,10 +3,6 @@ dist: xenial
 language: php
 php:
   - 7
-  - hhvm
-matrix:
-  allow_failures:
-    - php: hhvm
 env:
   - NODE_RELEASE=10.x
 before_install:
@@ -23,7 +19,9 @@ jobs:
       script: ./vendor/bin/phpunit
     - stage: "Build"
       name: "JS/CSS compilation"
-      script: npm run production
+      script:
+        - php artisan js-localization:export 
+        - npm run production
 # cache:
 #   directories:
 #   - vendor
