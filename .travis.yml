@@ -6,11 +6,12 @@ php:
 env:
   - NODE_RELEASE=10.x
 before_install:
+  # we need PHP dependencies
   - composer install
+  # manual node installation
   - sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
   - sudo apt-get install -y nodejs
-install:
-  - composer install
+  # we need javascript dependencies
   - npm install
 jobs:
   include:
@@ -20,9 +21,10 @@ jobs:
     - stage: "Build"
       name: "JS/CSS compilation"
       script:
+        - cp .env.example .env
         - php artisan js-localization:export 
         - npm run production
-# cache:
-#   directories:
-#   - vendor
-#   - node_modules
+cache:
+  directories:
+  - vendor
+  - node_modules
