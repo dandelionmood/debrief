@@ -5,25 +5,24 @@ php:
   - 7.1
 env:
   - NODE_RELEASE=10.x
-before_install:
+install:
   # we need PHP dependencies
   - composer install
+  # we need an .env file to carry on
+  - if [ ! -f .env ]; cp .env.example .env; fi;
+
   # manual node installation
   - sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
   - sudo apt-get install -y nodejs
   # we need javascript dependencies
   - npm install
-jobs:
-  include:
-    - stage: "Tests"
-      name: "Unit Tests"
-      script: ./vendor/bin/phpunit
-    - stage: "Build"
-      name: "JS/CSS compilation"
-      script:
-        - cp .env.example .env
-        - php artisan js-localization:export 
-        - npm run production
+script: 
+  # first we test
+  - ./vendor/bin/phpunit
+  # then we build scss/js
+  - php artisan js-localization:export 
+  - npm run production
+  # then we deploy ?
 cache:
   directories:
   - vendor
