@@ -2,6 +2,10 @@ language: generic
 before_install:
   - composer install
   - npm install
+php:
+  - '7.0'
+node_js:
+  - '10'
 jobs:
   include:
     - stage: "Tests"
