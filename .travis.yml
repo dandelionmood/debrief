@@ -1,9 +1,15 @@
 language: generic
+before_install:
+  - composer install
+  - npm install
 jobs:
   include:
-    - stage: "Tests"                # naming the Tests stage
-      name: "Unit Tests"            # names the first Tests stage job
+    - stage: "Tests"
+      name: "Unit Tests"
       script: ./vendor/bin/phpunit
+    - stage: "Build"
+      name: "JS/CSS compilation"
+      script: npm run production
 cache:
   directories:
   - vendor
