@@ -35,5 +35,6 @@ deploy:
   - public/
   - vendor/
   on:
+    branch: feature/travis
     repo: dandelionmood/debrief
     draft: true
