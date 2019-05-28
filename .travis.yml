@@ -7,11 +7,10 @@ env:
 - NODE_RELEASE=10.x
 install:
 - composer self-update -q
-- if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN};
-  fi;
+- if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi
+- composer install
 - if [ ! -f .env ]; then cp .env.example .env; fi
-- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}"
-  | sudo -E bash -
+- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
 - sudo apt-get install -y nodejs
 - npm install
 script:
