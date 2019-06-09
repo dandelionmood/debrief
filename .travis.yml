@@ -26,7 +26,7 @@ before_deploy:
 - git config --local user.email "${GH_USER_EMAIL}"
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
 - git tag $TRAVIS_TAG
-- zip -r "debrief-$TRAVIS_TAG.zip" -x node_modules . 
+- zip -r "debrief-$TRAVIS_TAG.zip" . -x"*node_modules*" -x"*.git*"
 deploy:
   provider: releases
   skip_cleanup: true
