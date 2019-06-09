@@ -9,7 +9,8 @@ install:
 - composer self-update -q
 - composer install
 - if [ ! -f .env ]; then cp .env.example .env; fi
-- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}"| sudo -E bash -
+- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}"|
+  sudo -E bash -
 - sudo apt-get install -y nodejs
 - npm install
 script:
@@ -27,12 +28,12 @@ before_deploy:
 - git tag $TRAVIS_TAG
 - zip -r "debrief-$TRAVIS_TAG.zip" . -x"*node_modules*" -x"*.git*"
 deploy:
-  provider: releases
   skip_cleanup: true
   draft: true
   file_glob: true
+  provider: releases
   api_key:
-    secure: TYMzs4VgOJ6QzCFbSoOdt0mxU+/xKS3nmcERW1+Tp+BZefQR7EikV0cyTdBPpYvmSmaSgI8snMeRkB60COCn6BSXA77xWC4TZDbVDfSa546jcLloDusYEXIZdon0AoOE6fIKqEhXw8kAweep8M66/qrKhXL4sW1HAgCc9DPXM0i4235lw29ZeRup0AVwmSKT51r0XLvCKRArvlXT/LfJPHmUu/JBuPg/+hT7cRJMATxKX9l+TyefeWirPDiJbzGh6gK0DO2h375KoWB7wc3IkMbjIK9Yf9QgRTXjxoteAGS/SXIxLJCWKYamHyXYGKXnnV6D6WRPXBp6OEUdOM4T6hWj+vxOd5sMJ989fOZnyLxpEFrufRecG1c78rjVriXF4qtG6WCHJh2d9VROO3sbgRmQ3ZBdwzjbgfToP7QvGLj+K9590JsuWlVCulNtEWJsLXlWIHvVbm7H+q74Qj1awIY13XQwDrvCk7SGlcgDRwZAWiCbNuA2ALkLuLBlWs77tpaUZBkK9GSMqZCcLO/Fof4/K4gKIAvgZIPxdbxLUS2hGTIHXQGdc7g6cI97eWet22EJQ0cZYMslMlE2ZtIALRhsI77BS1EagkHLrbhBtcnbN6/II3nMQDYbDIQa0DJfrbud6dX5hDRtoeIq2vKID/vDgy2Y+tbeJeWl7MYIUu4=
+    secure: Hku7GhDFAtPol/oNNK9yXRQLsyMuVTl+3BIVqn7ZkYJ7Krok92i9E8WoJRR2eZzHvZVHQWUV8v1t5jFEGSvkEPkb8Wu/bx/40BCUCMx3ODYjp64By6K5Rl+7A4LpvDa57JiB3p1IlnJP81Lj8x+EeXHUIP2a+sLcqwluTOlYJWBqW07N56DsA1HSJl13VceCTF4Y/J0T0a3KkDqWkh74qFACVM4edFxWuMo/2RBySe08tulj9HCc+YP6XRAChyCcOisTQSSCCkRwxLzLPykm67osRG9ZEw5wa4tAwnXl++AyLXOiEcKPu7LC18ijIhaKiYwBRJnzvrGr+9QJ5mS8m88WNHuE8dx/MFphGwKwqSET/BHHgezpYJ+TpgrieSE7PsBRHd97X3MjZraA9pG05qbozMArRRbav03ktN20qtafHtV28ZChww1JDhH8Fv8RMQA1PwMIrlXCzBDxkmSVNpjYlrrbOyKZljOWn0pm3BSNq/as8Zo8DUiA1AkEB99kqne0ALm5DC8rEg1BcUWtEEenzV95WbKoEokn7Bb6DzCMKnKIjnyrdZ2A7CvdjIHwZ6qmCr7cRwIRvp3FBZFRPCcAbecpxXPOGueG9cJxrW8Da4tG7AsTNfqqKkvSrWthnOBtTdkBCYLYx8FgMs02uNxYS+fJJ0l/DaGLM8Frwvs=
   file: debrief-$TRAVIS_TAG.zip
   on:
     repo: dandelionmood/debrief
