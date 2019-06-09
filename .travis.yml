@@ -9,7 +9,7 @@ install:
 - composer self-update -q
 - composer install
 - if [ ! -f .env ]; then cp .env.example .env; fi
-- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}" | sudo -E bash -
+- sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}"| sudo -E bash -
 - sudo apt-get install -y nodejs
 - npm install
 script:
@@ -21,7 +21,6 @@ cache:
   - vendor
   - node_modules
 before_deploy:
-# Set up git user name and tag this commit
 - git config --local user.name "${GH_USER_NAME}"
 - git config --local user.email "${GH_USER_EMAIL}"
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
@@ -31,11 +30,10 @@ deploy:
   provider: releases
   skip_cleanup: true
   draft: true
-  api_key:
-    secure: "K9Wl2Qog6uMi+6yfLHs2xdcvrzHHPSwX4WNHnNYaN6PXRfHfg9c5LTmPBW9rEz6voA55wOG4fTmIVSvpE6R50uJ86ettdZu+KJqIEp8jl/cmJIYZyKVaTEWXiE8qaiW/oCAwlQhIVLgucYcAnx+Oo8iW/M5KZloCkv47CF5G/rbGo2hxbTa5vsrS13/f7pTgoCItQ5RmL4pLW+TToVyFb/9QHSDN5YFiQRu9Avs8wCNm2jiml2tHoU0p/EtaWU7vJ5g7viuZtIqj463WktCAbLK+vCPt9EekDyz4VHfb0igRNdEeepoKBSF6RcR9+nWY1xy3/gEiRJNr/O1j7tJ9Iow5RQ3AorXpQO9OGef3+sk9buFi5DDR+E+MSrDAsDoAvqXIR6fNZzehugI0y/kuWeyOsz8Qbn5qFlWrwc0k+ObOq3YCzEhAj/oQlNYM6UtSyD0n5G99G4zWsYcSGLBLbIQf5h0HBupfoAvAy445q04iTUrc1u60IPRP04NdnXtP1JtUggnVGrbl82rVV2GgmMaBjTdbN02YvcP2pWqxoqKwP7XDN6jHERrm1VmID2z1/SvCqvDWhXfZL04tnOQJ85xmHUkWaJ64RishYPkEAvcmFBE/us/0oNeihmIIUmfbyx58nEiMVUc903+g944CKgV4g9lZ5P6S2+yFuS09zAs="
   file_glob: true
-  file: 
-  - "debrief-$TRAVIS_TAG.zip"
+  api_key:
+    secure: TYMzs4VgOJ6QzCFbSoOdt0mxU+/xKS3nmcERW1+Tp+BZefQR7EikV0cyTdBPpYvmSmaSgI8snMeRkB60COCn6BSXA77xWC4TZDbVDfSa546jcLloDusYEXIZdon0AoOE6fIKqEhXw8kAweep8M66/qrKhXL4sW1HAgCc9DPXM0i4235lw29ZeRup0AVwmSKT51r0XLvCKRArvlXT/LfJPHmUu/JBuPg/+hT7cRJMATxKX9l+TyefeWirPDiJbzGh6gK0DO2h375KoWB7wc3IkMbjIK9Yf9QgRTXjxoteAGS/SXIxLJCWKYamHyXYGKXnnV6D6WRPXBp6OEUdOM4T6hWj+vxOd5sMJ989fOZnyLxpEFrufRecG1c78rjVriXF4qtG6WCHJh2d9VROO3sbgRmQ3ZBdwzjbgfToP7QvGLj+K9590JsuWlVCulNtEWJsLXlWIHvVbm7H+q74Qj1awIY13XQwDrvCk7SGlcgDRwZAWiCbNuA2ALkLuLBlWs77tpaUZBkK9GSMqZCcLO/Fof4/K4gKIAvgZIPxdbxLUS2hGTIHXQGdc7g6cI97eWet22EJQ0cZYMslMlE2ZtIALRhsI77BS1EagkHLrbhBtcnbN6/II3nMQDYbDIQa0DJfrbud6dX5hDRtoeIq2vKID/vDgy2Y+tbeJeWl7MYIUu4=
+  file: debrief-$TRAVIS_TAG.zip
   on:
-    branch: feature/travis
     repo: dandelionmood/debrief
+    branch: feature/travis
