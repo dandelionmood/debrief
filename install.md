@@ -1,26 +1,34 @@
 ## How to install Debrief?
 
+**This guide covers the installation using the zip archive file.**
+
+If you plan on developing or simply want more flexibility, go to [develop.md] to get all the informations you need to setup the project from scratch.
+
 ### Requirements
 
-*Debrief* is based on Laravel 5.7, which means **PHP >7.1 is a must**. You're gonna need [`composer`](https://getcomposer.org/download/) to install the project dependencies.
+*Debrief* is based on Laravel 5.7, which means **PHP >7.1 is a must**. [You can find Laravel dependencies here.](https://laravel.com/docs/5.7/installation#server-requirements)
 
 Of course, you can configure any relational DBMS supported by Laravel by updating your `.env` file accordingly.
 
-If you want to customize the CSS theme, you might also want to install `nodejs` / `npm`, but that is only really mandatory if you want to develop.
+### Installation
 
-### Basic stuff
+This guide will present the zip archive installation method, which is the most straightforward if you don't want to develop afterwards : everything you need has already been downloaded and compiled in the zip archive.
 
-You obviously need to clone this repository first wherever you want to install it. As for any Laravel project, the document root to configure in you web server is actually in the `/public/` directory.
+#### Setup document root
 
-First things first, you have to install the project dependencies that are indicated in the [Composer.json file](composer.json).
+You obviously need to download the zip release file and unzip it on your server wherever you want to install Debrief.
 
-```bash
-$ composer install --no-dev
-```
+You can find the latest stable release here : https://github.com/dandelionmood/debrief/releases 
 
-Then, you need to configure your `.env` file, using `.env.example` as an example. This file contains most notably your DBMS configuration.
+As for any Laravel project, the document root to configure in you web server is actually in the `/public/` directory.
 
-Once it is initialized, you can generate a key for the application : 
+#### Create environment file
+
+**The only thing you need to do is to create your own `.env` file, using `.env.example` as an example.** 
+
+This file contains most notably your DBMS configuration.
+
+Once it is initialized, you can generate a key for the application (for security purposes) : 
 
 ```bash
 $ php artisan key:generate

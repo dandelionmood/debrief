@@ -8,6 +8,8 @@ env:
 install:
 - composer self-update -q
 - composer install
+# We need to have a basic env file for the assets to compile and the tests to run
+# we will make sure not to deploy it afterwards.
 - if [ ! -f .env ]; then cp .env.example .env; fi
 - sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_RELEASE}"|
   sudo -E bash -
@@ -24,8 +26,9 @@ cache:
 before_deploy:
 - git config --local user.name "${GH_USER_NAME}"
 - git config --local user.email "${GH_USER_EMAIL}"
-#- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-#- git tag $TRAVIS_TAG
+# we don't want this file to be present in the zip file to allow 
+# for an easier update on the user side.
+- rm .env
 - zip -r "debrief-$TRAVIS_TAG.zip" . -x"*node_modules*" -x"*.git*"
 deploy:
   skip_cleanup: true
@@ -38,4 +41,4 @@ deploy:
   on:
     tags: true
     repo: dandelionmood/debrief
-    branch: feature/travis
+    branch: master
