@@ -24,8 +24,8 @@ cache:
 before_deploy:
 - git config --local user.name "${GH_USER_NAME}"
 - git config --local user.email "${GH_USER_EMAIL}"
-- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-- git tag $TRAVIS_TAG
+#- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+#- git tag $TRAVIS_TAG
 - zip -r "debrief-$TRAVIS_TAG.zip" . -x"*node_modules*" -x"*.git*"
 deploy:
   skip_cleanup: true
@@ -36,5 +36,6 @@ deploy:
     secure: l9GJREosvXEEI2Jf34FfpZ4IWe18+9GOfYYxA/nTNefengEzle35TCVO3fl2rIgmVIDL+q3mFfV1dDBWJRurcBbSxuwpuPN+yGnigRi2csoD3NYFVBbNPq+WgO6ULPq9qksc5IWl+QzAp1vAv5k6g+3huZkB9FX2mq+dK2Ov2R5+BV4TKSlbSpXKLCVLBjhK31NqevU+T5uY47NAVe4QLbz00Z0qlgZOxC7olCyIA3etRLI7YOazukDBBQbBAelxyQZHN/aNGnTJd10GHeWSsjJ3hPj4t3liTmP/ogcvWOSPwFKPgwtlcH6arpvRuNTvunngofKK0WiEzbT0pHQCFyf8yhheCmnCaW9PVGmFZ2DQDGQ73rSNqwzviLVVNSwJ3j82AiiXuZ8SQ43mI7sGWcLB1lFPApjY9Y/N7ICCHDvlOpO6zsHWP0E6hE+WIsL5TLkDbAhU+YjwTpRQ4LY9d1XB+AMKo746zpjBEULf9AWCxkqDS+QXM2nbVMF0L3eGS1xdtilSr2qn7tU288M71nlFw/CCwaJCVAWH/xP+bk24G+704CuymBztSrSkb42hFm8sSgfH/ZBbSn1bOQ7IZtACQsYPYKDJOI44up3j/OO74G3BV2iV1vIv+Yv8laubKpi/WTVEKAGuyJ34clEQL1vGDXIUlH6jbL2v6BNJQtA=
   file: debrief-$TRAVIS_TAG.zip
   on:
+    tags: true
     repo: dandelionmood/debrief
     branch: feature/travis
