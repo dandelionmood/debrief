@@ -40,6 +40,8 @@ mix
         // Theme colors are read from the .env file, in a «slack» fashion.
         'data': "$mix-theme-colors: '" + process.env.MIX_THEME_COLORS + "';"
     })
+    // Copy generated icons to their destination
+    .copyDirectory('resources/assets/img/generated', 'public/icons')
     .webpackConfig({ // not in use right now but we might need it at some point
         resolve: {
             alias: {

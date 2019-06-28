@@ -8,6 +8,10 @@ try {
         $breadcrumbs->push(__('Home'), route('home'));
     });
 
+    \Breadcrumbs::register('login', function (BreadcrumbsGenerator $breadcrumbs) {
+        $breadcrumbs->push(__('Home'), route('home'));
+    });
+
     \Breadcrumbs::register('users.index', function (BreadcrumbsGenerator $breadcrumbs) {
         $breadcrumbs->parent('home');
         $breadcrumbs->push(__('Users management'), route('users.index'));

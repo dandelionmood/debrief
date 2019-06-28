@@ -3,8 +3,20 @@
  */
 .login {
 
+
   h1 {
+    background: $theme-colors-active_item;
+    color: $theme-colors-active_item_text;
+
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-radius: 10px;
+
     text-align: center;
+
+    > img {
+      vertical-align: bottom;
+    }
   }
 
   h3 {

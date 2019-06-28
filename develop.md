@@ -40,7 +40,13 @@ The basics are now covered, let's carry on.
 
 You need to compile JS and CSS files using Mix, a library provided by Laravel to help with the development of Javascript and SASS in a Laravel environment. [See the documentation to learn the in and outs](https://laravel.com/docs/5.7/mix).
 
-The main operation you need to do to get started is to compile JS and CSS in development mode (non minified) :
+First you need to create the translation files :
+
+```bash
+$ php artisan js-localization:export
+```
+
+Then, the main operation you need to do to get started is to compile JS and CSS in development mode (non minified) :
 
 ```bash
 $ npm run development
