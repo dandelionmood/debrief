@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256"
+   height="256"
+   viewBox="0 0 67.733333 67.733333"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/home/pierre/src/debrief/resources/assets/img/logo.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4587">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4583" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop4585" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4587"
+       id="linearGradient4589"
+       x1="142.42"
+       y1="-11.037743"
+       x2="142.42"
+       y2="145.23795"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.54296875"
+     inkscape:cx="-222.12526"
+     inkscape:cy="153.23988"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="743"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-229.26667)">
+    <g
+       id="g4640"
+       transform="matrix(0.95681762,0,0,0.97543858,-5.3149966,6.4629299)">
+      <g
+         transform="matrix(0.89414801,4.1630844e-4,4.1631603e-4,0.89270587,5.4594216,28.225917)"
+         id="g4630">
+        <path
+           sodipodi:nodetypes="cssccscscsccsscccc"
+           inkscape:connector-curvature="0"
+           id="path35"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.37681842"
+           d="m 10.405689,285.46094 v 2.72054 c 0,3.94017 -0.8671405,4.40926 -8.5750532,4.40926 H -3.75824e-8 v 4.40927 H 32.373253 c 8.575062,0 15.126795,-1.31342 20.233287,-4.12783 9.731252,-5.34737 15.126795,-16.04209 15.126795,-30.11411 0,-12.85248 -4.817463,-23.0781 -13.681562,-28.70691 -5.299193,-3.28351 -12.42902,-4.78449 -23.412802,-4.78449 H -3.75824e-8 v 4.40926 H 1.8306358 c 7.7079127,0 8.5750532,0.46891 8.5750532,4.40917 v 2.72062 z m 21.293124,-51.78501 c -24.3441768,42.21606 -12.172088,21.10803 0,0 z" />
+        <path
+           d="m 21.589745,282.40948 v 2.36304 c 0,3.42238 -0.616462,3.82986 -6.096124,3.82986 h -1.301425 v 3.82987 h 23.014593 c 6.096128,0 10.753846,-1.14086 14.38412,-3.58542 6.918076,-4.64469 10.753842,-13.93408 10.753842,-26.15692 0,-11.16356 -3.424792,-20.0455 -9.726404,-24.93466 -3.767268,-2.85203 -8.83596,-4.15579 -16.644482,-4.15579 H 14.192196 v 3.82988 h 1.301425 c 5.479662,0 6.096124,0.4073 6.096124,3.82977 v 2.36313 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L';letter-spacing:0px;word-spacing:0px;fill:#3366cc;fill-opacity:1;stroke:none;stroke-width:1.86772466"
+           id="path3742"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cssccscscsccsscc" />
+        <path
+           sodipodi:nodetypes="cssccscscsccsscc"
+           inkscape:connector-curvature="0"
+           id="path4595"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L';letter-spacing:0px;word-spacing:0px;fill:#6699ff;fill-opacity:1;stroke:none;stroke-width:1.40225554"
+           d="m 29.988269,279.83278 v 2.05233 c 0,2.97238 -0.40009,3.32629 -3.956458,3.32629 h -0.844642 v 3.32629 h 14.936755 c 3.956462,0 6.979379,-0.99085 9.335471,-3.11398 4.489916,-4.03397 6.979377,-12.10191 6.979377,-22.7176 0,-9.69568 -2.222734,-17.40974 -6.312557,-21.65604 -2.445004,-2.47701 -5.734646,-3.60934 -10.802473,-3.60934 H 25.187169 v 3.32628 h 0.844642 c 3.556368,0 3.956458,0.35376 3.956458,3.32621 v 2.05241 z" />
+        <path
+           d="m 35.460371,277.61066 v 1.78213 c 0,2.58105 -0.238831,2.88835 -2.361783,2.88835 h -0.504204 v 2.88836 h 8.916404 c 2.361787,0 4.166297,-0.86039 5.572752,-2.704 2.680228,-3.50286 4.166296,-10.50861 4.166296,-19.72666 0,-8.41916 -1.326848,-15.11763 -3.768242,-18.80488 -1.45953,-2.15089 -3.423262,-3.13413 -6.448469,-3.13413 h -8.438741 v 2.88835 h 0.504204 c 2.122952,0 2.361783,0.30718 2.361783,2.88828 v 1.7822 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:1.25;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.00957716"
+           id="path4609"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cssccscscsccsscc" />
+      </g>
+      <rect
+         transform="rotate(90)"
+         y="-76.345093"
+         x="228.41391"
+         height="6.1760678"
+         width="69.43885"
+         id="rect4632"
+         style="fill:#000000;stroke-width:0.23933508" />
+    </g>
+  </g>
+</svg>

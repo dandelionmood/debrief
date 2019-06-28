@@ -2,7 +2,7 @@
 
 **This guide covers the installation using the zip archive file.**
 
-If you plan on developing or simply want more flexibility, go to [develop.md] to get all the informations you need to setup the project from scratch.
+If you plan on developing or simply want more flexibility, go to [develop.md](develop.md) to get all the informations you need to setup the project from scratch.
 
 ### Requirements
 

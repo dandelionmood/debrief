@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('favicon')
-    @if(!empty($universe->picture_url))
-        <link rel="shortcut icon" href="{{ $universe->picture_url }}">
-    @endif
-@endsection
-
 @section('main')
 
     <!-- SIDEBAR -->
