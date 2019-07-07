@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.20190707.0
+
+- fix(autocomplete): fixed a small display bug when autocompleting users
+- feat(upgrade): updated to laravel 5.8
+
 ## 1.20190628.0
 
 - feature(changelog): added changelog file
