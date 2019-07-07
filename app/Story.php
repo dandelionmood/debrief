@@ -38,6 +38,9 @@ class Story extends Node
         ];
 
     protected $throwValidationExceptions = true;
+    
+    protected $leftColumnName = 'lft';
+    protected $rightColumnName = 'rgt';
 
     function universe(): BelongsTo
     {

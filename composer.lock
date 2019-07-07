@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "251bf55e2eb0c1e149233b577b13a46d",
+    "content-hash": "8220b01ce890d2dfff1cccb3b203d786",
     "packages": [
         {
             "name": "andywer/js-localization",
@@ -63,35 +63,41 @@
         },
         {
             "name": "baum/baum",
-            "version": "1.1.1",
+            "version": "v2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/etrepat/baum.git",
-                "reference": "9290bed862d329aaaef666a71e0a2734afc28286"
+                "reference": "206d58c36919d6da373b38f8740cf3a1786269b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/etrepat/baum/zipball/9290bed862d329aaaef666a71e0a2734afc28286",
-                "reference": "9290bed862d329aaaef666a71e0a2734afc28286",
+                "url": "https://api.github.com/repos/etrepat/baum/zipball/206d58c36919d6da373b38f8740cf3a1786269b6",
+                "reference": "206d58c36919d6da373b38f8740cf3a1786269b6",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "5.*",
-                "illuminate/database": "5.*",
-                "illuminate/events": "5.*",
-                "illuminate/filesystem": "5.*",
-                "illuminate/support": "5.*",
-                "php": ">=5.4.0"
+                "illuminate/database": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/events": "~5.7.0|~5.8.0|~5.9.0",
+                "illuminate/support": "~5.7.0|~5.8.0|~5.9.0",
+                "php": "^7.1.3"
             },
             "require-dev": {
-                "d11wtq/boris": "~1.0.10",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.5|^8.0",
+                "psy/psysh": "@stable",
+                "squizlabs/php_codesniffer": "^3.4"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Baum\\BaumServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Baum": "src/"
+                "psr-4": {
+                    "Baum\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -107,14 +113,13 @@
             ],
             "description": "Baum is an implementation of the Nested Set pattern for Eloquent models.",
             "keywords": [
-                "Laravel 4",
                 "database",
                 "eloquent",
                 "laravel",
                 "laravel 5",
                 "nested set"
             ],
-            "time": "2015-03-04T12:07:54+00:00"
+            "time": "2019-06-06T17:44:13+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -5771,7 +5776,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "andywer/js-localization": 20
+        "andywer/js-localization": 20,
+        "baum/baum": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
