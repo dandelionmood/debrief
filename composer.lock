@@ -4,63 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8220b01ce890d2dfff1cccb3b203d786",
+    "content-hash": "8daac09eafcdc899a69fd713a3c9f37f",
     "packages": [
-        {
-            "name": "andywer/js-localization",
-            "version": "dev-laravel-5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/andywer/laravel-js-localization.git",
-                "reference": "7f8636135ce425c9684b0b6b7225492fa544127d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/andywer/laravel-js-localization/zipball/7f8636135ce425c9684b0b6b7225492fa544127d",
-                "reference": "7f8636135ce425c9684b0b6b7225492fa544127d",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.x",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9.4",
-                "orchestra/testbench": "3.0.*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "component": "package",
-                "frameworks": [
-                    "Laravel 5"
-                ]
-            },
-            "autoload": {
-                "psr-4": {
-                    "JsLocalization\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andy Wermke",
-                    "email": "andy@dev.next-step-software.com"
-                }
-            ],
-            "description": "Laravel package to provide localizations to the Javascript code.",
-            "keywords": [
-                "javascript",
-                "laravel",
-                "localization",
-                "messages",
-                "translation"
-            ],
-            "time": "2018-08-30T11:35:49+00:00"
-        },
         {
             "name": "baum/baum",
             "version": "v2.x-dev",
@@ -3169,6 +3114,61 @@
     ],
     "packages-dev": [
         {
+            "name": "andywer/js-localization",
+            "version": "dev-laravel-5.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andywer/laravel-js-localization.git",
+                "reference": "720fb91eb250ac868ad16190162385a6e31acf18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andywer/laravel-js-localization/zipball/720fb91eb250ac868ad16190162385a6e31acf18",
+                "reference": "720fb91eb250ac868ad16190162385a6e31acf18",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.8",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "frameworks": [
+                    "Laravel 5"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "JsLocalization\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Wermke",
+                    "email": "andy@dev.next-step-software.com"
+                }
+            ],
+            "description": "Laravel package to provide localizations to the Javascript code.",
+            "keywords": [
+                "javascript",
+                "laravel",
+                "localization",
+                "messages",
+                "translation"
+            ],
+            "time": "2019-03-29T17:42:38+00:00"
+        },
+        {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.6.2",
             "source": {
@@ -5776,8 +5776,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "andywer/js-localization": 20,
-        "baum/baum": 20
+        "baum/baum": 20,
+        "andywer/js-localization": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
