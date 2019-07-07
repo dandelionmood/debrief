@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.20190707.1
+- fix(lib): Baum needed more work to migrate to Laravel 5.8
+
 ## 1.20190707.0
 
 - fix(autocomplete): fixed a small display bug when autocompleting users
