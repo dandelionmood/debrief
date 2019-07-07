@@ -42,7 +42,8 @@ $(function () {
                 return '$1[' + value.id + ']';
             },
             template: function (v) {
-                return v.id + v.label;
+                return v.id + (( v.label.length > 0 ) 
+                    ? ' <em>(' + v.label + ')</em>' : '');
             }
         }]);
     };
