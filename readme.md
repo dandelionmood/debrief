@@ -13,7 +13,9 @@
 - Notes can be **commented on** ;
 - **Markdown edition** is enabled everywhere ;
 - **File uploads** are handled with simple drag'n'drop ;
-- **Create links** between stories, diary pages, people … with autocompletion, date picker, etc.
+- **Create links** between stories, diary pages, people … with autocompletion, date picker, etc. ;
+- Available in French and English, languages can be easily added ;
+- Multiple theme (light and dark) are available.
 
 … And much more !
 
@@ -21,7 +23,9 @@
 
 #### Wiki story
 
-You can arrange your notes in a hierarchical fashion, by simple moving nodes around in the tree on the left pane. Contextual information (related notes, people that are mentioned, …) is show in the right pane.
+You can arrange your notes in a hierarchical fashion, by simple moving nodes around in the tree on the left pane. 
+
+Contextual information (related notes, people that are mentioned, …) is shown in the right pane.
 
  ![Story WIKI](docs/pics/story-wiki.png)
  
@@ -31,7 +35,7 @@ You can arrange your notes in a hierarchical fashion, by simple moving nodes aro
   
 #### Diary Story
 
-Stories can also be arranged in a more traditional «diary» fashion.
+Stories can also be arranged in a more traditional "diary" fashion.
  
  ![Story Diary](docs/pics/story-diary.png) 
  
@@ -47,4 +51,6 @@ See [the installation guide](install.md) for the details.
 
 ### I want to help develop it!
 
-That's a **very** good idea, don't hesitate to send me pull requests !
+That's a **very** good idea, don't hesitate to send me pull requests!
+
+See [the development guide](develop.md) for more details.

@@ -97,3 +97,29 @@ Standards that apply are fairly common :
 
 - [PSR-1 code formatting](https://www.php-fig.org/psr/psr-1/) ;
 - the presence of unit tests is **strongly** encouraged where that makes sense.
+
+### Themes
+
+Though Debrief ships with a number of themes, you can easily tweak them and add your own.
+
+Although you can add your own complex stylesheet, theming is made really easy **using Slack-style colors declarations**.
+
+The operation is actually split in three parts:
+
+1. create your theme (or modify an existing one) in `resources/assets/sass/theme-*.scss` ;
+2. then, add the theme declaration to the `webpack.mix.js` file at the root to have it compiled ;
+3. to make it available to the app, declare it in `config/app.php` at the `themes` index as well.
+
+For example, here is what `theme-benext.scss` looks like :
+
+````sass
+// 
+// Benext theme
+// 
+$mix-theme-colors: '#E3E6EA,#EDEFF1,#D1571C,#FFFFFF,#1DB3C5,#333232,#48B8AD,#D3561A';
+@import "theme/common";
+````
+
+Themes colors are analyzed by SASS and used throughout the application.
+
+You can find more of these strings here, for instance: https://slackthemes.net/#/aubergine

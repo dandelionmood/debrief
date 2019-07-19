@@ -1,18 +1,9 @@
-// Included functions
-@import "_functions";
-@import "_theme-colors";
-// Variables
-@import "variables";
-// Bootstrap
+// 
+// THIS IS THE COMMON BASE ON WHICH ALL THEMES ARE BASED UPON
+// This will generate the main app.css file.
+// 
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-select/sass/bootstrap-select";
 @import "~open-iconic/font/css/open-iconic-bootstrap";
-// Debrief specific-styles
-@import "general";
-@import "comment";
-@import "login";
-@import "autocomplete";
-@import "markdown";
-@import "tree";
-@import "datepicker";
-@import "webfonts"; // can be commented out if you only want default fonts
+@import "vendor/jstree-theme.css";
+@import "vendor/autocomplete";

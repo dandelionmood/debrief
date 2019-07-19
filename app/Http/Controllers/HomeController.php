@@ -46,4 +46,34 @@ class HomeController extends Controller
                 ->with('error', __('This language is not yet supported.'));
         }
     }
+
+    /**
+     *  Allow for theme switching.
+     *  @param  string $theme Theme requested by user via the dashboard
+     * @return \Illuminate\Http\Response
+     */
+    public function changeTheme($theme, Request $request) 
+    {
+        $callback = $request->get('callback');
+
+        if( in_array($theme, array_keys(config('app.available_themes'))) ) {
+            session()->put('theme', $theme);
+            
+            $message = __('The theme has been successfully changed.');
+            if( $callback ) { // if there's a callback, we point back.
+                return redirect($callback)
+                    ->with('success', $message);
+            }
+            else { // default redirection 
+                return redirect()
+                    ->route('home')
+                    ->with('success', $message);
+            }
+        }
+        else {
+            return redirect()
+                ->route('home')
+                ->with('error', __('This theme does not exist.'));
+        }
+    }
 }

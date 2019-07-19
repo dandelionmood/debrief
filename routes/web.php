@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/locale/{locale}', 'HomeController@changeLocale')->name('change-locale');
+    Route::get('/theme/{theme}', 'HomeController@changeTheme')->name('change-theme');
 
     Route::post('file-upload', 'FileUploadController@create')->name('file-upload');
 
