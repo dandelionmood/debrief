@@ -39,7 +39,13 @@ $(function () {
         }, 5000);
     });
 
-    $('select').selectpicker();
+    // Activate select picker plugin by default
+    $('select:not(.no-select-picker)').selectpicker();
+
+    // Allows easy auto-submit behaviour on several select 
+    $('.select_auto_url').on('change', function() {
+        location.href = $(this).val();
+    });
 
     // We make sure to confirm every delete action … jQuery to the rescue.
     $('form input[name="_method"][value="DELETE"]')

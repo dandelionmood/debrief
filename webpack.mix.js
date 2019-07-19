@@ -20,7 +20,8 @@ require('dotenv').config();
 const webpack = require('webpack');
 
 mix
-// JS compilation
+    // JS compilation
+    // --------------
     .js([
         // we append the localization lib to the sources
         'vendor/andywer/js-localization/resources/js/localization.js',
@@ -35,13 +36,24 @@ mix
         'bootstrap','bootstrap-datepicker', 'bootstrap-select',
         'textcomplete', 'dropzone', 'jstree', 'autosize', 'popper.js'
     ])
+    
     // CSS compilation
-    .sass('resources/assets/sass/app.scss', 'public/css', {
-        // Theme colors are read from the .env file, in a «slack» fashion.
-        'data': "$mix-theme-colors: '" + process.env.MIX_THEME_COLORS + "';"
-    })
+    // ---------------
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    // Theme files
+    .sass('resources/assets/sass/theme-base16-ocean-dark.scss', 'public/css')
+    .sass('resources/assets/sass/theme-arc-dark.scss', 'public/css')
+    .sass('resources/assets/sass/theme-benext.scss', 'public/css')
+    .sass('resources/assets/sass/theme-default.scss', 'public/css')
+    // Add your own themes from here
+    // .sass('resources/assets/sass/theme-XXX.scss', 'public/css')
+    
     // Copy generated icons to their destination
+    // -----------------------------------------
     .copyDirectory('resources/assets/img/generated', 'public/icons')
+
+    // Custom webpack configuration
+    // ----------------------------
     .webpackConfig({ // not in use right now but we might need it at some point
         resolve: {
             alias: {

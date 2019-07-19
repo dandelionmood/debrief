@@ -18,8 +18,10 @@
             ->implode(' / ') : '' }} — {{ config('app.name', 'Debrief') }}
     </title>
 
-    <!-- Styles -->
+    <!-- Common styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <!-- Active theme -->
+    <link href="{{ asset('css/'.session()->get('theme', 'theme-default.css')) }}" rel="stylesheet"/>
 
     <!-- generated favicon html -->
     <!-- courtesy of https://realfavicongenerator.net/ -->
