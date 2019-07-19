@@ -1,6 +1,11 @@
 # Changelog
 
+## 1.20190719.0
+
+- feat(themes): add (real) theme support
+
 ## 1.20190707.1
+
 - fix(lib): Baum needed more work to migrate to Laravel 5.8
 
 ## 1.20190707.0
