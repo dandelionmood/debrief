@@ -110,6 +110,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Themes Configuration
+    |--------------------------------------------------------------------------
+    |
+    | These CSS themes are available to the user. 
+    |
+    */ 
+
+    'available_themes' => [
+        'theme-default.css'           => 'Default',
+        'theme-arc-dark.css'          => 'Arc Dark',
+        'theme-base16-ocean-dark.css' => 'Base 16 Ocean Dark',
+        'theme-benext.css'            => 'BeNext',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
     |
