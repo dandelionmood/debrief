@@ -24,6 +24,8 @@
     "jstree": "^3.3.8",
     "jstree-bootstrap-theme": "^1.0.1",
     "laravel-mix": "^4.0.15",
+    "lodash": ">=4.17.13",
+    "lodash.mergewith": ">=4.6.2",
     "moment": "^2.24.0",
     "open-iconic": "^1.1.1",
     "popper.js": "^1.15.0",
