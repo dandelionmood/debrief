@@ -32,7 +32,7 @@ mix
     .sourceMaps() // we add sourcemaps to ease debug
     // .browserSync('localhost:8000') // we allow for automatic browser refresh
     .extract([
-        'jquery', 'moment',
+        'jquery', 'moment', 'moment-timezone',
         'bootstrap','bootstrap-datepicker', 'bootstrap-select',
         'textcomplete', 'dropzone', 'jstree', 'autosize', 'popper.js'
     ])

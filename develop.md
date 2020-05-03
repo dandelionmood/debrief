@@ -2,7 +2,7 @@
 
 ### Requirements
 
-*Debrief* is based on Laravel 5.7, which means **PHP >7.1 is a must**. [You can find Laravel dependencies here.](https://laravel.com/docs/5.7/installation#server-requirements)
+*Debrief* is based on Laravel 6, which means **PHP >7.2 is a must**. [You can find Laravel dependencies here.](https://laravel.com/docs/6.x/#server-requirements)
 
 You're gonna need [`composer`](https://getcomposer.org/download/) to install the project dependencies.
 
@@ -22,7 +22,7 @@ $ composer install
 
 Then, you need to create your `.env` file, using `.env.example` as an example. This file contains most notably your DBMS configuration.
 
-Once it is initialized, you can generate a key for the application (for security purposes) : 
+Once it is initialized, you can generate a key for the application (for security purposes): 
 
 ```bash
 $ php artisan key:generate
@@ -38,7 +38,7 @@ The basics are now covered, let's carry on.
 
 ### Assets compilation
 
-You need to compile JS and CSS files using Mix, a library provided by Laravel to help with the development of Javascript and SASS in a Laravel environment. [See the documentation to learn the in and outs](https://laravel.com/docs/5.7/mix).
+You need to compile JS and CSS files using Mix, a library provided by Laravel to help with the development of Javascript and SASS in a Laravel environment. [See the documentation to learn the in and outs](https://laravel.com/docs/6.x/mix).
 
 First you need to create the translation files :
 
@@ -72,15 +72,15 @@ Give an email, a password and voilà! You should now be able to connect to your 
 
 ## Run the test suite
 
-There are already a few unit tests in place, you can run them using PHPUnit : 
+There are already a few unit tests in place, you can run them using PHPUnit: 
 
 ```bash
-$ vendor/bin/phpunit 
-PHPUnit 7.5.10 by Sebastian Bergmann and contributors.
+pierre@pierre-maison:~/Sources/debrief$ vendor/bin/phpunit 
+PHPUnit 7.5.20 by Sebastian Bergmann and contributors.
 
 ........                                                            8 / 8 (100%)
 
-Time: 2.97 seconds, Memory: 106.00 MB
+Time: 635 ms, Memory: 108.00 MB
 
 OK (8 tests, 87 assertions)
 ```
@@ -93,7 +93,7 @@ Don't hesitate to reach me beforehand if you want to add a new feature to Debrie
 
 Once you're done, you can give me access to your contributing via a pull request on Github. 
 
-Standards that apply are fairly common : 
+Standards that apply are fairly common: 
 
 - [PSR-1 code formatting](https://www.php-fig.org/psr/psr-1/) ;
 - the presence of unit tests is **strongly** encouraged where that makes sense.
@@ -106,8 +106,8 @@ Although you can add your own complex stylesheet, theming is made really easy **
 
 The operation is actually split in three parts:
 
-1. create your theme (or modify an existing one) in `resources/assets/sass/theme-*.scss` ;
-2. then, add the theme declaration to the `webpack.mix.js` file at the root to have it compiled ;
+1. create your theme (or modify an existing one) in `resources/assets/sass/theme-*.scss`;
+2. then, add the theme declaration to the `webpack.mix.js` file at the root to have it compiled;
 3. to make it available to the app, declare it in `config/app.php` at the `themes` index as well.
 
 For example, here is what `theme-benext.scss` looks like :

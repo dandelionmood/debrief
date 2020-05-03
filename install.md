@@ -6,13 +6,13 @@ If you plan on developing or simply want more flexibility, go to [develop.md](de
 
 ### Requirements
 
-*Debrief* is based on Laravel 5.7, which means **PHP >7.1 is a must**. [You can find Laravel dependencies here.](https://laravel.com/docs/5.7/installation#server-requirements)
+*Debrief* is based on Laravel 6, which means **PHP >7.2 is a must**. [You can find Laravel dependencies here.](https://laravel.com/docs/6.x/#server-requirements)
 
 Of course, you can configure any relational DBMS supported by Laravel by updating your `.env` file accordingly.
 
 ### Installation
 
-This guide will present the zip archive installation method, which is the most straightforward if you don't want to develop afterwards : everything you need has already been downloaded and compiled in the zip archive.
+This guide will present the zip archive installation method, which is the most straightforward if you don't want to develop afterwards: everything you need has already been downloaded and compiled in the zip archive.
 
 #### Setup document root
 
@@ -28,7 +28,7 @@ As for any Laravel project, the document root to configure in you web server is 
 
 This file contains most notably your DBMS configuration.
 
-Once it is initialized, you can generate a key for the application (for security purposes) : 
+Once it is initialized, you can generate a key for the application (for security purposes): 
 
 ```bash
 $ php artisan key:generate
@@ -44,7 +44,7 @@ The basics are now covered, let's carry on.
 
 ### Database initialization
 
-We need to initialize your database using the provided migration files : they contain everything that is needed.
+We need to initialize your database using the provided migration files: they contain everything that is needed.
 
 ```bash
 $ php artisan migrate
@@ -58,4 +58,4 @@ You still don't have a user to connect to : we're going to add it by running a l
 $ php artisan app:init
 ```
 
-Give an email, a password and voilà! You should now be able to connect to your new account.
+Provide an email, a password and voilà! You should now be able to connect to your new account.
