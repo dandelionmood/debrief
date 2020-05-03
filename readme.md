@@ -4,18 +4,18 @@
 
 **Debrief is an easy to use note-taking application crossed with a diary.**
 
-**A WORD OF CAUTION** : Debrief is still under heavy development at the moment and some core things may (and probably will) change. I still need to work toward a somewhat stable release.
+*Note*: while it's not under active development anymore, as I find it to be pretty feature-complete as-is, I still try to keep the codebase somewhat up-to-date with recent JS & PHP packages (once a year).
 
 ### Features:
 
-- **Open-source project** ;
-- **Multi-users**, your notes can be **shared** with others ;
-- Notes can be **commented on** ;
-- **Markdown edition** is enabled everywhere ;
-- **File uploads** are handled with simple drag'n'drop ;
-- **Create links** between stories, diary pages, people … with autocompletion, date picker, etc. ;
-- Available in French and English, languages can be easily added ;
-- Multiple theme (light and dark) are available.
+- **Open-source project**;
+- **Multi-users**, your notes can be **shared** with others;
+- Notes can be **commented on**;
+- **Markdown edition** is enabled everywhere;
+- **File uploads** are handled with simple drag'n'drop;
+- **Create links** between stories, diary pages, people … with autocompletion, date picker, etc.;
+- Available in French and English, languages can be easily added;
+- Multiple themes (light and dark) are available.
 
 … And much more !
 
