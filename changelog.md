@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.20190819.0
+
+- fix(security): fixed js packages security warning
+- fix(i18n): updated translations
+
 ## 1.20190719.0
 
 - feat(themes): add (real) theme support
