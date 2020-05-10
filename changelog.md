@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.20200510.0
+
+- fix(user-creation): fixes #12
+
+## 1.20200503.1
+
+- feat(maintenance): updated travis-ci as part of migration to Laravel 6
+- feat(documentation): updated install and development guides
+- feat(maintenance): updated codebase to Laravel 6
+- feat(maintenance): upgraded js libs
+- fixed(auth): wrong redirection path upon authentication et al.
+
 ## 1.20190819.0
 
 - fix(security): fixed js packages security warning
