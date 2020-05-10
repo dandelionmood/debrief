@@ -20,7 +20,7 @@ try {
         $breadcrumbs->parent('users.index');
         $breadcrumbs->push(__('Edit this user'));
     });
-    \Breadcrumbs::register('users.create', function (BreadcrumbsGenerator $breadcrumbs, $user) {
+    \Breadcrumbs::register('users.create', function (BreadcrumbsGenerator $breadcrumbs) {
         $breadcrumbs->parent('users.index');
         $breadcrumbs->push(__('Add a new user'));
     });
