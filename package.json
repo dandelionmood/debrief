@@ -24,7 +24,7 @@
     "jstree": "^3.3.9",
     "jstree-bootstrap-theme": "^1.0.1",
     "laravel-mix": "^5.0.4",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "moment-timezone": "0.5.28",
     "open-iconic": "^1.1.1",
     "popper.js": "^1.16.1",
